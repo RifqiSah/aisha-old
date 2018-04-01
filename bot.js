@@ -42,7 +42,7 @@ bot.on("message", function(message) {
 	if (message.author.equals(bot.user)) return;
 	if (message.content.indexOf(prefix) !== 0) return;
 
-	const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+	const args = message.content.slice(prefix.length).trim().split(/ +/g);
 	const command = args.shift().toLowerCase();
 
 	if (command === "ping") {
