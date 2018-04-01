@@ -8,7 +8,7 @@ var DN_version = {"Local": 0, "Indonesia": 0, "Southeast Asia": 0, "North Americ
 var bot = new Discord.Client();
 bot.on("ready", function() {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
-    bot.user.setActivity(process.env.GAME);
+    bot.user.setActivity("Ulala~ server!");
 });
 
 function checkVersion(msg, key, patch_url) {
@@ -48,8 +48,10 @@ bot.on("message", function(message) {
 	if (command === "ping") {
 		message.channel.send("Pong! Latency: " + parseInt(bot.ping) + "ms");
 	}
+	else if (command === "dntrack") {
+		if(!message.member.roles.some(r=>["Ancient"].includes(r.name)) )
+			return message.reply("Sorry, you don't have permissions to use this!");
 
-	if (command === "dntrack") {
 		message.delete();
 
 		if (args[0] === "on") {
@@ -65,7 +67,7 @@ bot.on("message", function(message) {
 			var loop = setInterval(function () {
 				checkVersion(message, "Indonesia", "http://patch.gemscool.com/dragonnest/live/PatchInfoServer.cfg");
 				checkVersion(message, "Southeast Asia", "http://patchsea.dragonnest.com/Game/DragonNest/Patch/PatchInfoServer.cfg");
-				checkVersion(message, "North America", "http://patchus.dragonnest.com/Game/DragonNest/Patch/PatchInfoServer.cfg");
+				checkVersion(message, "North America", "http://origin.dragonnest.sf.cdngp.net/Game/DragonNest/Launcher/PatchInfoServer.cfg");
 				checkVersion(message, "Korea", "http://res.dn.pupugame.com/Patch/PatchInfoServer.cfg");
 				checkVersion(message, "China", "http://dorado.sdo.com/dn/patchinfo/Public/PatchInfoServer.cfg");
 				checkVersion(message, "Taiwan", "http://dnpatch.gameflier.com/PatchInfoServer.cfg");
@@ -85,6 +87,20 @@ bot.on("message", function(message) {
 				status = 0;
 			}
 		}
+	} else { // Command not found?
+		message.channel.send({embed: {
+			color: 3447003,
+			title: "Aisha BOT command",
+			description: "Command yang tersedia pada Aisha BOT. Gunakan prefix \"+\" di awal command agar dapat bekerja.",
+			fields: [{
+				name: "ping",
+				value: "Mendapatkan latency kepada API server Discord."
+			},
+			{
+				name: "dntrack [on/off]",
+				value: "Mengaktifkan/mematikan version tracking pada BOT."
+			}]}
+		});
 	}
 });
 
