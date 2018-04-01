@@ -8,7 +8,7 @@ var DN_version = {"Local": 0, "Indonesia": 0, "Southeast Asia": 0, "North Americ
 var bot = new Discord.Client();
 bot.on("ready", function() {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
-    bot.user.setActivity("Ulala~ server!");
+    bot.user.setActivity("Ulala~ server! [" + prefix + "help]");
 });
 
 function checkVersion(msg, key, patch_url) {
@@ -87,11 +87,12 @@ bot.on("message", function(message) {
 				status = 0;
 			}
 		}
-	} else { // Command not found?
+	}
+	else if (command === "help") {
 		message.channel.send({embed: {
 			color: 3447003,
 			title: "Aisha BOT command",
-			description: "Command yang tersedia pada Aisha BOT. Gunakan prefix \"+\" di awal command agar dapat bekerja.",
+			description: "Command yang tersedia pada Aisha BOT. Gunakan prefix \"" + prefix + "\" di awal command agar dapat bekerja.",
 			fields: [{
 				name: "ping",
 				value: "Mendapatkan latency kepada API server Discord."
