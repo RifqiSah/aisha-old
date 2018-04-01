@@ -42,7 +42,7 @@ bot.on("message", function(message) {
 
   if (message.content.toLowerCase() === "ping") {
     	message.channel.send("Pong! Latency: " + parseInt(bot.ping) + "ms");
-		}
+    }
 });
 
 bot.login(process.env.TOKEN);
