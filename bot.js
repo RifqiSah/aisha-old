@@ -3,7 +3,7 @@ const request = require("request");
 
 var prefix = "+";
 var status = 0;
-var DN_version = {"Local": 0, "Indonesia": 0, "Southeast Asia": 0, "North America":0, "Korea":0, "China":0, "Taiwan":0};
+var DN_version = {"Local": 0, "Indonesia": 417, "Southeast Asia": 304, "North America":681, "Korea":921, "China":316, "Taiwan":702};
 
 var bot = new Discord.Client();
 bot.on("ready", function() {
@@ -46,13 +46,14 @@ bot.on("message", function(message) {
 	const command = args.shift().toLowerCase();
 
 	if (command === "ping") {
-		message.channel.send("Pong! Latency: " + parseInt(bot.ping) + "ms");
+		message.reply("Pong! Latency: " + parseInt(bot.ping) + "ms");
 	}
 	else if (command === "dntrack") {
 		if(!message.member.roles.some(r=>["Ancient"].includes(r.name)) )
 			return message.reply("Sorry, you don't have permissions to use this!");
 
 		message.delete();
+		bot.user.setActivity("DN tracking ON !");
 
 		if (args[0] === "on") {
 			if (status) {
