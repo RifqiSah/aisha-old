@@ -18,9 +18,6 @@ bot.on("message", function(message) {
 
     if (command === "ping") {
         message.channel.send("Pong! Latency: " + parseInt(bot.ping) + "ms");
-    } else if (command === "dntrack") {
-        if (!message.member.roles.some(r => ["Ancient"].includes(r.name)))
-            return message.reply("Sorry, you don't have permissions to use this!");
 
     } else if (command === "help") {
         message.channel.send({
@@ -29,14 +26,9 @@ bot.on("message", function(message) {
                 title: "Aisha BOT command",
                 description: "Command yang tersedia pada Aisha BOT. Gunakan prefix \"" + prefix + "\" di awal command agar dapat bekerja.",
                 fields: [{
-                        name: "ping",
-                        value: "Mendapatkan latency kepada API server Discord."
-                    },
-                    {
-                        name: "dntrack [on/off]",
-                        value: "Mengaktifkan/mematikan version tracking pada BOT."
-                    }
-                ]
+                    name: "ping",
+                    value: "Mendapatkan latency kepada API server Discord."
+                }]
             }
         });
     }
