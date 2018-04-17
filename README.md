@@ -1,2 +1,2 @@
 # Aisha
-DragonNest version tracker
+A simpe Discord BOT using node.js

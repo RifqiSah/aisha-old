@@ -1,14 +1,14 @@
 {
-  "name": "Aisha",
-  "description": "Aisha: DragonNest BOT version tracker",
-  "version": "1.0.0",
-  "main": "bot.js",
-  "scripts": {
-    "start": "node bot.js"
-  },
-  "dependencies": {
-    "discord.js": "^11.3.2",
-    "json-parser": "^1.1.5",
-    "request": "^2.85.0"
-  }
+    "name": "Aisha",
+    "description": "Aisha: Simpe Discord BOT",
+    "version": "1.0.0",
+    "main": "bot.js",
+    "scripts": {
+        "start": "node bot.js"
+    },
+    "dependencies": {
+        "discord.js": "^11.3.2",
+        "json-parser": "^1.1.5",
+        "request": "^2.85.0"
+    }
 }
