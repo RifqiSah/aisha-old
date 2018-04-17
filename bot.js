@@ -47,6 +47,7 @@ function checkServer(message) {
         });
 
         client.on('error', function(err) {
+            message.channel.send(err);
             console.log(server[i].name + " server is DOWN!");
             sendMessage(message, server[i].name, 0);
         })
