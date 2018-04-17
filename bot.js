@@ -5,8 +5,8 @@ var prefix = "%";
 
 var bot = new Discord.Client();
 bot.on("ready", function() {
-    console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
-    bot.user.setActivity("Ulala~ server! [" + prefix + "help]");
+    console.log("Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.");
+    bot.user.setActivity("${bot.users.size } users [" + prefix + "help]");
 });
 
 bot.on("message", function(message) {
