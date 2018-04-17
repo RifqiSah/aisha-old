@@ -1,5 +1,63 @@
-const Discord = require('discord.js');
-const request = require("request");
+var Discord = require('discord.js');
+var request = require("request");
+var server = [
+    { name: "INA", ip: "49.50.4.219", port: 14300 },
+    { name: "SEA", ip: "202.14.200.67", port: 14301 }
+    // { name: "NA", ip: "211.43.155.163", port: 14300 },
+    // { name: "KO", ip: "211.233.18.72", port: 14300 },
+    // { name: "JP", ip: "dn-login01.hangame.co.jp", port: 14300 },
+    // { name: "EU", ip: "211.43.158.240", port: 14300 },
+    // { name: "TW", ip: "210.242.206.177", port: 14300 },
+    // { name: "TH", ip: "103.4.156.8", port: 14300 }
+];
+
+function sendMessage(message, s1, s2) {
+    let embed = {
+        "color": 16312092,
+        "fields": [{
+                "name": "__**Dragon Nest**__",
+                "value": "Indonesia\nSoutheast Asia",
+                "inline": true
+            },
+            {
+                "name": "__**Status**__",
+                "value": (s1 == 1 ? "Online" : "Maintenance!") + "\n" + (s2 == 1 ? "Online" : "Maintenance!"),
+                "inline": true
+            }
+        ]
+    };
+    message.channel.send("Server status dari Dragon Nest\n ", { embed });
+}
+
+function checkServer(i) {
+    let status = -1;
+    let client = new net.Socket();
+
+    client.connect(server[i].port, server[i].ip, function() {
+        // console.log('Connected to ' + server[i].name + " server!");
+    });
+
+    client.on('data', function(data) {
+        // console.log('Received: ' + data);
+
+        status = 1;
+        console.log(server[i].name + " server is UP!");
+        client.destroy(); // Kill client after server's response
+    });
+
+    client.on('error', function(err) {
+        // console.log(err);
+
+        status = 0;
+        console.log(server[i].name + " server is DOWN!");
+    })
+
+    client.on('close', function() {
+        // console.log('Closed!');
+    });
+
+    return status;
+}
 
 var prefix = ".";
 
@@ -18,7 +76,8 @@ bot.on("message", function(message) {
 
     if (command === "ping") {
         message.channel.send("Pong! Latency: " + parseInt(bot.ping) + "ms");
-
+    } else if (command === "server") {
+        sendMessage(message, checkServer(0), checkServer(1));
     } else if (command === "help") {
         message.channel.send({
             embed: {
@@ -26,9 +85,14 @@ bot.on("message", function(message) {
                 title: "Aisha BOT command",
                 description: "Command yang tersedia pada Aisha BOT. Gunakan prefix \"" + prefix + "\" di awal command agar dapat bekerja.",
                 fields: [{
-                    name: "ping",
-                    value: "Mendapatkan latency kepada API server Discord."
-                }]
+                        name: "server",
+                        value: "Mendapatkan informasi server Dragon Nest."
+                    },
+                    {
+                        name: "ping",
+                        value: "Mendapatkan latency kepada API server Discord."
+                    }
+                ]
             }
         });
     }
