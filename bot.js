@@ -11,6 +11,9 @@ var server = [
     // { name: "TH", ip: "103.4.156.8", port: 14300 }
 ];
 
+var s1 = 0;
+var s2 = 0;
+
 function sendMessage(message, s1, s2) {
     let embed = {
         "color": 16312092,
@@ -70,6 +73,9 @@ bot.on("ready", function() {
 });
 
 bot.on("message", function(message) {
+    s1 = checkServer(0);
+    s2 = checkServer(1);
+
     if (message.author.equals(bot.user)) return;
     if (message.content.indexOf(prefix) !== 0) return;
 
@@ -82,9 +88,6 @@ bot.on("message", function(message) {
             break;
 
         case "server":
-            let s1 = checkServer(0);
-            let s2 = checkServer(1);
-
             sendMessage(message, s1, s2);
             break;
 
