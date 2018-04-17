@@ -35,24 +35,26 @@ function sendMessage(message, name, status) {
 function checkServer(message) {
     let client = new net.Socket();
 
-    client.connect(server[i].port, server[i].ip, function() {
-        console.log('Connected to ' + server[i].name + " server!");
-    });
+    for (let i = 0; i < server.length; i++) {
+        client.connect(server[i].port, server[i].ip, function() {
+            console.log('Connected to ' + server[i].name + " server!");
+        });
 
-    client.on('data', function(data) {
-        console.log(server[i].name + " server is UP!");
-        sendMessage(message, server[i].name, 1);
-        client.destroy();
-    });
+        client.on('data', function(data) {
+            console.log(server[i].name + " server is UP!");
+            sendMessage(message, server[i].name, 1);
+            client.destroy();
+        });
 
-    client.on('error', function(err) {
-        console.log(server[i].name + " server is DOWN!");
-        sendMessage(message, server[i].name, 0);
-    })
+        client.on('error', function(err) {
+            console.log(server[i].name + " server is DOWN!");
+            sendMessage(message, server[i].name, 0);
+        })
 
-    client.on('close', function() {
-        console.log('Closed!');
-    });
+        client.on('close', function() {
+            console.log('Closed!');
+        });
+    }
 }
 
 var prefix = ".";
