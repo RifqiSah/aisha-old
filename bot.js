@@ -29,34 +29,30 @@ function sendMessage(message, s1, s2) {
     message.channel.send("Server status dari Dragon Nest\n ", { embed });
 }
 
-function checkServer(i) {
-    let status = -1;
-    let client = new net.Socket();
+function checkServer() {
+    for (let i = 0; i < server.length; i++) {
+        let client = new net.Socket();
 
-    client.connect(server[i].port, server[i].ip, function() {
-        // console.log('Connected to ' + server[i].name + " server!");
-    });
+        client.connect(server[i].port, server[i].ip, function() {
+            // console.log('Connected to ' + server[i].name + " server!");
+        });
 
-    client.on('data', function(data) {
-        // console.log('Received: ' + data);
+        client.on('data', function(data) {
+            // console.log('Received: ' + data);
 
-        status = 1;
-        console.log(server[i].name + " server is UP!");
-        client.destroy(); // Kill client after server's response
-    });
+            console.log(server[i].name + " server is UP!");
+            client.destroy(); // Kill client after server's response
+        });
 
-    client.on('error', function(err) {
-        // console.log(err);
+        client.on('error', function(err) {
+            // console.log(err);
+            console.log(server[i].name + " server is DOWN!");
+        })
 
-        status = 0;
-        console.log(server[i].name + " server is DOWN!");
-    })
-
-    client.on('close', function() {
-        // console.log('Closed!');
-    });
-
-    return status;
+        client.on('close', function() {
+            // console.log('Closed!');
+        });
+    }
 }
 
 var prefix = ".";
@@ -66,6 +62,26 @@ bot.on("ready", function() {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
     bot.user.setActivity(`${bot.users.size } users [` + prefix + `help]`);
 });
+
+/*
+const embed = {
+  "color": 16312092,
+  "timestamp": "2018-04-17T08:04:59.366Z",
+  "fields": [
+    {
+      "name": "__**Dragon Nest**__",
+      "value": "Indonesia\nSoutheast Asia",
+      "inline": true
+    },
+    {
+      "name": "__**Status**__",
+      "value": "Online\nMaintenance!",
+      "inline": true
+    }
+  ]
+};
+channel.send("Server status dari Dragon Nest\n ", { embed });
+*/
 
 bot.on("message", function(message) {
     if (message.author.equals(bot.user)) return;
@@ -77,7 +93,7 @@ bot.on("message", function(message) {
     if (command === "ping") {
         message.channel.send("Pong! Latency: " + parseInt(bot.ping) + "ms");
     } else if (command === "server") {
-        sendMessage(message, checkServer(0), checkServer(1));
+        sendMessage(message, 1, 1);
     } else if (command === "help") {
         message.channel.send({
             embed: {
