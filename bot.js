@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const request = require("request");
 
-var prefix = "%";
+var prefix = ".";
 
 var bot = new Discord.Client();
 bot.on("ready", function() {
