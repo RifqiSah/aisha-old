@@ -11,30 +11,26 @@ var server = [
     // { name: "TH", ip: "103.4.156.8", port: 14300 }
 ];
 
-var s1 = 0;
-var s2 = 0;
+// function sendMessage(message, s1, s2) {
+//     let embed = {
+//         "color": 16312092,
+//         "fields": [{
+//                 "name": "__**Dragon Nest**__",
+//                 "value": "Indonesia\nSoutheast Asia",
+//                 "inline": true
+//             },
+//             {
+//                 "name": "__**Status**__",
+//                 "value": (s1 == 1 ? "Online" : "Maintenance!") + "\n" + (s2 == 1 ? "Online" : "Maintenance!"),
+//                 "inline": true
+//             }
+//         ]
+//     };
 
-function sendMessage(message, s1, s2) {
-    let embed = {
-        "color": 16312092,
-        "fields": [{
-                "name": "__**Dragon Nest**__",
-                "value": "Indonesia\nSoutheast Asia",
-                "inline": true
-            },
-            {
-                "name": "__**Status**__",
-                "value": (s1 == 1 ? "Online" : "Maintenance!") + "\n" + (s2 == 1 ? "Online" : "Maintenance!"),
-                "inline": true
-            }
-        ]
-    };
+//     message.channel.send("Server status dari Dragon Nest\n ", { embed });
+// }
 
-    message.channel.send("Server status dari Dragon Nest\n ", { embed });
-}
-
-function checkServer(i) {
-    let ret = -1;
+function checkServer(message, i) {
     let client = new net.Socket();
 
     client.connect(server[i].port, server[i].ip, function() {
@@ -44,24 +40,19 @@ function checkServer(i) {
     client.on('data', function(data) {
         // console.log('Received: ' + data);
 
-        ret = 1;
-        console.log(server[i].name + " server is UP!");
+        message.channel.send(server[i].name + " server is UP!");
         client.destroy(); // Kill client after server's response
     });
 
     client.on('error', function(err) {
         // console.log(err);
-
-        ret = 0;
-        console.log(server[i].name + " server is DOWN!");
+        message.channel.send(server[i].name + " server is DOWN!");
     })
 
     client.on('close', function() {
         // console.log('Closed!');
     });
     // }
-
-    return ret;
 }
 
 var prefix = ".";
@@ -73,9 +64,6 @@ bot.on("ready", function() {
 });
 
 bot.on("message", function(message) {
-    s1 = checkServer(0);
-    s2 = checkServer(1);
-
     if (message.author.equals(bot.user)) return;
     if (message.content.indexOf(prefix) !== 0) return;
 
@@ -88,7 +76,8 @@ bot.on("message", function(message) {
             break;
 
         case "server":
-            sendMessage(message, s1, s2);
+            checkServer(message, 0);
+            checkServer(message, 0);
             break;
 
         case "help":
