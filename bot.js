@@ -13,53 +13,46 @@ var server = [
     // { name: "TH", ip: "103.4.156.8", port: 14300 }
 ];
 
-function sendMessage(message, s1, s2) {
+function sendMessage(message, name, status) {
     let embed = {
         "color": 16312092,
         "fields": [{
                 "name": "__**Dragon Nest**__",
-                "value": "Indonesia\nSoutheast Asia",
+                "value": name,
                 "inline": true
             },
             {
                 "name": "__**Status**__",
-                "value": (s1 == 1 ? "Online" : "Maintenance!") + "\n" + (s2 == 1 ? "Online" : "Maintenance!"),
+                "value": (status == 1 ? "Online" : "Maintenance!"),
                 "inline": true
             }
         ]
     };
 
-    message.channel.send("Server status dari Dragon Nest\n ", { embed });
+    message.channel.send({ embed });
 }
 
-function checkServer(i) {
-    let ret = -1;
+function checkServer(message) {
     let client = new net.Socket();
 
     client.connect(server[i].port, server[i].ip, function() {
-        // console.log('Connected to ' + server[i].name + " server!");
+        console.log('Connected to ' + server[i].name + " server!");
     });
 
     client.on('data', function(data) {
-        // console.log('Received: ' + data);
-
-        ret = 1;
         console.log(server[i].name + " server is UP!");
-        client.destroy(); // Kill client after server's response
+        sendMessage(message, server[i].name, 1);
+        client.destroy();
     });
 
     client.on('error', function(err) {
-        // console.log(err);
-
-        ret = 0;
         console.log(server[i].name + " server is DOWN!");
+        sendMessage(message, server[i].name, 0);
     })
 
     client.on('close', function() {
-        // console.log('Closed!');
+        console.log('Closed!');
     });
-
-    return ret;
 }
 
 var prefix = ".";
@@ -83,7 +76,7 @@ bot.on("message", function(message) {
             break;
 
         case "server":
-            sendMessage(message, checkServer(0), checkServer(1));
+            checkServer(message);
             break;
 
         case "help":
