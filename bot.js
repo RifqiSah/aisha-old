@@ -32,7 +32,7 @@ function checkServer(msg) {
                     title: "Dragon Nest",
                     description: "**" + key + "** telah update dari " + old_ver + " ke " + new_ver,
                     timestamp: new Date(),
-                    "fields": [{
+                    fields: [{
                             "name": "__**Name**__",
                             "value": "Indonesia\nSoutheast Asia",
                             "inline": true
