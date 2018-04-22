@@ -29,8 +29,7 @@ function checkServer(msg) {
             msg.channel.send({
                 embed: {
                     color: 16312092,
-                    title: "Dragon Nest",
-                    timestamp: new Date(),
+                    title: "Dragon Nest Server Information",
                     fields: [{
                             "name": "__**Name**__",
                             "value": "Indonesia\nSoutheast Asia",
