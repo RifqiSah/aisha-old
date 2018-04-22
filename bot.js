@@ -28,7 +28,7 @@ function checkServer(msg) {
 
             msg.channel.send({
                 embed: {
-                    color: 3447003,
+                    color: 16312092,
                     title: "Dragon Nest",
                     timestamp: new Date(),
                     fields: [{
