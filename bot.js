@@ -30,7 +30,6 @@ function checkServer(msg) {
                 embed: {
                     color: 3447003,
                     title: "Dragon Nest",
-                    description: "**" + key + "** telah update dari " + old_ver + " ke " + new_ver,
                     timestamp: new Date(),
                     fields: [{
                             "name": "__**Name**__",
