@@ -58,21 +58,33 @@ function checkServer(msg, arg) {
             break;
     }
 
-    msg.channel.send("Selected server: **" + server[i].name + "**");
-    msg.channel.send("------------");
+    // msg.channel.send("Selected server: **" + server[i].name + "**");
+    // msg.channel.send("------------");
 
     client.connect(server[i].port, server[i].ip, function() {
         msg.channel.send('Connected!');
     });
 
     client.on('data', function(data) {
-        msg.channel.send(server[i].name + " server is UP!");
+        msg.channel.send({
+            embed: {
+                color: F8E71C,
+                title: "Dragon Nest",
+                description: "Server **" + server[i].name + "** sedang **Online**."
+            }
+        });
         client.destroy();
     });
 
     client.on('error', function(err) {
         console.log(err);
-        msg.channel.send(server[i].name + " server is DOWN!");
+        msg.channel.send({
+            embed: {
+                color: F8E71C,
+                title: "Dragon Nest",
+                description: "Server **" + server[i].name + "** sedang **Maintenance**."
+            }
+        });
     })
 
     client.on('close', function() {
