@@ -7,7 +7,7 @@ var prefix = ".";
 var bot = new Discord.Client();
 bot.on("ready", function() {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
-    bot.user.setActivity("Ver. 1.0.6");
+    bot.user.setActivity("Ver. 1.0.7");
 });
 
 var server = [
@@ -58,10 +58,11 @@ function checkServer(msg, arg) {
             break;
     }
 
-    msg.channel.send("Selected server: " + server[i].name);
+    msg.channel.send("Selected server: **" + server[i].name + "**");
+    msg.channel.send("------------");
 
     client.connect(server[i].port, server[i].ip, function() {
-        console.log('Connected!');
+        msg.channel.send('Connected!');
     });
 
     client.on('data', function(data) {
@@ -71,7 +72,6 @@ function checkServer(msg, arg) {
 
     client.on('error', function(err) {
         console.log(err);
-
         msg.channel.send(server[i].name + " server is DOWN!");
     })
 
