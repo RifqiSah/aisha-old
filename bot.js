@@ -1,4 +1,5 @@
 var Discord = require('discord.js');
+var net = require('net');
 var request = require("request");
 
 var prefix = ".";
@@ -6,7 +7,7 @@ var prefix = ".";
 var bot = new Discord.Client();
 bot.on("ready", function() {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
-    bot.user.setActivity("Ver. 1.0.5");
+    bot.user.setActivity("Ver. 1.0.6");
 });
 
 var server = [
@@ -57,15 +58,15 @@ function checkServer(msg, arg) {
             break;
     }
 
+    msg.channel.send("Selected server: " + server[i].name);
+
     client.connect(server[i].port, server[i].ip, function() {
-        console.log('Connected to ' + server[i].name + " server!");
+        console.log('Connected!');
     });
 
     client.on('data', function(data) {
-        // console.log('Received: ' + data);
-
         msg.channel.send(server[i].name + " server is UP!");
-        client.destroy(); // Kill client after server's response
+        client.destroy();
     });
 
     client.on('error', function(err) {
@@ -77,38 +78,6 @@ function checkServer(msg, arg) {
     client.on('close', function() {
         console.log('Closed!');
     });
-
-    // request({
-    //     url: "https://dev.alriftech.com/cron/dnserver_load.php",
-    //     json: true
-    // }, function(error, response, body) {
-    //     if (!error && response.statusCode === 200) {
-    //         // var n = body.length;
-    //         // for (var i = 0; i < n; i++) {
-    //         //     console.log(body[i].id);
-    //         //     console.log(body[i].shortName);
-    //         //     console.log(body[i].server);
-    //         // }
-
-    //         msg.channel.send({
-    //             embed: {
-    //                 color: 16312092,
-    //                 title: "Dragon Nest Server Information",
-    //                 fields: [{
-    //                         "name": "__**Name**__",
-    //                         "value": "Indonesia\nSoutheast Asia",
-    //                         "inline": true
-    //                     },
-    //                     {
-    //                         "name": "__**Server**__",
-    //                         "value": parseServer(body[8].server) + "\n" + parseServer(body[4].server),
-    //                         "inline": true
-    //                     }
-    //                 ]
-    //             }
-    //         });
-    //     }
-    // });
 }
 
 bot.on("message", function(message) {
