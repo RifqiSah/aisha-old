@@ -28,7 +28,7 @@ function checkServer(msg, arg) {
     let client = new net.Socket();
     let i = -1;
 
-    msg.channel.delete();
+    msg.delete();
 
     switch (arg) {
         case "ina":
