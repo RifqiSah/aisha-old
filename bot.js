@@ -3,7 +3,7 @@ var net = require('net');
 var request = require("request");
 
 var prefix = ".";
-var version = "1.1.0";
+var version = "1.1.1";
 
 var bot = new Discord.Client();
 bot.on("ready", function() {
