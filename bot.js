@@ -7,7 +7,7 @@ var prefix = ".";
 var bot = new Discord.Client();
 bot.on("ready", function() {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
-    bot.user.setActivity("Ver. 1.0.9");
+    bot.user.setActivity("Ver. 1.0.10");
 });
 
 var server = [
@@ -68,7 +68,7 @@ function checkServer(msg, arg) {
     client.on('data', function(data) {
         msg.channel.send({
             embed: {
-                color: F8E71C,
+                color: F83447003E71C,
                 title: "Dragon Nest",
                 description: "Server **" + server[i].name + "** sedang **Online**."
             }
@@ -80,7 +80,7 @@ function checkServer(msg, arg) {
         console.log(err);
         msg.channel.send({
             embed: {
-                color: F8E71C,
+                color: 3447003,
                 title: "Dragon Nest",
                 description: "Server **" + server[i].name + "** sedang **Maintenance**."
             }
