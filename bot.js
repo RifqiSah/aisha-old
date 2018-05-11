@@ -3,11 +3,12 @@ var net = require('net');
 var request = require("request");
 
 var prefix = ".";
+var version = "1.1.0";
 
 var bot = new Discord.Client();
 bot.on("ready", function() {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
-    bot.user.setActivity("Ver. 1.0.12");
+    bot.user.setActivity("Ver. " + version);
 });
 
 var server = [
@@ -112,6 +113,10 @@ bot.on("message", function(message) {
             checkServer(message, args[0]);
             break;
 
+        case "version":
+            message.channel.send("Bot version: " + version);
+            break;
+
         case "help":
             message.channel.send({
                 embed: {
@@ -119,7 +124,10 @@ bot.on("message", function(message) {
                     title: "Aisha BOT command",
                     description: "Command yang tersedia pada Aisha BOT. Gunakan prefix \"" + prefix + "\" di awal command agar dapat bekerja.",
                     fields: [{
-                            name: "server",
+                            name: "version",
+                            value: "Mendapatkan informasi versi BOT Aisha."
+                        }, {
+                            name: "server [server]",
                             value: "Mendapatkan informasi server Dragon Nest."
                         },
                         {
