@@ -27,6 +27,8 @@ function checkServer(msg, arg) {
     let client = new net.Socket();
     let i = -1;
 
+    message.channel.delete();
+
     switch (arg) {
         case "ina":
             i = 0;
@@ -62,7 +64,7 @@ function checkServer(msg, arg) {
     // msg.channel.send("------------");
 
     client.connect(server[i].port, server[i].ip, function() {
-        msg.channel.send('Connected!');
+        // msg.channel.send('Connected!');
     });
 
     client.on('data', function(data) {
@@ -70,7 +72,8 @@ function checkServer(msg, arg) {
             embed: {
                 color: 3447003,
                 title: "Dragon Nest",
-                description: "Server **" + server[i].name + "** sedang **Online**."
+                description: "Server **" + server[i].name + "** sedang **Online**.",
+                timestamp: new Date()
             }
         });
         client.destroy();
@@ -82,7 +85,8 @@ function checkServer(msg, arg) {
             embed: {
                 color: 3447003,
                 title: "Dragon Nest",
-                description: "Server **" + server[i].name + "** sedang **Maintenance**."
+                description: "Server **" + server[i].name + "** sedang **Maintenance**.",
+                timestamp: new Date()
             }
         });
     })
