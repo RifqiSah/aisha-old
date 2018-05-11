@@ -7,7 +7,7 @@ var prefix = ".";
 var bot = new Discord.Client();
 bot.on("ready", function() {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
-    bot.user.setActivity("Ver. 1.0.11");
+    bot.user.setActivity("Ver. 1.0.12");
 });
 
 var server = [
@@ -27,7 +27,7 @@ function checkServer(msg, arg) {
     let client = new net.Socket();
     let i = -1;
 
-    message.channel.delete();
+    msg.channel.delete();
 
     switch (arg) {
         case "ina":
