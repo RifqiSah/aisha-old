@@ -6,7 +6,8 @@ var prefix = ".";
 var version = "v3.5";
 
 bot.on("ready", function() {
-    bot.user.setActivity(`Serving ${bot.user.size} users.`);
+    console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
+    bot.user.setActivity(version + " with 110 users.");
 });
 
 bot.on("message", function(message) {
