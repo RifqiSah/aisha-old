@@ -3,7 +3,7 @@ var net = require('net');
 var request = require("request");
 
 var prefix = ".";
-var version = "v3.2";
+var version = "v3.3";
 
 var bot = new Discord.Client();
 bot.on("ready", function() {
@@ -20,11 +20,18 @@ bot.on("message", function(message) {
 
     switch (command) {
         case "test":
-            const ListEmbed = new Discord.RichEmbed()
-                .setTitle('Users with the go4 role:')
-                .setDescription(message.guild.roles.find('name', 'Hero').members.map(m=>m.user.id).join('\n'));
-            message.channel.send(ListEmbed);
-            break;
+            var Ancient = message.guild.roles.find('name', 'Ancient').members.array();
+            var Hero = message.guild.roles.find('name', 'Hero').members.array();
+
+            for(var mAncient in Ancient) {
+                Ancient[mAncient].user.send("Test message!");
+            }
+
+            // const ListEmbed = new Discord.RichEmbed()
+            //     .setTitle('Users with the go4 role:')
+            //     .setDescription(message.guild.roles.find('name', 'Hero').members.map(m=>m.user.id).join('\n'));
+            // message.channel.send(ListEmbed);
+            // break;
 
         case "ping":
             message.channel.send("Pong! Latency: " + parseInt(bot.ping) + "ms");
