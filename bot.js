@@ -20,27 +20,26 @@ bot.on("message", function(message) {
 
     switch (command) {
         case "test":
-            var Ancient = message.guild.roles.find('name', 'Ancient').members.array();
-            var Hero = message.guild.roles.find('name', 'Hero').members.array();
-
-            for(var mAncient in Ancient) {
-                Ancient[mAncient].user.send("Test message!");
-            }
-
-            // const ListEmbed = new Discord.RichEmbed()
-            //     .setTitle('Users with the go4 role:')
-            //     .setDescription(message.guild.roles.find('name', 'Hero').members.map(m=>m.user.id).join('\n'));
-            // message.channel.send(ListEmbed);
-            // break;
+            message.channel.send("Dalam perbaikan!");
+            break;
 
         case "ping":
             message.channel.send("Pong! Latency: " + parseInt(bot.ping) + "ms");
-            
-            let smember = message.channel.members.find('id', '372912488066580490');
-            smember.send('Test message');
             break;
 
         case "alert":
+            var Ancient = message.guild.roles.find('name', 'Ancient').members.array();
+            var Hero = message.guild.roles.find('name', 'Hero').members.array();
+
+            // For Ancient Role
+            for(var mAncient in Ancient) {
+                Ancient[mAncient].user.send(args[0]);
+            }
+
+            // For Hero Role
+            for(var mHero in Hero) {
+                Hero[mHero].user.send(args[0]);
+            }
             break;
 
         case "version":
@@ -56,9 +55,10 @@ bot.on("message", function(message) {
                     fields: [{
                             name: "version",
                             value: "Mendapatkan informasi versi BOT Aisha."
-                        }, {
+                        },
+                        {
                             name: "alert [pesan]",
-                            value: "Mengirim pesan kepada Ancient dan Hero."
+                            value: "Mengirim pesan \"Penting\" kepada para Ancient dan Hero. Perhatian, jangan melakukan spam dengan command ini. Jika ketahuan spam Anda akan kami mute dari server!"
                         },
                         {
                             name: "ping",
