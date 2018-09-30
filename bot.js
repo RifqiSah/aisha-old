@@ -35,12 +35,13 @@ bot.on("message", function(message) {
 
             // For Ancient Role
             for(var mAncient in Ancient) {
-                Ancient[mAncient].user.send("Anda mendapatkan pesan penting dari " + message.author.username, {
+                Ancient[mAncient].user.send("Anda mendapatkan pesan penting dari " + message.author.username + ":", {
                     embed: {
                         color: 3447003,
                         description: args.join(" "),
                         footer: {
-                            text: "- " + message.author.tag
+                            icon_url: message.author.avatarURL,
+                            text: message.author.tag
                         }
                     }
                 });
@@ -51,7 +52,7 @@ bot.on("message", function(message) {
             //     Hero[mHero].user.send(args[0]);
             // }
 
-            message.channel.send("Sukses mengirim pesan kepada para Ancient dan Hero! Kami akan merespon pesan Anda dengan segera.");
+            message.reply("Sukses mengirim pesan kepada para Ancient dan Hero.");
             break;
 
         case "version":
