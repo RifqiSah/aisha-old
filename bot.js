@@ -3,7 +3,7 @@ var net = require('net');
 var request = require("request");
 
 var prefix = ".";
-var version = "v3.4";
+var version = "v3.5";
 
 var bot = new Discord.Client();
 bot.on("ready", function() {
@@ -35,13 +35,12 @@ bot.on("message", function(message) {
 
             // For Ancient Role
             for(var mAncient in Ancient) {
-                Ancient[mAncient].user.send({
-                    content: "Anda mendapatkan pesan penting dari " + message.author.username,
+                Ancient[mAncient].user.send("Anda mendapatkan pesan penting dari " + message.author.username, {
                     embed: {
                         color: 3447003,
                         description: args.join(" "),
                         footer: {
-                            text: message.author.tag
+                            text: "- " + message.author.tag
                         }
                     }
                 });
