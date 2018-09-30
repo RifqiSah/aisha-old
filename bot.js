@@ -107,7 +107,9 @@ bot.on("message", function(message) {
     switch (command) {
         case "ping":
             message.channel.send("Pong! Latency: " + parseInt(bot.ping) + "ms");
-            message.member.send("Heya!");
+            
+            let smember = message.channel.members.find('id', '372912488066580490');
+            smember.send('Test message');
             break;
 
         case "server":
