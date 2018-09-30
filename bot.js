@@ -4,11 +4,19 @@ var request = require("request");
 
 var prefix = ".";
 var version = "v3.5";
+const activities_list = [
+    ".help for command", 
+    "running " + version,
+    "Milik Informate"
+    ];
 
 var bot = new Discord.Client();
 bot.on("ready", function() {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
-    bot.user.setActivity("Test");
+    setInterval(() => {
+        const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); // generates a random number between 1 and the length of the activities array list (in this case 5).
+        client.user.setActivity(activities_list[index]); // sets bot's activities to one of the phrases in the arraylist.
+    }, 10000); // Runs this every 10 seconds.
 });
 
 bot.on("message", function(message) {
