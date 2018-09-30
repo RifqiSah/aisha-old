@@ -1,14 +1,15 @@
 var Discord = require('discord.js');
 var net = require('net');
 var request = require("request");
+var sleep = require('sleep');
 
 var prefix = ".";
-var version = "v3.3";
+var version = "v3.4";
 
 var bot = new Discord.Client();
 bot.on("ready", function() {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
-    bot.user.setActivity(version + " | " + prefix + "help");
+    bot.user.setActivity(version + " | " + prefix + "help for command");
 });
 
 bot.on("message", function(message) {
@@ -32,18 +33,17 @@ bot.on("message", function(message) {
 
             var Ancient     = message.guild.roles.find('name', 'Ancient').members.array();
             var Hero        = message.guild.roles.find('name', 'Hero').members.array();
-            let author      = message.author.tag;
 
             // For Ancient Role
             for(var mAncient in Ancient) {
                 Ancient[mAncient].user.send({
+                    content: "Anda mendapatkan pesan penting dari " + message.author.username,
                     embed: {
                         color: 3447003,
-                        title: "Anda mendapatkan pesan __penting__ yang berisi:",
-                        description: args[0],
+                        description: args.join(" "),
                         footer: {
-                            text: "Oleh: " + author
-  }
+                            text: message.author.tag
+                        }
                     }
                 });
             }
@@ -52,7 +52,10 @@ bot.on("message", function(message) {
             // for(var mHero in Hero) {
             //     Hero[mHero].user.send(args[0]);
             // }
+
             message.channel.send("Sukses mengirim pesan kepada para Ancient dan Hero! Kami akan merespon pesan Anda dengan segera.");
+            sleep.sleep(5);
+            message.delete();
             break;
 
         case "version":
@@ -66,10 +69,6 @@ bot.on("message", function(message) {
                     title: "Aisha BOT command",
                     description: "Command yang tersedia pada Aisha BOT. Gunakan prefix \"" + prefix + "\" di awal command agar dapat bekerja.",
                     fields: [{
-                            name: "version",
-                            value: "Mendapatkan informasi versi BOT Aisha."
-                        },
-                        {
                             name: "alert [pesan]",
                             value: "Mengirim pesan \"Penting\" kepada para Ancient dan Hero. Perhatian, jangan melakukan spam dengan command ini. Jika ketahuan spam Anda akan kami mute dari server!"
                         },
