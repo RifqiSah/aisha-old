@@ -3,12 +3,12 @@ var net = require('net');
 var request = require("request");
 
 var prefix = ".";
-var version = "v3.5";
+var version = "v3.6";
 const activities_list = [
     "NULL",
-    ".help for command", 
-    "Running " + version,
-    "Milik Informate"
+    ".help for command.", 
+    version + " is running.",
+    "Milik Informate."
     ];
 
 var bot = new Discord.Client();
