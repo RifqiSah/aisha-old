@@ -28,18 +28,27 @@ bot.on("message", function(message) {
             break;
 
         case "alert":
-            var Ancient = message.guild.roles.find('name', 'Ancient').members.array();
-            var Hero = message.guild.roles.find('name', 'Hero').members.array();
+            var Ancient     = message.guild.roles.find('name', 'Ancient').members.array();
+            var Hero        = message.guild.roles.find('name', 'Hero').members.array();
+            let author      = message.author.username;
 
             // For Ancient Role
             for(var mAncient in Ancient) {
-                Ancient[mAncient].user.send(args[0]);
+                Ancient[mAncient].user.send({
+                    embed: {
+                        color: 3447003,
+                        description: args[0],
+                        footer: {
+                            text: author
+  }
+                    }
+                });
             }
 
             // For Hero Role
-            for(var mHero in Hero) {
-                Hero[mHero].user.send(args[0]);
-            }
+            // for(var mHero in Hero) {
+            //     Hero[mHero].user.send(args[0]);
+            // }
             break;
 
         case "version":
