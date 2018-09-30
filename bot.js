@@ -3,7 +3,7 @@ var net = require('net');
 var request = require("request");
 
 var prefix = ".";
-var version = "v3.1";
+var version = "v3.2";
 
 var bot = new Discord.Client();
 bot.on("ready", function() {
@@ -22,8 +22,8 @@ bot.on("message", function(message) {
         case "test":
             const ListEmbed = new Discord.RichEmbed()
                 .setTitle('Users with the go4 role:')
-                .setDescription(message.guild.roles.get('372916656231415811').members.map(m=>m.user.tag).join('\n'));
-                message.channel.send(ListEmbed);
+                .setDescription(message.guild.roles.find('name', 'Hero').members.map(m=>m.user.id).join('\n'));
+            message.channel.send(ListEmbed);
             break;
 
         case "ping":
