@@ -5,9 +5,10 @@ var request = require("request");
 var prefix = ".";
 var version = "v3.5";
 
+var bot = new Discord.Client();
 bot.on("ready", function() {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
-    bot.user.setActivity(version + " with 110 users.");
+    bot.user.setActivity("Test");
 });
 
 bot.on("message", function(message) {
@@ -47,9 +48,18 @@ bot.on("message", function(message) {
             }
 
             // For Hero Role
-            // for(var mHero in Hero) {
-            //     Hero[mHero].user.send(args[0]);
-            // }
+            for(var mHero in mHero) {
+                Hero[mHero].user.send("Anda mendapatkan pesan penting dari " + message.author.username + ":", {
+                    embed: {
+                        color: 3447003,
+                        description: args.join(" "),
+                        footer: {
+                            icon_url: message.author.avatarURL,
+                            text: message.author.tag
+                        }
+                    }
+                });
+            }
 
             message.reply("Sukses mengirim pesan kepada para Ancient dan Hero.");
             break;
