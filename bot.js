@@ -3,99 +3,13 @@ var net = require('net');
 var request = require("request");
 
 var prefix = ".";
-var version = "3.0.0";
+var version = "v3.1";
 
 var bot = new Discord.Client();
 bot.on("ready", function() {
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
-    bot.user.setActivity("Ver. " + version + " | " + prefix + "help");
+    bot.user.setActivity(version + " | " + prefix + "help");
 });
-
-var server = [
-    { id: "ina", name: "Indonesia", ip: "49.50.4.219", port: 14300 },
-    { id: "sea", name: "Southeast Asia", ip: "202.14.200.67", port: 14301 },
-    { id: "na", name: "North America", ip: "211.43.155.163", port: 14300 },
-    { id: "ko", name: "Korea", ip: "211.233.18.72", port: 14300 },
-    { id: "eu", name: "Euro", ip: "211.43.158.240", port: 14300 },
-    { id: "tw", name: "Taiwan", ip: "210.242.206.177", port: 14300 }
-];
-
-function parseServer(a) {
-    return (a == 1 ? "Online" : "Maintenance")
-}
-
-function checkServer(msg, arg) {
-    let client = new net.Socket();
-    let i = -1;
-
-    msg.delete();
-
-    switch (arg) {
-        case "ina":
-            i = 0;
-            break;
-
-        case "sea":
-            i = 1;
-            break;
-
-        case "na":
-            i = 2;
-            break;
-
-        case "ko":
-            i = 3;
-            break;
-
-        case "eu":
-            i = 4;
-            break;
-
-        case "tw":
-            i = 5;
-            break;
-
-        default:
-            msg.channel.send("Server not found!");
-            return;
-            break;
-    }
-
-    // msg.channel.send("Selected server: **" + server[i].name + "**");
-    // msg.channel.send("------------");
-
-    client.connect(server[i].port, server[i].ip, function() {
-        // msg.channel.send('Connected!');
-    });
-
-    client.on('data', function(data) {
-        msg.channel.send({
-            embed: {
-                color: 3447003,
-                title: "Dragon Nest",
-                description: "Server **" + server[i].name + "** sedang **Online**.",
-                timestamp: new Date()
-            }
-        });
-        client.destroy();
-    });
-
-    client.on('error', function(err) {
-        console.log(err);
-        msg.channel.send({
-            embed: {
-                color: 3447003,
-                title: "Dragon Nest",
-                description: "Server **" + server[i].name + "** sedang **Maintenance**.",
-                timestamp: new Date()
-            }
-        });
-    })
-
-    client.on('close', function() {
-        console.log('Closed!');
-    });
-}
 
 bot.on("message", function(message) {
     if (message.author.equals(bot.user)) return;
@@ -105,6 +19,13 @@ bot.on("message", function(message) {
     const command = args.shift().toLowerCase();
 
     switch (command) {
+        case "test":
+            const ListEmbed = new Discord.RichEmbed()
+                .setTitle('Users with the go4 role:')
+                .setDescription(message.guild.roles.get('372916656231415811').members.map(m=>m.user.tag).join('\n'));
+                message.channel.send(ListEmbed);
+            break;
+
         case "ping":
             message.channel.send("Pong! Latency: " + parseInt(bot.ping) + "ms");
             
@@ -112,8 +33,7 @@ bot.on("message", function(message) {
             smember.send('Test message');
             break;
 
-        case "server":
-            checkServer(message, args[0]);
+        case "alert":
             break;
 
         case "version":
@@ -130,8 +50,8 @@ bot.on("message", function(message) {
                             name: "version",
                             value: "Mendapatkan informasi versi BOT Aisha."
                         }, {
-                            name: "server [server]",
-                            value: "Mendapatkan informasi server Dragon Nest."
+                            name: "alert [pesan]",
+                            value: "Mengirim pesan kepada Ancient dan Hero."
                         },
                         {
                             name: "ping",
