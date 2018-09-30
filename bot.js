@@ -39,7 +39,7 @@ bot.on("message", function(message) {
                 Ancient[mAncient].user.send({
                     embed: {
                         color: 3447003,
-                        title: "Anda mendapatkan pesan __penting__ yang berisi:"
+                        title: "Anda mendapatkan pesan __penting__ yang berisi:",
                         description: args[0],
                         footer: {
                             text: "Oleh: " + author
