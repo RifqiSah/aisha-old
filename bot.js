@@ -28,18 +28,21 @@ bot.on("message", function(message) {
             break;
 
         case "alert":
+            message.delete();
+
             var Ancient     = message.guild.roles.find('name', 'Ancient').members.array();
             var Hero        = message.guild.roles.find('name', 'Hero').members.array();
-            let author      = message.author.username;
+            let author      = message.author.tag;
 
             // For Ancient Role
             for(var mAncient in Ancient) {
                 Ancient[mAncient].user.send({
                     embed: {
                         color: 3447003,
+                        title: "Anda mendapatkan pesan __penting__ yang berisi:"
                         description: args[0],
                         footer: {
-                            text: author
+                            text: "Oleh: " + author
   }
                     }
                 });
@@ -49,6 +52,7 @@ bot.on("message", function(message) {
             // for(var mHero in Hero) {
             //     Hero[mHero].user.send(args[0]);
             // }
+            message.channel.send("Sukses mengirim pesan kepada para Ancient dan Hero! Kami akan merespon pesan Anda dengan segera.");
             break;
 
         case "version":
