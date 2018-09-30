@@ -1,7 +1,6 @@
 var Discord = require('discord.js');
 var net = require('net');
 var request = require("request");
-var sleep = require('sleep');
 
 var prefix = ".";
 var version = "v3.4";
@@ -54,8 +53,6 @@ bot.on("message", function(message) {
             // }
 
             message.channel.send("Sukses mengirim pesan kepada para Ancient dan Hero! Kami akan merespon pesan Anda dengan segera.");
-            sleep.sleep(5);
-            message.delete();
             break;
 
         case "version":
