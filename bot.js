@@ -95,25 +95,27 @@ bot.on("message", function(message) {
             break;
 
         case "speak":
-            var text = args.join(" ");
-            var request = apiaiApp.textRequest(text, {
-                sessionId: 'AishaAIDiscordBOT'
-            });
+            message.reply("Dalam perbaikan.");
+            break;
+//             var text = args.join(" ");
+//             var request = apiaiApp.textRequest(text, {
+//                 sessionId: 'AishaAIDiscordBOT'
+//             });
 
-            // Listen to a response from API.ai
-            request.on('response', (response) => {
-                // Reply the user with the given response
-                message.reply(response.result.fulfillment.speech);
-            });
+//             // Listen to a response from API.ai
+//             request.on('response', (response) => {
+//                 // Reply the user with the given response
+//                 message.reply(response.result.fulfillment.speech);
+//             });
         
-            // Listen for any errors in the response
-            request.on('error', (error) => {
-                // Tell the user that an error happened
-                message.reply("Oops! Terjadi kesalahan dengan BOT!");
-            });
+//             // Listen for any errors in the response
+//             request.on('error', (error) => {
+//                 // Tell the user that an error happened
+//                 message.reply("Oops! Terjadi kesalahan dengan BOT!");
+//             });
 
-            // End the request to avoid wasting memory
-            request.end();
+//             // End the request to avoid wasting memory
+//             request.end();
             break;
 
         case "help":
