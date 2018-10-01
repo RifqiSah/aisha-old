@@ -3,7 +3,7 @@ var net = require('net');
 var request = require("request");
 
 var prefix = ".";
-var version = "v3.6";
+var version = "v3.7";
 const activities_list = [
     "NULL",
     ".help for command.", 
@@ -18,6 +18,14 @@ bot.on("ready", function() {
         const index = Math.floor(Math.random() * (activities_list.length - 1) + 1);
         bot.user.setActivity(activities_list[index]);
     }, 10000);
+});
+
+bot.on('guildMemberAdd', member => {
+    const channel = member.guild.channels.find(ch => ch.name === 'general');
+    if (!channel)
+        return;
+
+    channel.send(`Selamat datang di Informate Server, ${member}!\nTaati peraturan yang telah dibuat pada ` + member.guild.channels.find(channel => channel.name === "peraturan").toString() + " demi kenyamanan kita bersama. Terima kasih ^^");
 });
 
 bot.on("message", function(message) {
