@@ -3,7 +3,7 @@ var net = require('net');
 var request = require("request");
 
 var prefix = ".";
-var version = "v3.7";
+var version = "v3.8";
 const activities_list = [
     "NULL",
     ".help for command.", 
@@ -25,7 +25,8 @@ bot.on('guildMemberAdd', member => {
     if (!channel)
         return;
 
-    channel.send(`Selamat datang di Informate Server, ${member}!\nTaati peraturan yang telah dibuat pada ` + member.guild.channels.find(channel => channel.name === "peraturan").toString() + " demi kenyamanan kita bersama. Terima kasih ^^");
+    channel.send(`Selamat datang di Informate Server, ${member}!\nTaati peraturan yang telah dibuat pada ` + member.guild.channels.find(channel => channel.name === "peraturan").toString() + " demi kenyamanan kita bersama. Terima kasih 😃");
+    member.user.send("Terima kasih telah bergabung kedalam Discord milik Informate Squad 😃\n\nSilahkan membaca channel ``#peraturan`` terlebih dahulu sebelum memulai aktifitas didalam server Discord milik Informate Squad. Terima kasih 😃");
 });
 
 bot.on("message", function(message) {
