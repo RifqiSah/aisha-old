@@ -3,7 +3,7 @@ var net = require('net');
 var request = require("request");
 
 var prefix = ".";
-var version = "v3.8";
+var version = "v3.9";
 const activities_list = [
     "NULL",
     ".help for command.", 
@@ -21,12 +21,20 @@ bot.on("ready", function() {
 });
 
 bot.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.find(ch => ch.name === 'general');
+    let channel = member.guild.channels.find(ch => ch.name === 'general');
+    let memberTag = member.user.tag; 
     if (!channel)
         return;
 
-    channel.send(`Selamat datang di Informate Server, ${member}! Taati peraturan yang telah dibuat pada ` + member.guild.channels.find(channel => channel.name === "peraturan").toString() + " demi kenyamanan kita bersama.\n\nTerima kasih 😃");
     member.user.send("Terima kasih telah bergabung kedalam Discord milik Informate Squad 😃\nSilahkan membaca channel ``#peraturan`` terlebih dahulu sebelum memulai aktifitas didalam server Discord milik Informate Squad.\n\nTerima kasih 😃");
+    channel.send(`Selamat datang di Informate Server, ${member}! Taati peraturan yang telah dibuat pada ` + member.guild.channels.find(channel => channel.name === "peraturan").toString() + " demi kenyamanan kita bersama.\n\nTerima kasih 😃");
+
+    // For log
+    member.guild.channels.find(ch => ch.name === 'member-log').send(memberTag + " telah masuk kedalam server!");
+});
+
+bot.on('guildMemberRemove', member => {
+    member.guild.channels.find(ch => ch.name === 'member-log').send(memberTag + " telah meninggalkan server :(");
 });
 
 bot.on("message", function(message) {
