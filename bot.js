@@ -22,7 +22,6 @@ bot.on("ready", function() {
 
 bot.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find(ch => ch.name === 'general');
-    let memberTag = member.user.tag; 
     if (!channel)
         return;
 
@@ -30,11 +29,11 @@ bot.on('guildMemberAdd', member => {
     channel.send(`Selamat datang di Informate Server, ${member}! Taati peraturan yang telah dibuat pada ` + member.guild.channels.find(channel => channel.name === "peraturan").toString() + " demi kenyamanan kita bersama.\n\nTerima kasih 😃");
 
     // For log
-    member.guild.channels.find(ch => ch.name === 'member-log').send(memberTag + " telah masuk kedalam server!");
+    member.guild.channels.find(ch => ch.name === 'member-log').send(member.user.tag + " telah masuk kedalam server!");
 });
 
 bot.on('guildMemberRemove', member => {
-    member.guild.channels.find(ch => ch.name === 'member-log').send(memberTag + " telah meninggalkan server :(");
+    member.guild.channels.find(ch => ch.name === 'member-log').send(member.user.tag + " telah meninggalkan server :(");
 });
 
 bot.on("message", function(message) {
