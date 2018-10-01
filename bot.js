@@ -25,8 +25,8 @@ bot.on('guildMemberAdd', member => {
     if (!channel)
         return;
 
-    channel.send(`Selamat datang di Informate Server, ${member}!\nTaati peraturan yang telah dibuat pada ` + member.guild.channels.find(channel => channel.name === "peraturan").toString() + " demi kenyamanan kita bersama. Terima kasih 😃");
-    member.user.send("Terima kasih telah bergabung kedalam Discord milik Informate Squad 😃\n\nSilahkan membaca channel ``#peraturan`` terlebih dahulu sebelum memulai aktifitas didalam server Discord milik Informate Squad. Terima kasih 😃");
+    channel.send(`Selamat datang di Informate Server, ${member}! Taati peraturan yang telah dibuat pada ` + member.guild.channels.find(channel => channel.name === "peraturan").toString() + " demi kenyamanan kita bersama.\n\nTerima kasih 😃");
+    member.user.send("Terima kasih telah bergabung kedalam Discord milik Informate Squad 😃\nSilahkan membaca channel ``#peraturan`` terlebih dahulu sebelum memulai aktifitas didalam server Discord milik Informate Squad.\n\nTerima kasih 😃");
 });
 
 bot.on("message", function(message) {
