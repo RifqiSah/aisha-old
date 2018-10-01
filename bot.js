@@ -1,9 +1,10 @@
 var Discord = require('discord.js');
 var net = require('net');
 var request = require("request");
+var apiaiApp = require('apiai')(process.env.TOKEN_AI_API);
 
 var prefix = ".";
-var version = "v3.9";
+var version = "v4.0";
 const activities_list = [
     "NULL",
     ".help for command.", 
@@ -93,6 +94,28 @@ bot.on("message", function(message) {
             message.channel.send("Bot version: " + version);
             break;
 
+        case "speak":
+            var text = args.join(" ");
+            var request = apiaiApp.textRequest(text, {
+                sessionId: 'AishaAIDiscordBOT'
+            });
+
+            // Listen to a response from API.ai
+            request.on('response', (response) => {
+                // Reply the user with the given response
+                message.reply(response.result.fulfillment.speech);
+            });
+        
+            // Listen for any errors in the response
+            request.on('error', (error) => {
+                // Tell the user that an error happened
+                message.reply("Oops! Terjadi kesalahan dengan BOT!");
+            });
+
+            // End the request to avoid wasting memory
+            request.end();
+            break;
+
         case "help":
             message.channel.send({
                 embed: {
@@ -100,12 +123,16 @@ bot.on("message", function(message) {
                     title: "Aisha BOT command",
                     description: "Command yang tersedia pada Aisha BOT. Gunakan prefix \"" + prefix + "\" di awal command agar dapat bekerja.",
                     fields: [{
-                            name: "alert [pesan]",
-                            value: "Mengirim pesan \"Penting\" kepada para Ancient dan Hero. Perhatian, jangan melakukan spam dengan command ini. Jika ketahuan spam Anda akan kami mute dari server!"
-                        },
-                        {
                             name: "ping",
                             value: "Mendapatkan latency kepada API server Discord."
+                        },
+                        {
+                            name: "alert [pesan]",
+                            value: "Mengirim pesan \"Penting\" kepada para Ancient dan Hero.\nCommand ini digunakan jika ada pesan \"penting\" yang ingin segera disampaikan!"
+                        },
+                        {
+                            name: "speak [pesan]",
+                            value: "Mengajak BOT untuk berbicara."
                         }
                     ]
                 }
