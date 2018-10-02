@@ -4,7 +4,7 @@ var request = require("request");
 var apiaiApp = require('apiai')(process.env.TOKEN_AI_API);
 
 var prefix = ".";
-var version = "v4.0";
+var version = "v4.1";
 const activities_list = [
     "NULL",
     ".help for command.", 
@@ -30,11 +30,35 @@ bot.on('guildMemberAdd', member => {
     channel.send(`Selamat datang di Informate Server, ${member}! Taati peraturan yang telah dibuat pada ` + member.guild.channels.find(channel => channel.name === "peraturan").toString() + " demi kenyamanan kita bersama.\n\nTerima kasih 😃");
 
     // For log
-    member.guild.channels.find(ch => ch.name === 'member-log').send(member.user.tag + " telah masuk kedalam server!");
+    member.guild.channels.find(ch => ch.name === 'member-log').send({
+        embed: {
+            color: 3447003,
+            timestamp: new Date(),
+            footer: {
+                text: "User Joined"
+            },
+            author: {
+                name: member.user.tag,
+                icon_url: member.user.avatarURL
+            }
+        }
+    });
 });
 
 bot.on('guildMemberRemove', member => {
-    member.guild.channels.find(ch => ch.name === 'member-log').send(member.user.tag + " telah meninggalkan server :(");
+    member.guild.channels.find(ch => ch.name === 'member-log').send({
+        embed: {
+            color: 3447003,
+            timestamp: new Date(),
+            footer: {
+                text: "User Left"
+            },
+            author: {
+                name: member.user.tag,
+                icon_url: member.user.avatarURL
+            }
+        }
+    });
 });
 
 bot.on("message", function(message) {
@@ -95,8 +119,6 @@ bot.on("message", function(message) {
             break;
 
         case "speak":
-//             message.reply("Dalam perbaikan.");
-//             break;
             var text = args.join(" ");
             var request = apiaiApp.textRequest(text, {
                 sessionId: 'AishaAIDiscordBOT'
