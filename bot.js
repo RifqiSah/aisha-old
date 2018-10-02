@@ -32,13 +32,13 @@ bot.on('guildMemberAdd', member => {
     // For log
     member.guild.channels.find(ch => ch.name === 'member-log').send({
         embed: {
-            color: 3447003,
+            color: 8311585,
             timestamp: new Date(),
             footer: {
                 text: "User Joined"
             },
             author: {
-                name: member.user.tag,
+                name: member.user.tag + "(" + member.user.id + ")",
                 icon_url: member.user.avatarURL
             }
         }
@@ -48,13 +48,13 @@ bot.on('guildMemberAdd', member => {
 bot.on('guildMemberRemove', member => {
     member.guild.channels.find(ch => ch.name === 'member-log').send({
         embed: {
-            color: 3447003,
+            color: 8311585,
             timestamp: new Date(),
             footer: {
                 text: "User Left"
             },
             author: {
-                name: member.user.tag,
+                name: member.user.tag + "(" + member.user.id + ")",
                 icon_url: member.user.avatarURL
             }
         }
