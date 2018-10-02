@@ -38,7 +38,7 @@ bot.on('guildMemberAdd', member => {
                 text: "User Joined"
             },
             author: {
-                name: member.user.tag + "(" + member.user.id + ")",
+                name: member.user.tag + " (" + member.user.id + ")",
                 icon_url: member.user.avatarURL
             }
         }
@@ -54,7 +54,7 @@ bot.on('guildMemberRemove', member => {
                 text: "User Left"
             },
             author: {
-                name: member.user.tag + "(" + member.user.id + ")",
+                name: member.user.tag + " (" + member.user.id + ")",
                 icon_url: member.user.avatarURL
             }
         }
