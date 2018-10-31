@@ -4,7 +4,7 @@ var request = require("request");
 var apiaiApp = require('apiai')(process.env.TOKEN_AI_API);
 
 var prefix = ".";
-var version = "v4.1";
+var version = "v4.2";
 const activities_list = [
     "NULL",
     ".help for command.", 
@@ -22,7 +22,7 @@ bot.on("ready", function() {
 });
 
 bot.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find(ch => ch.name === 'general');
+    let channel = member.guild.channels.find(ch => ch.name === 'out-off-topic');
     if (!channel)
         return;
 
