@@ -1,10 +1,9 @@
 var Discord = require('discord.js');
 var net = require('net');
 var request = require("request");
-var apiaiApp = require('apiai')(process.env.TOKEN_AI_API);
 
 var prefix = ".";
-var version = "v4.2";
+var version = "v4.3";
 const activities_list = [
     "NULL",
     ".help for command.", 
@@ -63,6 +62,17 @@ bot.on('guildMemberRemove', member => {
 
 bot.on("message", function(message) {
     if (message.author.equals(bot.user)) return;
+    
+    const user = message.mentions.users.first();
+    if (user) {
+        if (user.presence.status === "offline")
+            message.channel.send("**" + user.tag + "** sedang offline.").then(msg => {msg.delete(5000)}).catch();
+        else if (user.presence.status === "idle")
+            message.channel.send("**" + user.tag + "** sedang away.").then(msg => {msg.delete(5000)}).catch();
+        else if (user.presence.status === "dnd")
+            message.channel.send("**" + user.tag + "** sedang tidak dapat diganggu!").then(msg => {msg.delete(5000)}).catch();
+    }
+    
     if (message.content.indexOf(prefix) !== 0) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -118,26 +128,23 @@ bot.on("message", function(message) {
             message.channel.send("Bot version: " + version);
             break;
 
-        case "speak":
-            var text = args.join(" ");
-            var request = apiaiApp.textRequest(text, {
-                sessionId: 'AishaAIDiscordBOT'
-            });
+        case "say":
+            if (message.member.roles.find("name", "Developer")) {
+                const channel = message.mentions.channels.first();
+                if (!channel) {
+                    message.channel.send("Mohon masukkan channel!");
+                    break;
+                }
 
-            // Listen to a response from API.ai
-            request.on('response', (response) => {
-                // Reply the user with the given response
-                message.reply(response.result.fulfillment.speech);
-            });
-        
-            // Listen for any errors in the response
-            request.on('error', (error) => {
-                // Tell the user that an error happened
-                message.reply("Oops! Terjadi kesalahan dengan BOT!");
-            });
-
-            // End the request to avoid wasting memory
-            request.end();
+                args.shift(); // Hapus channel nya
+                let sayMessage = args.join(" ");
+                
+                message.delete().catch(O_o=>{});
+                channel.send(sayMessage);
+            } else {
+                message.delete().catch(O_o=>{});
+                message.channel.send("Maaf, Anda tidak mempunya akses untuk menggunakan command ini!").then(msg => {msg.delete(5000)}).catch();
+            }
             break;
 
         case "help":
