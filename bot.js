@@ -3,24 +3,13 @@ var net = require('net');
 var request = require("request");
 
 var prefix = ".";
-var version = "v5.0";
+var version = "v4.3";
 const activities_list = [
     "NULL",
     ".help for command.", 
     version + " is running.",
     "Milik Informate."
 ];
-
-// Database
-var admin = require("firebase-admin");
-var serviceAccount = require("./aisha-firebase.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://aisha-1bfac.firebaseio.com"
-});
-
-var db = admin.database();
 
 var bot = new Discord.Client();
 bot.on("ready", function() {
@@ -78,13 +67,10 @@ bot.on("message", function(message) {
     if (user) {
         if (user.presence.status === "offline")
             message.channel.send("**" + user.tag + "** sedang offline.").then(msg => {msg.delete(5000)}).catch();
-        else
-            cekUser(user.username, message);
-
-    //     else if (user.presence.status === "idle")
-    //         message.channel.send("**" + user.tag + "** sedang away.").then(msg => {msg.delete(5000)}).catch();
-    //     else if (user.presence.status === "dnd")
-    //         message.channel.send("**" + user.tag + "** sedang tidak dapat diganggu!").then(msg => {msg.delete(5000)}).catch();
+        else if (user.presence.status === "idle")
+            message.channel.send("**" + user.tag + "** sedang away.").then(msg => {msg.delete(5000)}).catch();
+        else if (user.presence.status === "dnd")
+            message.channel.send("**" + user.tag + "** sedang tidak dapat diganggu!").then(msg => {msg.delete(5000)}).catch();
     }
     
     if (message.content.indexOf(prefix) !== 0) return;
@@ -142,14 +128,6 @@ bot.on("message", function(message) {
             message.channel.send("Bot version: " + version);
             break;
 
-        case "afk":
-            simpanUser(message.author.username, true, args.join(" "));
-            break;
-
-        case "nafk":
-            simpanUser(message.author.username, false, "Kosong");
-            break;
-
         case "say":
             if (message.member.roles.find("name", "Developer")) {
                 const channel = message.mentions.channels.first();
@@ -176,13 +154,6 @@ bot.on("message", function(message) {
                     title: "Aisha BOT command",
                     description: "Command yang tersedia pada Aisha BOT. Gunakan prefix \"" + prefix + "\" di awal command agar dapat bekerja.",
                     fields: [{
-                            name: "afk [pesan]",
-                            value: "Menampilkan pesan AFK ketika ada seseorang yang memention Anda. Pesan bersifat opsional."
-                        },{
-                            name: "nafk",
-                            value: "Menghapus status AFK."
-                        },
-                        {
                             name: "ping",
                             value: "Mendapatkan latency kepada API server Discord."
                         },
@@ -203,27 +174,5 @@ bot.on("message", function(message) {
             break;
     }
 });
-
-function cekUser(username, message) {
-    let ref = db.ref("user-status/" + username).once("value", function (data) {
-        let afk = false;
-        let pesan = null;
-
-        afk = data.child("afk").val();
-        pesan = data.child("pesan").val();
-
-        if (afk)
-            message.channel.send("**" + username + "** sedang AFK. " + pesan);
-    });
-}
-
-function simpanUser(username, afk, pesan) {
-    let ref = db.ref("user-status");
-
-    ref.child(username).set({
-        afk: afk,
-        pesan: pesan
-    });
-}
 
 bot.login(process.env.TOKEN);
