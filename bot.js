@@ -9,7 +9,18 @@ const activities_list = [
     ".help for command.", 
     version + " is running.",
     "Milik Informate."
-    ];
+];
+
+// Database
+var admin = require("firebase-admin");
+var serviceAccount = require("./aisha-firebase.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://aisha-1bfac.firebaseio.com"
+});
+
+var db = admin.database();
 
 var bot = new Discord.Client();
 bot.on("ready", function() {
