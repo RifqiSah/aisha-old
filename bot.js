@@ -14,7 +14,7 @@ admin.initializeApp({
 var db = admin.database();
 
 var prefix = ".";
-var version = "v4.4.2";
+var version = "v4.4.3";
 const activities_list = [
     "NULL",
     ".help for command.", 
@@ -160,11 +160,11 @@ bot.on("message", function(message) {
             break;
 
         case "afk":
-            simpanUser(message.author.tag, true, args.join(" "));
+            simpanUser(message, true, args.join(" "));
             break;
 
         case "nafk":
-            simpanUser(message.author.tag, false, "Kosong");
+            simpanUser(message, false, "Kosong");
             break;
             
 	case "help":
