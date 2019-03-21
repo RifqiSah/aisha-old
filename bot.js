@@ -14,7 +14,7 @@ admin.initializeApp({
 var db = admin.database();
 
 var prefix = ".";
-var version = "v4.4";
+var version = "v4.4.1";
 const activities_list = [
     "NULL",
     ".help for command.", 
@@ -76,12 +76,14 @@ bot.on("message", function(message) {
     
     const user = message.mentions.users.first();
     if (user) {
-        if (user.presence.status === "offline")
-            message.channel.send("**" + user.tag + "** sedang offline.").then(msg => {msg.delete(5000)}).catch();
-        else if (user.presence.status === "idle")
-            message.channel.send("**" + user.tag + "** sedang away.").then(msg => {msg.delete(5000)}).catch();
-        else if (user.presence.status === "dnd")
-            message.channel.send("**" + user.tag + "** sedang tidak dapat diganggu!").then(msg => {msg.delete(5000)}).catch();
+	    if (!isAFK(user.tag)) {
+		if (user.presence.status === "offline")
+		    message.channel.send("**" + user.tag + "** sedang offline.").then(msg => {msg.delete(5000)}).catch();
+		else if (user.presence.status === "idle")
+		    message.channel.send("**" + user.tag + "** sedang away.").then(msg => {msg.delete(5000)}).catch();
+		else if (user.presence.status === "dnd")
+		    message.channel.send("**" + user.tag + "** sedang tidak dapat diganggu!").then(msg => {msg.delete(5000)}).catch();
+	    }
     }
     
     if (message.content.indexOf(prefix) !== 0) return;
@@ -159,11 +161,11 @@ bot.on("message", function(message) {
             break;
 
         case "afk":
-            simpanUser(message.author.username, true, args.join(" "));
+            simpanUser(message.author.tag, true, args.join(" "));
             break;
 
         case "nafk":
-            simpanUser(message.author.username, false, "Kosong");
+            simpanUser(message.author.tag, false, "Kosong");
             break;
             
 	case "help":
@@ -194,6 +196,15 @@ bot.on("message", function(message) {
     }
 });
 
+function isAFK(username) {
+    let afk = false;
+    let ref = db.ref("user-status/" + username).once("value", function (data) {
+        afk = data.child("afk").val();
+    });
+
+    return afk;
+}
+
 function cekUser(username, message) {
     let ref = db.ref("user-status/" + username).once("value", function (data) {
         let afk = false;
@@ -203,7 +214,7 @@ function cekUser(username, message) {
         pesan = data.child("pesan").val();
 
         if (afk)
-            message.channel.send("**" + username + "** sedang AFK. " + pesan);
+            message.channel.send("**" + username + "** sedang AFK. ```" + pesan  + "```");
     });
 }
 
