@@ -2,8 +2,19 @@ var Discord = require('discord.js');
 var net = require('net');
 var request = require("request");
 
+// Database
+var admin = require("firebase-admin");
+var serviceAccount = require("./aisha-firebase.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://aisha-4518d.firebaseio.com"
+});
+
+var db = admin.database();
+
 var prefix = ".";
-var version = "v4.3";
+var version = "v4.4";
 const activities_list = [
     "NULL",
     ".help for command.", 
@@ -147,7 +158,15 @@ bot.on("message", function(message) {
             }
             break;
 
-        case "help":
+        case "afk":
+            simpanUser(message.author.username, true, args.join(" "));
+            break;
+
+        case "nafk":
+            simpanUser(message.author.username, false, "Kosong");
+            break;
+            
+	case "help":
             message.channel.send({
                 embed: {
                     color: 3447003,
@@ -174,5 +193,27 @@ bot.on("message", function(message) {
             break;
     }
 });
+
+function cekUser(username, message) {
+    let ref = db.ref("user-status/" + username).once("value", function (data) {
+        let afk = false;
+        let pesan = null;
+
+        afk = data.child("afk").val();
+        pesan = data.child("pesan").val();
+
+        if (afk)
+            message.channel.send("**" + username + "** sedang AFK. " + pesan);
+    });
+}
+
+function simpanUser(username, afk, pesan) {
+    let ref = db.ref("user-status");
+
+    ref.child(username).set({
+        afk: afk,
+        pesan: pesan
+    });
+}
 
 bot.login(process.env.TOKEN);
