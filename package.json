@@ -9,7 +9,6 @@
     "dependencies": {
         "discord.js": "^11.3.2",
         "discorddialogflow": "^1.0.0",
-        "firebase-admin": "^6.3.0",
         "json-parser": "^1.1.5",
         "request": "^2.85.0"
     }
