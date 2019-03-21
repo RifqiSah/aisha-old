@@ -2,19 +2,8 @@ var Discord = require('discord.js');
 var net = require('net');
 var request = require("request");
 
-// Database
-var admin = require("firebase-admin");
-var serviceAccount = require("./aisha-firebase.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://aisha-4518d.firebaseio.com"
-});
-
-var db = admin.database();
-
 var prefix = ".";
-var version = "v4.4.3";
+var version = "v4.3";
 const activities_list = [
     "NULL",
     ".help for command.", 
@@ -76,13 +65,12 @@ bot.on("message", function(message) {
     
     const user = message.mentions.users.first();
     if (user) {
-	    if (!cekUser(message))
-		if (user.presence.status === "offline")
-		    message.channel.send("**" + user.tag + "** sedang offline.").then(msg => {msg.delete(5000)}).catch();
-		else if (user.presence.status === "idle")
-		    message.channel.send("**" + user.tag + "** sedang away.").then(msg => {msg.delete(5000)}).catch();
-		else if (user.presence.status === "dnd")
-		    message.channel.send("**" + user.tag + "** sedang tidak dapat diganggu!").then(msg => {msg.delete(5000)}).catch();
+        if (user.presence.status === "offline")
+            message.channel.send("**" + user.tag + "** sedang offline.").then(msg => {msg.delete(5000)}).catch();
+        else if (user.presence.status === "idle")
+            message.channel.send("**" + user.tag + "** sedang away.").then(msg => {msg.delete(5000)}).catch();
+        else if (user.presence.status === "dnd")
+            message.channel.send("**" + user.tag + "** sedang tidak dapat diganggu!").then(msg => {msg.delete(5000)}).catch();
     }
     
     if (message.content.indexOf(prefix) !== 0) return;
@@ -159,15 +147,7 @@ bot.on("message", function(message) {
             }
             break;
 
-        case "afk":
-            simpanUser(message, true, args.join(" "));
-            break;
-
-        case "nafk":
-            simpanUser(message, false, "Kosong");
-            break;
-            
-	case "help":
+        case "help":
             message.channel.send({
                 embed: {
                     color: 3447003,
@@ -194,33 +174,5 @@ bot.on("message", function(message) {
             break;
     }
 });
-
-function cekUser(message) {
-    let user = message.mentions.users.first();
-    let afk = false;
-
-    let ref = db.ref("user-status/" + user.id).once("value", function (data) {
-        let pesan = null;
-
-        afk = data.child("afk").val();
-        pesan = data.child("pesan").val();
-
-        if (afk)
-            message.channel.send("**" + user.tag + "** sedang AFK. ```" + pesan + "```");
-    });
-
-    return afk;
-}
-
-function simpanUser(message, afk, pesan) {
-    let ref = db.ref("user-status");
-
-    ref.child(message.user.id).set({
-        afk: afk,
-        pesan: pesan
-    });
-
-    message.channel.send("Operasi berhasil dilakukan!").then(msg => {msg.delete(5000)}).catch();
-}
 
 bot.login(process.env.TOKEN);
