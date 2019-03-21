@@ -14,7 +14,7 @@ admin.initializeApp({
 var db = admin.database();
 
 var prefix = ".";
-var version = "v4.4.1";
+var version = "v4.4.2";
 const activities_list = [
     "NULL",
     ".help for command.", 
@@ -76,14 +76,13 @@ bot.on("message", function(message) {
     
     const user = message.mentions.users.first();
     if (user) {
-	    if (!isAFK(user.tag)) {
+	    if (!cekUser(message))
 		if (user.presence.status === "offline")
 		    message.channel.send("**" + user.tag + "** sedang offline.").then(msg => {msg.delete(5000)}).catch();
 		else if (user.presence.status === "idle")
 		    message.channel.send("**" + user.tag + "** sedang away.").then(msg => {msg.delete(5000)}).catch();
 		else if (user.presence.status === "dnd")
 		    message.channel.send("**" + user.tag + "** sedang tidak dapat diganggu!").then(msg => {msg.delete(5000)}).catch();
-	    }
     }
     
     if (message.content.indexOf(prefix) !== 0) return;
@@ -196,35 +195,32 @@ bot.on("message", function(message) {
     }
 });
 
-function isAFK(username) {
+function cekUser(message) {
+    let user = message.mentions.users.first();
     let afk = false;
-    let ref = db.ref("user-status/" + username).once("value", function (data) {
-        afk = data.child("afk").val();
-    });
 
-    return afk;
-}
-
-function cekUser(username, message) {
-    let ref = db.ref("user-status/" + username).once("value", function (data) {
-        let afk = false;
+    let ref = db.ref("user-status/" + user.id).once("value", function (data) {
         let pesan = null;
 
         afk = data.child("afk").val();
         pesan = data.child("pesan").val();
 
         if (afk)
-            message.channel.send("**" + username + "** sedang AFK. ```" + pesan  + "```");
+            message.channel.send("**" + user.tag + "** sedang AFK. ```" + pesan + "```");
     });
+
+    return afk;
 }
 
-function simpanUser(username, afk, pesan) {
+function simpanUser(message, afk, pesan) {
     let ref = db.ref("user-status");
 
-    ref.child(username).set({
+    ref.child(message.user.id).set({
         afk: afk,
         pesan: pesan
     });
+
+    message.channel.send("Operasi berhasil dilakukan!").then(msg => {msg.delete(5000)}).catch();
 }
 
 bot.login(process.env.TOKEN);
