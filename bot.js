@@ -3,12 +3,12 @@ var net = require('net');
 var request = require("request");
 
 var prefix = ".";
-var version = "v4.3";
+var version = "v4.4";
 const activities_list = [
     "NULL",
     ".help for command.", 
     version + " is running.",
-    "Milik Informate."
+    "BOT Milik Informate."
 ];
 
 var bot = new Discord.Client();
@@ -90,12 +90,11 @@ bot.on("message", function(message) {
         case "alert":
             message.delete();
 
-            var Ancient     = message.guild.roles.find('name', 'Ancient').members.array();
-            var Hero        = message.guild.roles.find('name', 'Hero').members.array();
+            var Organizer    = message.guild.roles.find('name', 'Organizer').members.array();
 
-            // For Ancient Role
-            for(var mAncient in Ancient) {
-                Ancient[mAncient].user.send("Anda mendapatkan pesan penting dari " + message.author.username + ":", {
+            // For Organizer Role
+            for(var mOrganizer in Organizer) {
+                Organizer[mOrganizer].user.send("Anda mendapatkan pesan penting dari " + message.author.username + ":", {
                     embed: {
                         color: 3447003,
                         description: args.join(" "),
@@ -107,21 +106,7 @@ bot.on("message", function(message) {
                 });
             }
 
-            // For Hero Role
-            for(var mHero in mHero) {
-                Hero[mHero].user.send("Anda mendapatkan pesan penting dari " + message.author.username + ":", {
-                    embed: {
-                        color: 3447003,
-                        description: args.join(" "),
-                        footer: {
-                            icon_url: message.author.avatarURL,
-                            text: message.author.tag
-                        }
-                    }
-                });
-            }
-
-            message.reply("Sukses mengirim pesan kepada para Ancient dan Hero.");
+            message.reply("Sukses mengirim pesan kepada para Organizer!");
             break;
 
         case "version":
@@ -159,11 +144,7 @@ bot.on("message", function(message) {
                         },
                         {
                             name: "alert [pesan]",
-                            value: "Mengirim pesan \"Penting\" kepada para Ancient dan Hero.\nCommand ini digunakan jika ada pesan \"penting\" yang ingin segera disampaikan!"
-                        },
-                        {
-                            name: "speak [pesan]",
-                            value: "Mengajak BOT untuk berbicara."
+                            value: "Mengirim pesan \"Penting\" kepada para Organizer.\nCommand ini digunakan jika ada pesan \"penting\" yang ingin segera disampaikan!"
                         }
                     ]
                 }
