@@ -3,7 +3,7 @@ var net = require('net');
 var request = require("request");
 
 var prefix = ".";
-var version = "v4.4";
+var version = "v4.5";
 const activities_list = [
     "NULL",
     ".help for command.", 
