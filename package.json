@@ -7,12 +7,7 @@
         "start": "node bot.js"
     },
     "dependencies": {
-<<<<<<< Updated upstream
-        "discord.js": "^11.3.2",
-        "discorddialogflow": "^1.0.0",
-=======
         "discord.js": "^11.5.1",
->>>>>>> Stashed changes
         "json-parser": "^1.1.5",
         "net": "^1.0.2",
         "request": "^2.88.0"
