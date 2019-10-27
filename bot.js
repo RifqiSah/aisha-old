@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 var Discord = require('discord.js');
 var net = require('net');
 var request = require("request");
@@ -7,12 +8,22 @@ var version = "v4.5";
 const activities_list = [
     "NULL",
     ".help for command.", 
+=======
+﻿var Discord = require('discord.js');
+const { TOKEN, TOKEN_AI, PREFIX } = require('./config');
+
+var version = "v4.6";
+const activities_list = [
+    "NULL",
+    PREFIX + "help for command.", 
+>>>>>>> Stashed changes
     version + " is running.",
     "BOT Milik Informate."
 ];
 
 var bot = new Discord.Client();
 bot.on("ready", function() {
+    // bot.user.setUsername("Aisha");
     console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
     setInterval(() => {
         const index = Math.floor(Math.random() * (activities_list.length - 1) + 1);
@@ -73,9 +84,13 @@ bot.on("message", function(message) {
             message.channel.send("**" + user.tag + "** sedang tidak dapat diganggu!").then(msg => {msg.delete(5000)}).catch();
     }
     
+<<<<<<< Updated upstream
     if (message.content.indexOf(prefix) !== 0) return;
+=======
+    if (message.content.indexOf(PREFIX) !== 0) return;
+>>>>>>> Stashed changes
 
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args = message.content.slice(PREFIX.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
     switch (command) {
@@ -137,7 +152,7 @@ bot.on("message", function(message) {
                 embed: {
                     color: 3447003,
                     title: "Aisha BOT command",
-                    description: "Command yang tersedia pada Aisha BOT. Gunakan prefix \"" + prefix + "\" di awal command agar dapat bekerja.",
+                    description: "Command yang tersedia pada Aisha BOT. Gunakan prefix \"" + PREFIX + "\" di awal command agar dapat bekerja.",
                     fields: [{
                             name: "ping",
                             value: "Mendapatkan latency kepada API server Discord."
@@ -156,4 +171,8 @@ bot.on("message", function(message) {
     }
 });
 
+<<<<<<< Updated upstream
 bot.login(process.env.TOKEN);
+=======
+bot.login(TOKEN);
+>>>>>>> Stashed changes
