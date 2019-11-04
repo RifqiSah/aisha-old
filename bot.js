@@ -1,13 +1,11 @@
-﻿var ping = require('./modules/ping.js');
+﻿var Discord = require('discord.js');
+var fs = require('fs');
+const { VERSION, TOKEN, PREFIX } = require('./config');
 
-var Discord = require('discord.js');
-const { TOKEN, TOKEN_AI, PREFIX } = require('./config');
-
-var version = "v4.6";
 const activities_list = [
     "NULL",
     PREFIX + "help for command.",
-    version + " is running.",
+    VERSION + " is running.",
     "BOT Milik Informate."
 ];
 
@@ -61,7 +59,23 @@ bot.on('guildMemberRemove', member => {
     });
 });
 
-bot.on("message", function(message) {
+console.log("Looking for available command");
+let commandsList = fs.readdirSync('./modules/');
+let commands = {};
+for (i = 0; i < commandsList.length; i++) {
+    let item = commandsList[i];
+    console.log(`Add '${item}' to command list ..`);
+
+    if (item.match(/\.js$/)) {
+        // delete require.cache[require.resolve(`./modules/${item}.js`)];
+        commands[item.slice(0, -3)] = require(`./modules/${item}`);
+    }
+}
+
+console.log("Success!");
+console.log("Bot is standby ~");
+
+bot.on('message', (message) => {
     if (message.author.equals(bot.user)) return;
     
     const user = message.mentions.users.first();
@@ -73,88 +87,19 @@ bot.on("message", function(message) {
         else if (user.presence.status === "dnd")
             message.channel.send("**" + user.tag + "** sedang tidak dapat diganggu!").then(msg => {msg.delete(5000)}).catch();
     }
-    
+
     if (message.content.indexOf(PREFIX) !== 0) return;
 
     const args = message.content.slice(PREFIX.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
-    switch (command) {
-        case "test":
-            message.channel.send("Dalam perbaikan!");
-            break;
+    if (command in commands) {
+        console.log(`Command '${command}' executed!`);
 
-        case "ping":
-            ping.func(message, args);
-            // message.channel.send("Pong! Latency: " + parseInt(bot.ping) + "ms");
-            break;
-
-        case "alert":
-            message.delete();
-
-            var Organizer    = message.guild.roles.find('name', 'Organizer').members.array();
-
-            // For Organizer Role
-            for(var mOrganizer in Organizer) {
-                Organizer[mOrganizer].user.send("Anda mendapatkan pesan penting dari " + message.author.username + ":", {
-                    embed: {
-                        color: 3447003,
-                        description: args.join(" "),
-                        footer: {
-                            icon_url: message.author.avatarURL,
-                            text: message.author.tag
-                        }
-                    }
-                });
-            }
-
-            message.reply("Sukses mengirim pesan kepada para Organizer!");
-            break;
-
-        case "version":
-            message.channel.send("Bot version: " + version);
-            break;
-
-        case "say":
-            if (message.member.roles.find("name", "Developer")) {
-                const channel = message.mentions.channels.first();
-                if (!channel) {
-                    message.channel.send("Mohon masukkan channel!");
-                    break;
-                }
-
-                args.shift(); // Hapus channel nya
-                let sayMessage = args.join(" ");
-                
-                message.delete().catch(O_o=>{});
-                channel.send(sayMessage);
-            } else {
-                message.delete().catch(O_o=>{});
-                message.channel.send("Maaf, Anda tidak mempunya akses untuk menggunakan command ini!").then(msg => {msg.delete(5000)}).catch();
-            }
-            break;
-
-        case "help":
-            message.channel.send({
-                embed: {
-                    color: 3447003,
-                    title: "Aisha BOT command",
-                    description: "Command yang tersedia pada Aisha BOT. Gunakan prefix \"" + PREFIX + "\" di awal command agar dapat bekerja.",
-                    fields: [{
-                            name: "ping",
-                            value: "Mendapatkan latency kepada API server Discord."
-                        },
-                        {
-                            name: "alert [pesan]",
-                            value: "Mengirim pesan \"Penting\" kepada para Organizer.\nCommand ini digunakan jika ada pesan \"penting\" yang ingin segera disampaikan!"
-                        }
-                    ]
-                }
-            });
-            break;
-
-        default:
-            break;
+        if (commands[command].enabled)
+            commands[command].func(commands, message, args);
+        else
+            message.channel.send("Command tidak aktif atau Anda tidak mempunyai ijin!").then(msg => {msg.delete(5000)}).catch();
     }
 });
 
