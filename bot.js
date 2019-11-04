@@ -1,4 +1,6 @@
-﻿var Discord = require('discord.js');
+﻿var ping = require('./modules/ping.js');
+
+var Discord = require('discord.js');
 const { TOKEN, TOKEN_AI, PREFIX } = require('./config');
 
 var version = "v4.6";
@@ -83,7 +85,8 @@ bot.on("message", function(message) {
             break;
 
         case "ping":
-            message.channel.send("Pong! Latency: " + parseInt(bot.ping) + "ms");
+            ping.func(message, args);
+            // message.channel.send("Pong! Latency: " + parseInt(bot.ping) + "ms");
             break;
 
         case "alert":
