@@ -1,7 +1,7 @@
 module.exports = {
     desc: "Mengirim pesan \"Penting\" kepada para Organizer.\nCommand ini digunakan jika ada pesan \"penting\" yang ingin segera disampaikan!.",
     enabled: true,
-    func: (cmd, message, args) => {
+    func: (client, message, args) => {
         message.delete();
 
         var Organizer    = message.guild.roles.find(role => role.name === 'Developer').members.array();

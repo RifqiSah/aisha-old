@@ -1,25 +1,30 @@
 ﻿var Discord = require('discord.js');
-var fs = require('fs');
-const { VERSION, TOKEN, PREFIX } = require('./config');
+// var fs = require('fs');
+// const { VERSION, TOKEN, PREFIX } = require('./config');
+
+Client = {
+    config: require('./config'),
+    bot: Discord.Client()
+}
 
 const activities_list = [
     "NULL",
-    PREFIX + "help for command.",
-    VERSION + " is running.",
+    Client.config.PREFIX + "help for command.",
+    Client.config.VERSION + " is running.",
     "BOT Milik Informate."
 ];
 
-var bot = new Discord.Client();
-bot.on("ready", function() {
-    // bot.user.setUsername("Aisha");
-    console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
+// var bot = new Discord.Client();
+Client.bot.on("ready", function() {
+    // Client.bot.user.setUsername("Aisha");
+    console.log(`Bot has started, with ${Client.bot.users.size} users, in ${Client.bot.channels.size} channels of ${Client.bot.guilds.size} guilds.`);
     setInterval(() => {
         const index = Math.floor(Math.random() * (activities_list.length - 1) + 1);
-        bot.user.setActivity(activities_list[index]);
+        Client.bot.user.setActivity(activities_list[index]);
     }, 10000);
 });
 
-bot.on('guildMemberAdd', member => {
+Client.bot.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find(ch => ch.name === 'out-off-topic');
     if (!channel)
         return;
@@ -43,7 +48,7 @@ bot.on('guildMemberAdd', member => {
     });
 });
 
-bot.on('guildMemberRemove', member => {
+Client.bot.on('guildMemberRemove', member => {
     member.guild.channels.find(ch => ch.name === 'member-log').send({
         embed: {
             color: 8311585,
@@ -61,22 +66,22 @@ bot.on('guildMemberRemove', member => {
 
 console.log("Looking for available command");
 let commandsList = fs.readdirSync('./modules/');
-let commands = {};
+Client.commands = {};
 for (i = 0; i < commandsList.length; i++) {
     let item = commandsList[i];
     console.log(`Add '${item}' to command list ..`);
 
     if (item.match(/\.js$/)) {
         // delete require.cache[require.resolve(`./modules/${item}.js`)];
-        commands[item.slice(0, -3)] = require(`./modules/${item}`);
+        Client.commands[item.slice(0, -3)] = require(`./modules/${item}`);
     }
 }
 
 console.log("Success!");
 console.log("Bot is standby ~");
 
-bot.on('message', (message) => {
-    if (message.author.equals(bot.user)) return;
+Client.bot.on('message', (message) => {
+    if (message.author.equals(Client.bot.user)) return;
     
     const user = message.mentions.users.first();
     if (user) {
@@ -88,19 +93,19 @@ bot.on('message', (message) => {
             message.channel.send("**" + user.tag + "** sedang tidak dapat diganggu!").then(msg => {msg.delete(5000)}).catch();
     }
 
-    if (message.content.indexOf(PREFIX) !== 0) return;
+    if (message.content.indexOf(Client.config.PREFIX) !== 0) return;
 
-    const args = message.content.slice(PREFIX.length).trim().split(/ +/g);
+    const args = message.content.slice(Client.config.PREFIX.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
-    if (command in commands) {
+    if (command in Client.commands) {
         console.log(`Command '${command}' executed!`);
 
-        if (commands[command].enabled)
-            commands[command].func(commands, message, args);
+        if (Client.commands[command].enabled)
+            Client.commands[command].func(Client, message, args);
         else
             message.channel.send("Command tidak aktif atau Anda tidak mempunyai ijin!").then(msg => {msg.delete(5000)}).catch();
     }
 });
 
-bot.login(TOKEN);
+Client.bot.login(Client.config.TOKEN);

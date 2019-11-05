@@ -1,7 +1,7 @@
 module.exports = {
     desc: "Biarkan Aisha berbicara.",
     enabled: true,
-    func: (cmd, message, args) => {
+    func: (client, message, args) => {
         if (message.member.roles.find(role => role.name === "Developer")) {
             const channel = message.mentions.channels.first();
             if (!channel) {
