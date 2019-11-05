@@ -1,10 +1,10 @@
 ﻿var Discord = require('discord.js');
-// var fs = require('fs');
-// const { VERSION, TOKEN, PREFIX } = require('./config');
+var fs = require('fs');
 
 Client = {
     config: require('./config'),
-    bot: Discord.Client()
+    bot: new Discord.Client(),
+    discord_embed: new Discord.RichEmbed()
 }
 
 const activities_list = [
@@ -14,7 +14,6 @@ const activities_list = [
     "BOT Milik Informate."
 ];
 
-// var bot = new Discord.Client();
 Client.bot.on("ready", function() {
     // Client.bot.user.setUsername("Aisha");
     console.log(`Bot has started, with ${Client.bot.users.size} users, in ${Client.bot.channels.size} channels of ${Client.bot.guilds.size} guilds.`);
@@ -101,10 +100,23 @@ Client.bot.on('message', (message) => {
     if (command in Client.commands) {
         console.log(`Command '${command}' executed!`);
 
-        if (Client.commands[command].enabled)
-            Client.commands[command].func(Client, message, args);
-        else
-            message.channel.send("Command tidak aktif atau Anda tidak mempunyai ijin!").then(msg => {msg.delete(5000)}).catch();
+        if (Client.commands[command].enable) {
+            if (Client.commands[command].role.length > 0) {
+                if (message.member.roles.some(role => Client.commands[command].role.includes(role.id))) {
+                    Client.commands[command].func(Client, message, args);
+                }
+                else {
+                    message.delete().catch(O_o=>{});
+                    message.channel.send(`Anda tidak mempunyai ijin untuk menggunakan command **${command}**!`).then(msg => {msg.delete(5000)}).catch();
+                }
+            } else {
+                Client.commands[command].func(Client, message, args);
+            }
+        }
+        else {
+            message.delete().catch(O_o=>{});
+            message.channel.send(`Command **${command}** sedang tidak aktif!`).then(msg => {msg.delete(5000)}).catch();
+        }
     }
 });
 

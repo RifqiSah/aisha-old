@@ -1,14 +1,12 @@
-const Discord = require('discord.js');
-const { VERSION, TOKEN, PREFIX } = require('./../config');
-
 module.exports = {
     desc: "Daftar command yang dapat digunakan pada Aisha.",
-    enabled: true,
+    enable: true,
+    role: [],
     func: (client, message, args) => {
-        const embed = new Discord.RichEmbed()
+        const embed = client.discord_embed
             .setColor('#0099ff')
             .setTitle('Aisha BOT command')
-            .setDescription(`Command yang tersedia pada Aisha. Gunakan prefix '${PREFIX}' di awal command agar dapat bekerja.`)
+            .setDescription(`Command yang tersedia pada Aisha. Gunakan prefix '${client.config.PREFIX}' di awal command agar dapat bekerja.`)
             .addBlankField();
 
         for(var cmds in client.commands)
