@@ -17,10 +17,15 @@ const activities_list = [
 Client.bot.on("ready", function() {
     // Client.bot.user.setUsername("Aisha");
     console.log(`Bot has started, with ${Client.bot.users.size} users, in ${Client.bot.channels.size} channels of ${Client.bot.guilds.size} guilds.`);
-    setInterval(() => {
-        const index = Math.floor(Math.random() * (activities_list.length - 1) + 1);
-        Client.bot.user.setActivity(activities_list[index]);
-    }, 10000);
+    if (!Client.config.MT) {
+        setInterval(() => {
+            const index = Math.floor(Math.random() * (activities_list.length - 1) + 1);
+            Client.bot.user.setActivity(activities_list[index]);
+        }, 10000);
+    }
+    else {
+        Client.bot.user.setActivity("BOT is maintenance until " + Client.config.MT_TIME);
+    }
 });
 
 Client.bot.on('guildMemberAdd', member => {
@@ -65,21 +70,28 @@ Client.bot.on('guildMemberRemove', member => {
 
 console.log("Looking for available command");
 let commandsList = fs.readdirSync('./modules/');
+
 Client.commands = {};
+Client.commandsRegex = [];
+
 for (i = 0; i < commandsList.length; i++) {
     let item = commandsList[i];
-    console.log(`Add '${item}' to command list ..`);
+    console.log(`Add '${item.slice(0, -3)}' to command list ..`);
 
     if (item.match(/\.js$/)) {
         // delete require.cache[require.resolve(`./modules/${item}.js`)];
         Client.commands[item.slice(0, -3)] = require(`./modules/${item}`);
+        Client.commandsRegex.push(`\b${item.slice(0, -3)}\b`);
     }
 }
+
+Client.commandsRegex = new RegExp(Client.commandsRegex.join('|'));
 
 console.log("Success!");
 console.log("Bot is standby ~");
 
 Client.bot.on('message', (message) => {
+    if (Client.config.MT) return;
     if (message.author.equals(Client.bot.user)) return;
     
     const user = message.mentions.users.first();
