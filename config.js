@@ -1,3 +1,4 @@
+exports.ENABLE      = false;
 exports.VERSION     = "v5.1";
 exports.TOKEN       = 'NDI4NDMyMDcyMzI0MTUzMzQ0.DaILCw.whlk09KLzXEWfvC_XHnPjARfghA';
 exports.PREFIX      = '.';

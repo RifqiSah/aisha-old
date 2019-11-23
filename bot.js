@@ -132,4 +132,5 @@ Client.bot.on('message', (message) => {
     }
 });
 
-Client.bot.login(Client.config.TOKEN);
+if (Client.config.ENABLE)
+    Client.bot.login(Client.config.TOKEN);
