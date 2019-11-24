@@ -94,16 +94,16 @@ Client.bot.on('message', (message) => {
     if (Client.config.MT) return;
     if (message.author.equals(Client.bot.user)) return;
     
-    const user = message.mentions.users.first();
-    if (user) {
+    const users = message.mentions.users.map(user => {
         if (user.presence.status === "offline")
-            message.channel.send("**" + user.tag + "** sedang offline.").then(msg => {msg.delete(5000)}).catch();
+            return `**${user.tag}** sedang offline.`;
         else if (user.presence.status === "idle")
-            message.channel.send("**" + user.tag + "** sedang away.").then(msg => {msg.delete(5000)}).catch();
+            return `**${user.tag}** sedang away.`;
         else if (user.presence.status === "dnd")
-            message.channel.send("**" + user.tag + "** sedang tidak dapat diganggu!").then(msg => {msg.delete(5000)}).catch();
-    }
+            return `**${user.tag}** sedang tidak dapat diganggu.`;
+    });
 
+    if (users.length > 0) message.channel.send(users).then(msg => {msg.delete(5000)}).catch();
     if (message.content.indexOf(Client.config.PREFIX) !== 0) return;
 
     const args = message.content.slice(Client.config.PREFIX.length).trim().split(/ +/g);

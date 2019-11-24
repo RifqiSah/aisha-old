@@ -1,6 +1,11 @@
 module.exports = {
-    desc: "Mengirim pesan \"Penting\" kepada para Organizer.\nCommand ini digunakan jika ada pesan \"penting\" yang ingin segera disampaikan!.",
+    desc: "Mengirim pesan \"Penting\" kepada para Organizer. Command ini digunakan jika ada pesan **penting** yang ingin segera disampaikan!.",
     enabled: true,
+    regex: false,
+    role: [],
+    aliases: ['haha', 'hehe'],
+	usage: '[Pesan Anda]',
+	cooldown: 0,
     func: (client, message, args) => {
         message.delete();
 

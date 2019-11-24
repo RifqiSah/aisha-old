@@ -1,7 +1,11 @@
 module.exports = {
     desc: "Melihat info rate dari Dragon Nest. Rate yg tersedia yaitu [calypse, skila, fdn, ancient, ~~acc~~, taliman, jade]",
     enable: true,
+    regex: true,
     role: [],
+    aliases: [],
+	usage: '[jenis rate]',
+	cooldown: 0,
     func: (client, message, args) => {
         let rate = args.join(" ").toLowerCase();
         switch(rate) {
