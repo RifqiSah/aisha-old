@@ -72,7 +72,7 @@ console.log("Looking for available command");
 let commandsList = fs.readdirSync('./modules/');
 
 Client.commands = {};
-Client.commandsRegex = [];
+// Client.commandsRegex = [];
 
 for (i = 0; i < commandsList.length; i++) {
     let item = commandsList[i];
@@ -81,11 +81,11 @@ for (i = 0; i < commandsList.length; i++) {
     if (item.match(/\.js$/)) {
         // delete require.cache[require.resolve(`./modules/${item}.js`)];
         Client.commands[item.slice(0, -3)] = require(`./modules/${item}`);
-        Client.commandsRegex.push(`\b${item.slice(0, -3)}\b`);
+        // Client.commandsRegex.push(`\\b${item.slice(0, -3)}\\b`);
     }
 }
 
-Client.commandsRegex = new RegExp(Client.commandsRegex.join('|'));
+// Client.commandsRegex = new RegExp(Client.commandsRegex.join('|'));
 
 console.log("Success!");
 console.log("Bot is standby ~");
@@ -95,15 +95,13 @@ Client.bot.on('message', (message) => {
     if (message.author.equals(Client.bot.user)) return;
     
     const users = message.mentions.users.map(user => {
-        if (user.presence.status === "offline")
-            return `**${user.tag}** sedang offline.`;
-        else if (user.presence.status === "idle")
-            return `**${user.tag}** sedang away.`;
-        else if (user.presence.status === "dnd")
-            return `**${user.tag}** sedang tidak dapat diganggu.`;
+        if (user.presence.status === "offline") return `**${user.tag}** sedang offline.`;
+        else if (user.presence.status === "idle") return `**${user.tag}** sedang away.`;
+        else if (user.presence.status === "dnd") return `**${user.tag}** sedang tidak dapat diganggu.`;
     });
-
+    
     if (users.length > 0) message.channel.send(users).then(msg => {msg.delete(5000)}).catch();
+
     if (message.content.indexOf(Client.config.PREFIX) !== 0) return;
 
     const args = message.content.slice(Client.config.PREFIX.length).trim().split(/ +/g);
