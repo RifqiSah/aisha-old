@@ -72,7 +72,7 @@ console.log("Looking for available command");
 let commandsList = fs.readdirSync('./modules/');
 
 Client.commands = {};
-// Client.commandsRegex = [];
+Client.commandsRegex = [];
 
 for (i = 0; i < commandsList.length; i++) {
     let item = commandsList[i];
@@ -81,19 +81,23 @@ for (i = 0; i < commandsList.length; i++) {
     if (item.match(/\.js$/)) {
         // delete require.cache[require.resolve(`./modules/${item}.js`)];
         Client.commands[item.slice(0, -3)] = require(`./modules/${item}`);
-        // Client.commandsRegex.push(`\\b${item.slice(0, -3)}\\b`);
+        if (Client.commands[item.slice(0, -3)].regex) Client.commandsRegex.push(`${item.slice(0, -3)}`);
     }
 }
 
-// Client.commandsRegex = new RegExp(Client.commandsRegex.join('|'));
+Client.commandsRegex = new RegExp(Client.commandsRegex.join('|'));
 
 console.log("Success!");
 console.log("Bot is standby ~");
 
 Client.bot.on('message', (message) => {
-    if (Client.config.MT) return;
-    if (message.author.equals(Client.bot.user)) return;
+    var args    = null;
+    var command = null;
+
+    if (Client.config.MT) return; // Cek status bot apakah sedang maintenis atau tidak
+    if (message.author.equals(Client.bot.user)) return; // Jangan giraukan chat dari sesama bot
     
+    // == Awal pengecekan user ==
     const users = message.mentions.users.map(user => {
         if (user.presence.status === "offline") return `**${user.tag}** sedang offline.`;
         else if (user.presence.status === "idle") return `**${user.tag}** sedang away.`;
@@ -101,12 +105,25 @@ Client.bot.on('message', (message) => {
     });
     
     if (users.length > 0) message.channel.send(users).then(msg => {msg.delete(5000)}).catch();
+    // == Akhir pengecekan user ==
 
-    if (message.content.indexOf(Client.config.PREFIX) !== 0) return;
+    // Apakah pesan diawali dengan prefix atau tidak
+    if (message.content.indexOf(Client.config.PREFIX) !== 0) {
+        // Cek apakah ada di regex?
+        let regcmd = message.content.match(Client.commandsRegex);
+        if (regcmd) {
+            // args = message.content.trim().split(/ +/g);
+            command = regcmd[0];
+        }
+        else return; // Kalau tidak ada akhiri aja
+    }
+    else {
+        // Jika ya
+        args = message.content.slice(Client.config.PREFIX.length).trim().split(/ +/g);
+        command = args.shift().toLowerCase();
+    }
 
-    const args = message.content.slice(Client.config.PREFIX.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-
+    // == Awal eksekusi command ==
     if (command in Client.commands) {
         console.log(`Command '${command}' executed!`);
 
@@ -128,6 +145,7 @@ Client.bot.on('message', (message) => {
             message.channel.send(`Command **${command}** sedang tidak aktif!`).then(msg => {msg.delete(5000)}).catch();
         }
     }
+    // == Akhir eksekusi command ==
 });
 
 if (Client.config.ENABLE)
