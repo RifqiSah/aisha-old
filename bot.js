@@ -95,7 +95,7 @@ Client.bot.on('message', (message) => {
     var command = null;
 
     if (Client.config.MT) return; // Cek status bot apakah sedang maintenis atau tidak
-    if (message.author.equals(Client.bot.user)) return; // Jangan giraukan chat dari sesama bot
+    if (message.author.bot) return; // Jangan hiraukan chat dari sesama bot
     
     // == Awal pengecekan user ==
     const users = message.mentions.users.map(user => {
@@ -124,8 +124,9 @@ Client.bot.on('message', (message) => {
     }
 
     // == Awal eksekusi command ==
-    if (command in Client.commands) {
+    if (command in Client.commands || command in Client.commandsAlias) {
         console.log(`Command '${command}' executed!`);
+        // console.log("Command alias: " + Client.commands[command].aliases.map(i => { return i}));
 
         if (Client.commands[command].enable) {
             if (Client.commands[command].role.length > 0) {

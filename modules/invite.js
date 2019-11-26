@@ -8,6 +8,6 @@ module.exports = {
 	usage: '',
 	cooldown: 0,
     func: (client, message, args) => {
-        message.channel.send("Link invite server: https://discord.gg/YvpEtYd");
+        message.channel.send("Link invite server dapat dilihat pada <#498123556413243412>");
     }
 }
