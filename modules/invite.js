@@ -1,5 +1,5 @@
 module.exports = {
-    desc: "Ingin Nganu?",
+    desc: "",
     enable: true,
     regex: true,
     help: false,
@@ -8,6 +8,6 @@ module.exports = {
 	usage: '',
 	cooldown: 0,
     func: (client, message, args) => {
-        message.channel.send("( ͡° ͜ʖ ͡°)");
+        message.channel.send("Link invite server: https://discord.gg/YvpEtYd");
     }
 }

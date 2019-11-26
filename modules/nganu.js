@@ -1,5 +1,5 @@
 module.exports = {
-    desc: "Ingin Nganu?",
+    desc: "",
     enable: true,
     regex: true,
     help: false,
