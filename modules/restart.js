@@ -2,6 +2,7 @@ module.exports = {
     desc: "Menjalankan ulang BOT dari server.",
     enable: true,
     regex: false,
+    help: false,
     role: ['433870492378595329'],
     aliases: [],
 	usage: '',

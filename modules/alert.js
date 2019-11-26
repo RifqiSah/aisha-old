@@ -2,6 +2,7 @@ module.exports = {
     desc: "Mengirim pesan \"Penting\" kepada para Organizer. Command ini digunakan jika ada pesan **penting** yang ingin segera disampaikan!.",
     enabled: true,
     regex: false,
+    help: true,
     role: [],
     aliases: ['haha', 'hehe'],
 	usage: '[Pesan Anda]',

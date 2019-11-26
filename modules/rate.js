@@ -2,6 +2,7 @@ module.exports = {
     desc: "Melihat info rate dari Dragon Nest. Rate yg tersedia yaitu [calypse, skila, fdn, ancient, ~~acc~~, taliman, jade]",
     enable: true,
     regex: false,
+    help: true,
     role: [],
     aliases: [],
 	usage: '[jenis rate]',

@@ -2,6 +2,7 @@ module.exports = {
     desc: "Biarkan Aisha berbicara.",
     enable: true,
     regex: false,
+    help: true,
     role: ['433870492378595329'],
     aliases: [],
 	usage: '[channel] [pesan anda]',

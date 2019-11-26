@@ -2,6 +2,7 @@ module.exports = {
     desc: "Mendapatkan latency kepada API server Discord.",
     enable: true,
     regex: false,
+    help: true,
     role: [],
     aliases: [],
 	usage: '',

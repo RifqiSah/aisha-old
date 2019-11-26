@@ -2,6 +2,7 @@ module.exports = {
     desc: "Daftar command yang dapat digunakan pada Aisha.",
     enable: true,
     regex: false,
+    help: true,
     role: [],
     aliases: [],
 	usage: '[Nama Command]',
@@ -11,7 +12,8 @@ module.exports = {
         if (!args.length) {
             data.push('Hai! Ini adalah daftar command yang tersedia:\n');
             for(var cmds in client.commands)
-                data.push(`\`${cmds}\` : ${client.commands[cmds].desc}`);
+                if (client.commands[cmds].help)
+                    data.push(`\`${cmds}\` : ${client.commands[cmds].desc}`);
 
             data.push(`\nAnda dapat menggunakan \`${client.config.PREFIX}help [nama command]\` untuk mendapatkan informasi dari command tersebut.`);
         }
