@@ -4,7 +4,7 @@ module.exports = {
     regex: true,
     help: false,
     role: [],
-    aliases: [],
+    aliases: ['anu', 'eww'],
 	usage: '',
 	cooldown: 0,
     func: (client, message, args) => {
