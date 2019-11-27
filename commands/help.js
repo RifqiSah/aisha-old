@@ -1,4 +1,5 @@
 module.exports = {
+    name: "help",
     desc: "Daftar command yang dapat digunakan pada Aisha.",
     enable: true,
     regex: false,
@@ -11,9 +12,9 @@ module.exports = {
         const data = [];
         if (!args.length) {
             data.push('Hai! Ini adalah daftar command yang tersedia:\n');
-            for(var cmds in client.commands)
-                if (client.commands[cmds].help)
-                    data.push(`\`${cmds}\` : ${client.commands[cmds].desc}`);
+            client.commands.forEach(item => {
+                if (item.help) data.push(`\`${item.name}\` : ${item.desc}`);
+            });
 
             data.push(`\nAnda dapat menggunakan \`${client.config.PREFIX}help [nama command]\` untuk mendapatkan informasi dari command tersebut.`);
         }
@@ -21,7 +22,7 @@ module.exports = {
             let name = args[0].toLowerCase();
             data.push(`Informasi mengenai command \`${name}\`:\n`);
 
-            const command = client.commands[name];
+            const command = client.commands.get(name);
             if (!command) {
                 return message.reply('Command tidak valid!');
             }

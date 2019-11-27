@@ -1,4 +1,5 @@
 module.exports = {
+    name: "alert",
     desc: "Mengirim pesan \"Penting\" kepada para Organizer. Command ini digunakan jika ada pesan **penting** yang ingin segera disampaikan!.",
     enabled: true,
     regex: false,

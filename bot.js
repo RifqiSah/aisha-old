@@ -11,7 +11,7 @@ const activities_list = [
     "NULL",
     Client.config.PREFIX + "help for command.",
     Client.config.VERSION + " is running.",
-    "BOT Milik Informate."
+    "Informate's BOT."
 ];
 
 Client.bot.on("ready", function() {
@@ -69,34 +69,43 @@ Client.bot.on('guildMemberRemove', member => {
 });
 
 console.log("Looking for available command");
-let commandsList = fs.readdirSync('./modules/');
+let commandsList = fs.readdirSync('./commands/');
 
-Client.commands = {};
-Client.commandsRegex = [];
+Client.commands             = new Discord.Collection();
+Client.commandsAlias        = new Discord.Collection();
+Client.commandsRegex        = new Discord.Collection();
+Client.commandsRegexAlias   = new Discord.Collection();
 
 for (i = 0; i < commandsList.length; i++) {
     let item = commandsList[i];
-    console.log(`Add '${item.slice(0, -3)}' to command list ..`);
 
     if (item.match(/\.js$/)) {
-        // delete require.cache[require.resolve(`./modules/${item}.js`)];
-        Client.commands[item.slice(0, -3)] = require(`./modules/${item}`);
-        if (Client.commands[item.slice(0, -3)].regex) Client.commandsRegex.push(`${item.slice(0, -3)}`);
+        let cmdfile = require(`./commands/${item}`);
+        let key = item.slice(0, -3);
+
+        console.log(`+ '${key}' added to command list.`);
+
+        Client.commands.set(key, cmdfile);
+        cmdfile.aliases.forEach(alias => {
+            Client.commandsAlias.set(alias, key)
+        });
+
+        // if (cmdfile.regex) {
+        //     Client.commandsRegex.set(key, cmdfile);
+        //     cmdfile.aliases.forEach(alias => {
+        //         Client.commandsRegexAlias.set(alias, key)
+        //     });
+        // }
     }
 }
-
-Client.commandsRegex = new RegExp(Client.commandsRegex.join('|'));
 
 console.log("Success!");
 console.log("Bot is standby ~");
 
 Client.bot.on('message', (message) => {
-    var args    = null;
-    var command = null;
-
     if (Client.config.MT) return; // Cek status bot apakah sedang maintenis atau tidak
-    if (message.author.bot) return; // Jangan hiraukan chat dari sesama bot
-    
+    if (message.author.bot || message.channel.type === "dm") return; // Jangan hiraukan chat dari sesama bot dan pastikan chat berasal dari guild
+
     // == Awal pengecekan user ==
     const users = message.mentions.users.map(user => {
         if (user.presence.status === "offline") return `**${user.tag}** sedang offline.`;
@@ -107,47 +116,43 @@ Client.bot.on('message', (message) => {
     if (users.length > 0) message.channel.send(users).then(msg => {msg.delete(5000)}).catch();
     // == Akhir pengecekan user ==
 
-    // Apakah pesan diawali dengan prefix atau tidak
-    if (message.content.indexOf(Client.config.PREFIX) !== 0) {
-        // Cek apakah ada di regex?
-        let regcmd = message.content.match(Client.commandsRegex);
-        if (regcmd) {
-            // args = message.content.trim().split(/ +/g);
-            command = regcmd[0];
-        }
-        else return; // Kalau tidak ada akhiri aja
-    }
-    else {
-        // Jika ya
-        args = message.content.slice(Client.config.PREFIX.length).trim().split(/ +/g);
-        command = args.shift().toLowerCase();
-    }
+    if (message.content.indexOf(Client.config.PREFIX) !== 0) return; // Pastikan diawali prefix
 
-    // == Awal eksekusi command ==
-    if (command in Client.commands || command in Client.commandsAlias) {
+    // == Awal command manager ==
+    let args = message.content.slice(Client.config.PREFIX.length).trim().split(/ +/g); // Mensplit string dengan " " agar didapatkan argumen
+    let command = args.shift().toLowerCase(); // Mengambil command
+    let commandfile = Client.commands.get(command) || Client.commands.get(Client.commandsAlias.get(command)); // Cari file command yang ditunjuk
+    if (commandfile) {
         console.log(`Command '${command}' executed!`);
-        // console.log("Command alias: " + Client.commands[command].aliases.map(i => { return i}));
-
-        if (Client.commands[command].enable) {
-            if (Client.commands[command].role.length > 0) {
-                if (message.member.roles.some(role => Client.commands[command].role.includes(role.id))) {
-                    Client.commands[command].func(Client, message, args);
+        
+        // Cek apakah command sedang aktif atau tidak
+        if (commandfile.enable) {
+            // Apakah command mempunya role (role != null)
+            if (commandfile.role.length > 0) {
+                // Apakah role pengguna ada pada command ini?
+                if (message.member.roles.some(role => commandfile.role.includes(role.id))) {
+                    // Jalankan
+                    commandfile.func(Client, message, args);
                 }
+                // Tidak ada? Tampilkan pesan error
                 else {
                     message.delete().catch(O_o=>{});
                     message.channel.send(`Anda tidak mempunyai ijin untuk menggunakan command **${command}**!`).then(msg => {msg.delete(5000)}).catch();
                 }
+            // Jika role tidak ada jalankan saja
             } else {
-                Client.commands[command].func(Client, message, args);
+                commandfile.func(Client, message, args);
             }
         }
+        // Command tidak aktif
         else {
             message.delete().catch(O_o=>{});
             message.channel.send(`Command **${command}** sedang tidak aktif!`).then(msg => {msg.delete(5000)}).catch();
         }
     }
-    // == Akhir eksekusi command ==
+    // == Akhir command manager ==
 });
 
+// Bot LOGIN
 if (Client.config.ENABLE)
     Client.bot.login(Client.config.TOKEN);

@@ -1,5 +1,6 @@
 module.exports = {
-    desc: "",
+    name: "nganu",
+    desc: "Nganu?",
     enable: true,
     regex: true,
     help: false,

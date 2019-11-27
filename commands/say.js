@@ -1,5 +1,6 @@
 module.exports = {
-    desc: "Biarkan Aisha berbicara.",
+    name: "say",
+    desc: "Aisha akan berbicara sesuai dengan yang kita ketikkan.",
     enable: true,
     regex: false,
     help: true,

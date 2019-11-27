@@ -1,4 +1,5 @@
 module.exports = {
+    name: "ping",
     desc: "Mendapatkan latency kepada API server Discord.",
     enable: true,
     regex: false,
