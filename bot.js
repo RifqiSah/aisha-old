@@ -1,32 +1,19 @@
 ﻿var Discord = require('discord.js');
 var fs = require('fs');
 
+// == Awal inisialisasi ==
 Client = {
     config: require('./config'),
     bot: new Discord.Client(),
     discord_embed: new Discord.RichEmbed()
 }
+// == Akhir inisialisasi ==
 
-const activities_list = [
-    "NULL",
-    Client.config.PREFIX + "help for command.",
-    Client.config.VERSION + " is running.",
-    "Informate's BOT."
-];
-
-Client.bot.on("ready", function() {
-    // Client.bot.user.setUsername("Aisha");
-    console.log(`Bot has started, with ${Client.bot.users.size} users, in ${Client.bot.channels.size} channels of ${Client.bot.guilds.size} guilds.`);
-    if (!Client.config.MT) {
-        setInterval(() => {
-            const index = Math.floor(Math.random() * (activities_list.length - 1) + 1);
-            Client.bot.user.setActivity(activities_list[index]);
-        }, 10000);
-    }
-    else {
-        Client.bot.user.setActivity("BOT is maintenance until " + Client.config.MT_TIME);
-    }
-});
+// == Awal event handler ==
+console.log("[] Initialize handler");
+require('./util/eventHandler')(Client.bot, Client.config);
+console.log("[] Done!");
+// == Akhir event handler ==
 
 Client.bot.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find(ch => ch.name === 'out-off-topic');
@@ -68,7 +55,7 @@ Client.bot.on('guildMemberRemove', member => {
     });
 });
 
-console.log("Looking for available command");
+console.log("[] Initialize command");
 let commandsList = fs.readdirSync('./commands/');
 
 Client.commands             = new Discord.Collection();
@@ -83,26 +70,19 @@ for (i = 0; i < commandsList.length; i++) {
         let cmdfile = require(`./commands/${item}`);
         let key = item.slice(0, -3);
 
-        console.log(`+ '${key}' added to command list.`);
+        console.log(`+ '${key}' added.`);
 
         Client.commands.set(key, cmdfile);
         cmdfile.aliases.forEach(alias => {
             Client.commandsAlias.set(alias, key)
         });
-
-        // if (cmdfile.regex) {
-        //     Client.commandsRegex.set(key, cmdfile);
-        //     cmdfile.aliases.forEach(alias => {
-        //         Client.commandsRegexAlias.set(alias, key)
-        //     });
-        // }
     }
 }
 
-console.log("Success!");
-console.log("Bot is standby ~");
+console.log("[] Done!");
+console.log("[] Bot is ready to start ...");
 
-Client.bot.on('message', (message) => {
+Client.bot.on('message', async (message) => {
     if (Client.config.MT) return; // Cek status bot apakah sedang maintenis atau tidak
     if (message.author.bot || message.channel.type === "dm") return; // Jangan hiraukan chat dari sesama bot dan pastikan chat berasal dari guild
 
