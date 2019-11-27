@@ -1,2 +1,2 @@
-# Aisha BOT
-An Automation Discord BOT Using Node.js
+# Aisha
+An automation Discord BOT, made with discord.js
