@@ -61,7 +61,6 @@ let commandsList = fs.readdirSync('./commands/');
 Client.commands             = new Discord.Collection();
 Client.commandsAlias        = new Discord.Collection();
 Client.commandsRegex        = new Discord.Collection();
-Client.commandsRegexAlias   = new Discord.Collection();
 
 for (i = 0; i < commandsList.length; i++) {
     let item = commandsList[i];
@@ -76,8 +75,18 @@ for (i = 0; i < commandsList.length; i++) {
         cmdfile.aliases.forEach(alias => {
             Client.commandsAlias.set(alias, key)
         });
+
+        if (cmdfile.regex) {
+            Client.commandsRegex.set(key, `\\${cmdfile.name}\\`);
+            cmdfile.aliases.forEach(alias => {
+                Client.commandsRegex.set(alias, `\\${key}\\`);
+            });
+        }
     }
 }
+
+var regexList = new RegExp(Client.commandsRegex.map((key, item) => {return item}).join("|"));
+// console.log(regexList);
 
 console.log("[] Done!");
 console.log("[] Bot is ready to start ...");
@@ -96,14 +105,28 @@ Client.bot.on('message', async (message) => {
     if (users.length > 0) message.channel.send(users).then(msg => {msg.delete(5000)}).catch();
     // == Akhir pengecekan user ==
 
-    if (message.content.indexOf(Client.config.PREFIX) !== 0) return; // Pastikan diawali prefix
+    let regex   = null;
+    let args    = null;
+    let command = null;
 
+    // == Awal regex checker ==
+    // Cek apakah diawali prefix
+    if (message.content.indexOf(Client.config.PREFIX) !== 0) {
+        // Apakah ada di regex?
+        if (regex = message.content.match(regexList)) command = regex[0]; // Isi command dengan hasil regexnya
+        else return; // Jika tidak selesaikan
+    }
+    // Jika ya
+    else {
+        args = message.content.slice(Client.config.PREFIX.length).trim().split(/ +/g); // Mensplit string dengan " " agar didapatkan argumen
+        command = args.shift().toLowerCase(); // Mengambil command
+    }
+    // == Akhir regex checker ==
+    
     // == Awal command manager ==
-    let args = message.content.slice(Client.config.PREFIX.length).trim().split(/ +/g); // Mensplit string dengan " " agar didapatkan argumen
-    let command = args.shift().toLowerCase(); // Mengambil command
     let commandfile = Client.commands.get(command) || Client.commands.get(Client.commandsAlias.get(command)); // Cari file command yang ditunjuk
     if (commandfile) {
-        console.log(`Command '${command}' executed!`);
+        console.log(`-> Command '${commandfile.name}' executed! (Regex: ${(regex ? "YES" : "NO")})`);
         
         // Cek apakah command sedang aktif atau tidak
         if (commandfile.enable) {
@@ -117,7 +140,7 @@ Client.bot.on('message', async (message) => {
                 // Tidak ada? Tampilkan pesan error
                 else {
                     message.delete().catch(O_o=>{});
-                    message.channel.send(`Anda tidak mempunyai ijin untuk menggunakan command **${command}**!`).then(msg => {msg.delete(5000)}).catch();
+                    message.channel.send(`Anda tidak mempunyai ijin untuk menggunakan command **${commandfile.name}**!`).then(msg => {msg.delete(5000)}).catch();
                 }
             // Jika role tidak ada jalankan saja
             } else {
@@ -127,7 +150,7 @@ Client.bot.on('message', async (message) => {
         // Command tidak aktif
         else {
             message.delete().catch(O_o=>{});
-            message.channel.send(`Command **${command}** sedang tidak aktif!`).then(msg => {msg.delete(5000)}).catch();
+            message.channel.send(`Command **${commandfile.name}** sedang tidak aktif!`).then(msg => {msg.delete(5000)}).catch();
         }
     }
     // == Akhir command manager ==

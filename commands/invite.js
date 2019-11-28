@@ -1,7 +1,7 @@
 module.exports = {
     name: "invite",
     desc: "Berisi mengenai link invite server Informate.",
-    enable: false,
+    enable: true,
     regex: true,
     help: false,
     role: [],
