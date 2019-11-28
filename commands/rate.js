@@ -1,6 +1,6 @@
 module.exports = {
     name: "rate",
-    desc: "Melihat info rate dari Dragon Nest. Rate yg tersedia yaitu [calypse, skila, fdn, ancient, ~~acc~~, taliman, jade]",
+    desc: "Melihat info rate dari Dragon Nest. Rate yg tersedia yaitu [calypse, skila, fdn, ancient, ~~acc~~, taliman, jade, fishing, seafishing]",
     enable: true,
     regex: false,
     help: true,
@@ -44,6 +44,51 @@ module.exports = {
             case "jade":
                 data.push("`Champion`: https://cdn.discordapp.com/attachments/597969449340895247/597978448622911501/2019070717144963454.png");
                 data.push("`Flawless`: https://cdn.discordapp.com/attachments/597969449340895247/597978678693068800/2019070717212085581.png");
+                break;
+
+            case "fishing":
+                data.push("Red Bass = 7.7%");
+                data.push("Hermalte Trout = 7.7%");
+                data.push("Brown Striped Salmon = 7.7%");
+                data.push("Rough Rock Grouper = 7.7%");
+                data.push("Freshwater Sweet fish = 7.7%");
+                data.push("Black Swamp Snake head = 7.7%");
+                data.push("Gizzard Shard = 7.7%\n");
+
+                data.push("Golden Carp = 5.91%");
+                data.push("Rainbow Trout = 5.91%");
+                data.push("Rosy Bitterling = 5.91%");
+                data.push("Catfish = 5.91%");
+                data.push("Mudskipper = 5.91%\n");
+
+                data.push("Lamprey = 0.04%");
+                data.push("Arowana = 0.04%\n");
+
+                data.push("Antique Common Pouch = 17% ");
+                data.push("Magical Rainbow Goldfish = 0.0044%");
+                break;
+            
+            case "seafishing":
+                data.push("Shrimp = 22.5%");
+                data.push("Webfoot Octopus = 22.5%");
+                data.push("Lobster = 3.75%");
+                data.push("Anemone Fish = 11.8%");
+                data.push("Butterfly Fish = 11.8%");
+                data.push("Fugu = 11.3%");
+                data.push("Octopus = 3%");
+                data.push("Turtle = 3%");
+                data.push("Stingray = 2.6%");
+                data.push("Halibut = 2.6%");
+                data.push("Snapper = 2.6%");
+                data.push("Deep sea Fish = 1.1%");
+                data.push("Tuna = 0.8% ");
+                data.push("Whale = 0.2%");
+                data.push("Shark = 0.25%");
+                data.push("Sea Fishing Pouch = 3%");
+                data.push("Rare Top Mimi Octopus = 3%\n");
+                
+                data.push("Shrimp up to Deep Sea Fish have 10 Different Sizes");
+                data.push("Tune , Whale and Shark have 20 Different Sizes");
                 break;
 
             default:

@@ -95,6 +95,13 @@ Client.bot.on('message', async (message) => {
     if (Client.config.MT) return; // Cek status bot apakah sedang maintenis atau tidak
     if (message.author.bot || message.channel.type === "dm") return; // Jangan hiraukan chat dari sesama bot dan pastikan chat berasal dari guild
 
+    // == Awal pengecekan mention BOT ==
+    // if (message.isMemberMentioned(Client.bot.user)) {
+    //     message.channel.send("Ada yang bisa Aisha bantu?");
+    //     return;
+    // }
+    // == Akhir pengecekan mention BOT ==
+
     // == Awal pengecekan user ==
     const users = message.mentions.users.map(user => {
         if (user.presence.status === "offline") return `**${user.tag}** sedang offline.`;
