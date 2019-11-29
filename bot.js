@@ -15,46 +15,7 @@ require('./util/eventHandler')(Client.bot, Client.config);
 console.log("[] Done!");
 // == Akhir event handler ==
 
-Client.bot.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find(ch => ch.name === 'out-off-topic');
-    if (!channel)
-        return;
-
-    member.user.send("Terima kasih telah bergabung kedalam Discord milik Informate Squad 😃\nSilahkan membaca channel ``#peraturan`` terlebih dahulu sebelum memulai aktifitas didalam server Discord milik Informate Squad.\n\nTerima kasih 😃");
-    channel.send(`Selamat datang di Informate Server, ${member}! Taati peraturan yang telah dibuat pada ` + member.guild.channels.find(channel => channel.name === "peraturan").toString() + " demi kenyamanan kita bersama.\n\nTerima kasih 😃");
-
-    // For log
-    member.guild.channels.find(ch => ch.name === 'member-log').send({
-        embed: {
-            color: 8311585,
-            timestamp: new Date(),
-            footer: {
-                text: "User Joined"
-            },
-            author: {
-                name: member.user.tag + " (" + member.user.id + ")",
-                icon_url: member.user.avatarURL
-            }
-        }
-    });
-});
-
-Client.bot.on('guildMemberRemove', member => {
-    member.guild.channels.find(ch => ch.name === 'member-log').send({
-        embed: {
-            color: 8311585,
-            timestamp: new Date(),
-            footer: {
-                text: "User Left"
-            },
-            author: {
-                name: member.user.tag + " (" + member.user.id + ")",
-                icon_url: member.user.avatarURL
-            }
-        }
-    });
-});
-
+// Awal init command ==
 console.log("[] Initialize command");
 let commandsList = fs.readdirSync('./commands/');
 
@@ -87,6 +48,7 @@ for (i = 0; i < commandsList.length; i++) {
 
 var regexList = new RegExp(Client.commandsRegex.map((key, item) => {return item}).join("|"));
 // console.log(regexList);
+// == Akhir init command ==
 
 console.log("[] Done!");
 console.log("[] Bot is ready to start ...");
@@ -96,10 +58,10 @@ Client.bot.on('message', async (message) => {
     if (message.author.bot || message.channel.type === "dm") return; // Jangan hiraukan chat dari sesama bot dan pastikan chat berasal dari guild
 
     // == Awal pengecekan mention BOT ==
-    // if (message.isMemberMentioned(Client.bot.user)) {
-    //     message.channel.send("Ada yang bisa Aisha bantu?");
-    //     return;
-    // }
+    if (message.isMemberMentioned(Client.bot.user)) {
+        message.channel.send("Ya?");
+        return;
+    }
     // == Akhir pengecekan mention BOT ==
 
     // == Awal pengecekan user ==
