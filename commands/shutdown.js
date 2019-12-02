@@ -9,7 +9,7 @@ module.exports = {
 	usage: '',
 	cooldown: 0,
     func: async (client, message, args) => {
-        if (message.author.id != "306616861456465924") return message.channel.send("You're not the bot the owner!")
+        if (message.author.id != "306616861456465924") return message.channel.send("You're not the bot the owner!");
         try {
             await message.channel.send("Bot is shutting down ...");
             process.exit()
