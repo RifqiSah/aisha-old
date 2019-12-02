@@ -11,10 +11,10 @@ module.exports = {
     func: (client, message, args) => {
         message.channel.send("Memeriksa ...").then(m => {
             let ping = m.createdTimestamp - message.createdTimestamp;
-            let choices = ["Ini adalah latency saya", "Apakah baik-baik saja? Saya tidak dapat melihat", "Saya berharap ini tidak buruk"];
+            let choices = ["Ini adalah latency aku", "Apakah baik-baik saja? Aku tidak dapat melihat!", "Aku berharap ini tidak buruk!"];
             let response = choices[Math.floor(Math.random() * choices.length)];
     
-            m.edit(`${response}: Bot Latency: \`${ping}\`, API Latency: \`${Math.round(bot.ping)}\``);
+            m.edit(`${response}\nBot Latency: \`${ping}\`, API Latency: \`${Math.round(client.bot.ping)}\``);
         });
     }
 }
