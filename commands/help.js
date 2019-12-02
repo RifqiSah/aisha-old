@@ -20,19 +20,19 @@ module.exports = {
         }
         else {
             let name = args[0].toLowerCase();
-            data.push(`Informasi mengenai command \`${name}\`:\n`);
-
-            const command = client.commands.get(name);
+            const command = client.commands.get(name) || client.commands.get(client.commandsAlias.get(name));
             if (!command) {
                 return message.reply('Command tidak valid!');
             }
 
-            if (command.aliases) data.push(`**Alias:** ` + (command.aliases.length ? `${command.aliases.join(", ")}` : `Tidak Ada`));
-            if (command.desc) data.push(`**Deskripsi:** ${command.desc}`);
-            if (command.usage) data.push(`**Penggunaan:** ${client.config.PREFIX}${name} ${command.usage}`);
-            if (command.role) data.push(`**Role:** ` + (command.role.length ? command.role.map(i => `<@` + i + `>`).join(", ") : `Tidak Ada`));
+            data.push(`Informasi mengenai command \`${command.name}\`:\n`);
 
-            data.push(`**Cooldown:** ${command.cooldown} detik(s)`);
+            if (command.aliases) data.push(`\`Alias:\` ` + (command.aliases.length ? `${command.aliases.join(", ")}` : `Tidak Ada`));
+            if (command.desc) data.push(`\`Deskripsi:\` ${command.desc}`);
+            if (command.usage) data.push(`\`Penggunaan:\` ${client.config.PREFIX}${name} ${command.usage}`);
+            if (command.role) data.push(`\`Role:\` ` + (command.role.length ? command.role.map(i => message.guild.roles.get(`${i}`)).join(", ") : `Tidak Ada`));
+
+            data.push(`\`Cooldown:\` ${command.cooldown} detik`);
             data.push(`\nAnda dapat menggunakan \`${client.config.PREFIX}help\` untuk mendapatkan informasi dari semua command yang tersedia.`);
         }
 

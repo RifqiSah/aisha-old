@@ -14,6 +14,9 @@ if (!Client.config.ENABLE) {
     console.log("[X] Bot is disabled!");
     return;
 }
+// Bot LOGIN
+else
+    Client.bot.login(Client.config.TOKEN);
 // == akhir cek status BOT ==
 
 // == Awal event handler ==
@@ -116,7 +119,7 @@ Client.bot.on('message', async (message) => {
                 // Tidak ada? Tampilkan pesan error
                 else {
                     message.delete().catch(O_o=>{});
-                    message.channel.send(`Anda tidak mempunyai ijin untuk menggunakan command **${commandfile.name}**!`).then(msg => {msg.delete(5000)}).catch();
+                    message.channel.send(`Anda tidak mempunyai ijin untuk menggunakan command \`${commandfile.name}\`!`).then(msg => {msg.delete(5000)}).catch();
                 }
             // Jika role tidak ada jalankan saja
             } else {
@@ -126,11 +129,8 @@ Client.bot.on('message', async (message) => {
         // Command tidak aktif
         else {
             message.delete().catch(O_o=>{});
-            message.channel.send(`Command **${commandfile.name}** sedang tidak aktif!`).then(msg => {msg.delete(5000)}).catch();
+            message.channel.send(`Command \`${commandfile.name}\` sedang tidak aktif!`).then(msg => {msg.delete(5000)}).catch();
         }
     }
     // == Akhir command manager ==
 });
-
-// Bot LOGIN
-Client.bot.login(Client.config.TOKEN);
