@@ -15,9 +15,9 @@ module.exports = {
             const hrs = Math.floor((ms / (1000 * 60 * 60)) % 60).toString();
             const days = Math.floor((ms / (1000 * 60 * 60 * 24)) % 60).toString();
 
-            return `${days.padStart(1, '0')} hari, ${hrs.padStart(2, '0')} jam, ${min.padStart(2, '0')} menit, ${sec.padStart(2, '0')} detik, `
+            return `${days.padStart(1, '0')} hari, ${hrs.padStart(2, '0')} jam, ${min.padStart(2, '0')} menit, ${sec.padStart(2, '0')} detik.`;
         }
     
-        message.channel.send(`Aku sudah online selama: ${duration(bot.uptime)}`)
+        message.channel.send(`Aku sudah online selama: ${duration(client.bot.uptime)}`);
     }
 }
