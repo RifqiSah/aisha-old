@@ -9,6 +9,13 @@ Client = {
 }
 // == Akhir inisialisasi ==
 
+// == Awal cek status BOT ==
+if (!Client.config.ENABLE) {
+    console.log("[X] Bot is disabled!");
+    return;
+}
+// == akhir cek status BOT ==
+
 // == Awal event handler ==
 console.log("[] Initialize handler");
 require('./util/eventHandler')(Client.bot, Client.config);
@@ -126,5 +133,4 @@ Client.bot.on('message', async (message) => {
 });
 
 // Bot LOGIN
-if (Client.config.ENABLE)
-    Client.bot.login(Client.config.TOKEN);
+Client.bot.login(Client.config.TOKEN);
