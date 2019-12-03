@@ -9,8 +9,6 @@ module.exports = {
 	usage: '',
 	cooldown: 0,
     func: (client, message, args) => {
-        message.channel.send('Menjalankan ulang BOT ....')
-        .then(msg => client.bot.destroy())
-        .then(() => client.bot.login(client.config.TOKEN));
+        message.channel.send('Aisha, bangun ~').then(process.exit());
     }
 }
