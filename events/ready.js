@@ -3,7 +3,6 @@ module.exports = (bot, config) => {
     console.log(`[] Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
 
     const activities_list = [
-        "NULL",
         config.PREFIX + "help for command.",
         config.VERSION + " is running.",
         "Informate's BOT.",
@@ -11,7 +10,6 @@ module.exports = (bot, config) => {
     ];
 
     setInterval(() => {
-        const index = Math.floor(Math.random() * (activities_list.length - 1) + 1);
-        bot.user.setActivity(activities_list[index]);
+        bot.user.setActivity(activities_list[Math.floor(Math.random() * activities_list.length)]);
     }, 5000);
 }

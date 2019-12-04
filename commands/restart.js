@@ -1,6 +1,6 @@
 module.exports = {
     name: "restart",
-    desc: "Menjalankan ulang BOT dari server.",
+    desc: "Menjalankan ulang Aisha dari server.",
     enable: true,
     regex: false,
     help: true,
