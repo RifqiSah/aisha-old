@@ -9,6 +9,7 @@ module.exports = {
 	usage: '',
 	cooldown: 0,
     func: (client, message, args) => {
-        message.channel.send('Aisha, bangun ~').then(process.exit());
+        message.channel.send('Aisha, bangun ~');
+        process.exit();
     }
 }

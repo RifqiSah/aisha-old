@@ -6,7 +6,7 @@ module.exports = {
     help: true,
     role: [],
     aliases: [],
-	usage: '[Pesan Anda]',
+	usage: '[pesan anda]',
 	cooldown: 0,
     func: (client, message, args) => {
         message.delete();

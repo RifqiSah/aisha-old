@@ -9,6 +9,6 @@ module.exports = {
 	usage: '',
 	cooldown: 0,
     func: (client, message, args) => {
-        message.channel.send('Dalam perbaikan!');
+        message.channel.send('Dalam perbaikan! Tidak ada fitur baru!');
     }
 }

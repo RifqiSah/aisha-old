@@ -5,8 +5,8 @@ module.exports = {
     regex: false,
     help: true,
     role: [],
-    aliases: [],
-	usage: '[Nama Command]',
+    aliases: ['h'],
+	usage: '[nama command]',
 	cooldown: 0,
     func: (client, message, args) => {
         const data = [];
