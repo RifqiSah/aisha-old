@@ -1,6 +1,6 @@
 module.exports = {
     name: "rate",
-    desc: "Melihat info rate dari Dragon Nest. Rate yg tersedia yaitu [calypse, skila, fdn, ancient, ~~acc~~, taliman, jade, fishing, seafishing]",
+    desc: "Melihat info rate dari Dragon Nest. Rate yg tersedia yaitu [calypse, skila, fdn, ancient, taliman, jade, fishing, seafishing]",
     enable: true,
     regex: false,
     help: true,
