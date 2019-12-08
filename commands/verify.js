@@ -1,4 +1,3 @@
-// 652149362423627787
 module.exports = {
     name: "verify",
     desc: "Untuk verifikasi member yang baru bergabung pada Discord.",

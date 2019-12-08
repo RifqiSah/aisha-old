@@ -15,21 +15,21 @@ module.exports = {
         data.push("__**Rate Untuk " + rate.replace(/^\w/, c => c.toUpperCase()) + "**__\n");
 
         switch(rate) {
-            case "calypse":
+            case /\bkelip|callypse|calip|calypse|calipse|kelip\b/g.test(rate):
                 data.push("`Tier 1`: https://i.imgur.com/CMLeTwt.png");
                 data.push("`Tier 2`: https://i.imgur.com/dXNPCON.png");
                 data.push("`Tier 3`: https://i.imgur.com/TVTHPfm.png");
                 break;
 
-            case "skila":
+            case /\bskila|scylla|skilla\b/g.test(rate):
                 data.push("https://i.imgur.com/gJgXC7s.png");
                 break;
 
-            case "fdn":
+            case /\bfdn|forest|wepon|weapon\b/g.test(rate):
                 data.push("https://i.imgur.com/0IV0n3M.png");
                 break;
 
-            case "ancient":
+            case /\bancient|armor|skill\b/g.test(rate):
                 data.push("https://i.imgur.com/lWIvpby.png");
                 break;
 
@@ -37,16 +37,16 @@ module.exports = {
             //     data.push("https://i.imgur.com/0IV0n3M.png");
             //     break;
 
-            case "talisman":
+            case /\btalis|talisman\b/g.test(rate):
                 data.push("https://media.discordapp.net/attachments/519116465908219904/519116489362505729/guardian_talisman.png");
                 break;
 
-            case "jade":
+            case /\bjade|jewel\b/g.test(rate):
                 data.push("`Champion`: https://cdn.discordapp.com/attachments/597969449340895247/597978448622911501/2019070717144963454.png");
                 data.push("`Flawless`: https://cdn.discordapp.com/attachments/597969449340895247/597978678693068800/2019070717212085581.png");
                 break;
 
-            case "fishing":
+            case /\bfishing|mancing\b/g.test(rate):
                 data.push("Red Bass = 7.7%");
                 data.push("Hermalte Trout = 7.7%");
                 data.push("Brown Striped Salmon = 7.7%");
@@ -68,7 +68,7 @@ module.exports = {
                 data.push("Magical Rainbow Goldfish = 0.0044%");
                 break;
             
-            case "seafishing":
+            case /\bseafishing|event mancing\b/g.test(rate):
                 data.push("Shrimp = 22.5%");
                 data.push("Webfoot Octopus = 22.5%");
                 data.push("Lobster = 3.75%");
@@ -93,6 +93,7 @@ module.exports = {
 
             default:
                 data.push("Tidak ditemukan!");
+                data.push(`\nGunakan \`${client.config.PREFIX}help rate\` untuk melihat rate yang tersedia.`);
                 break;
         }
 
