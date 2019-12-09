@@ -13,7 +13,7 @@ module.exports = {
         if (!args.length) {
             data.push('Hai! Ini adalah daftar command yang tersedia:\n');
             client.commands.forEach(item => {
-                if (item.help) data.push(`\`${item.name}\` : ${item.desc}`);
+                if (item.help) data.push(`\`${item.name}\` : ${item.desc.split('.')[0]}.`);
             });
 
             data.push(`\nAnda dapat menggunakan \`${client.config.PREFIX}help [nama command]\` untuk mendapatkan informasi dari command tersebut.`);
