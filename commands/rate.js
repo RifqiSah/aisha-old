@@ -1,6 +1,6 @@
 module.exports = {
     name: "rate",
-    desc: "Melihat info rate dari Dragon Nest. Rate yg tersedia yaitu [calypse, skila, fdn, ancient, taliman, jade, fishing, seafishing]",
+    desc: "Melihat info rate dari Dragon Nest. Rate yg tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- ancient\n- taliman\n- jade\n- fishing\n- seafishing\`\`\`",
     enable: true,
     regex: false,
     help: true,
@@ -14,7 +14,7 @@ module.exports = {
 
         data.push("__**Rate Untuk " + rate.replace(/^\w/, c => c.toUpperCase()) + "**__\n");
 
-        switch(rate) {
+        switch(true) {
             case /\bkelip|callypse|calip|calypse|calipse|kelip\b/g.test(rate):
                 data.push("`Tier 1`: https://i.imgur.com/CMLeTwt.png");
                 data.push("`Tier 2`: https://i.imgur.com/dXNPCON.png");
@@ -68,7 +68,7 @@ module.exports = {
                 data.push("Magical Rainbow Goldfish = 0.0044%");
                 break;
             
-            case /\bseafishing|event mancing\b/g.test(rate):
+            case /\bseafishing|eventmancing\b/g.test(rate):
                 data.push("Shrimp = 22.5%");
                 data.push("Webfoot Octopus = 22.5%");
                 data.push("Lobster = 3.75%");
@@ -92,11 +92,11 @@ module.exports = {
                 break;
 
             default:
-                data.push("Tidak ditemukan!");
-                data.push(`\nGunakan \`${client.config.PREFIX}help rate\` untuk melihat rate yang tersedia.`);
+                data.push(`Rate untuk \`${rate}\` tidak ditemukan!`);
                 break;
         }
 
+        data.push(`\nGunakan \`${client.config.PREFIX}help rate\` untuk melihat rate yang tersedia.`);
         message.channel.send(data, { split: true });
     }
 }
