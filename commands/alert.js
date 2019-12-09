@@ -11,7 +11,7 @@ module.exports = {
     func: (client, message, args) => {
         message.delete();
 
-        var Organizer    = message.guild.roles.find(role => role.name === 'Developer').members.array();
+        var Organizer    = message.guild.roles.find(role => role.name === 'Organizer').members.array();
         for(var mOrganizer in Organizer) {
             Organizer[mOrganizer].user.send("Anda mendapatkan pesan penting dari " + message.author.username + ":", {
                 embed: {
