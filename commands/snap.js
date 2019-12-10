@@ -9,6 +9,8 @@ module.exports = {
 	usage: '[jumlah pesan]',
 	cooldown: 0,
     func: async (client, message, args) => {
+        message.delete();
+        
         if (!args) return message.channel.send('Mohon masukkan jumlah pesan yang akan dihapus!').then(msg => {msg.delete(5000)}).catch();
         if (isNaN(args)) return message.channel.send('Jumlah pesan tidak valid!').then(msg => {msg.delete(5000)}).catch();
 
