@@ -14,6 +14,7 @@ module.exports = {
         message.delete();
         let msg = await message.channel.send(`Menunggu \`${args}\` ...`);
 
+        if (isNaN(args)) return msg.edit("Argumen harus berjenis nomor!").then(msg => {msg.delete(5000)});
         await superagent.get(`https://dev.alriftech.com/core/dragonnest_update/${args}`)
         .then(res => {
             msg.edit(`Sukses \`${args}\`! Respon:\`\`\`${res.text}\`\`\``).then(msg => {msg.delete(5000)});
