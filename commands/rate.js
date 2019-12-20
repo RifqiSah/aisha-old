@@ -1,6 +1,6 @@
 module.exports = {
     name: "rate",
-    desc: "Melihat info rate dari Dragon Nest. Rate yg tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- ancient\n- taliman\n- jade\n- fishing\n- seafishing\`\`\`",
+    desc: "Melihat info rate dari Dragon Nest. Rate yg tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- ancient\n- taliman\n- jade\n- acc\n- fishing\n- seafishing\`\`\`",
     enable: true,
     regex: false,
     help: true,
@@ -33,9 +33,10 @@ module.exports = {
                 data.push("https://i.imgur.com/lWIvpby.png");
                 break;
 
-            // case "acc":
-            //     data.push("https://i.imgur.com/0IV0n3M.png");
-            //     break;
+            case /\bacc|ring|earring|ear|neck|nek\b/g.test(rate):
+                data.push("`Rate` : https://cdn.discordapp.com/attachments/418464661566914584/657620418563407883/unknown.png")
+                data.push("`Bahan`: https://cdn.discordapp.com/attachments/418464661566914584/657620284731293728/unknown.png");
+                break;
 
             case /\btalis|talisman\b/g.test(rate):
                 data.push("https://media.discordapp.net/attachments/519116465908219904/519116489362505729/guardian_talisman.png");
