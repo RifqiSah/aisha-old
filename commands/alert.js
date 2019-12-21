@@ -7,7 +7,7 @@ module.exports = {
     role: [],
     aliases: ['report'],
 	usage: '[pesan anda]',
-	cooldown: 0,
+	cooldown: 60,
     func: (client, message, args) => {
         message.delete();
 

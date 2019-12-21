@@ -7,7 +7,7 @@ module.exports = {
     role: [],
     aliases: ['saran'],
 	usage: '[pesan]',
-	cooldown: 0,
+	cooldown: 30,
     func: async (client, message, args) => {
         let msg = args.join(" ");
 

@@ -7,7 +7,7 @@ module.exports = {
     role: ['587649345327988736', '372915947478056960'],
     aliases: ['turnoff', 'botkill', 'botstop'],
 	usage: '',
-	cooldown: 0,
+	cooldown: 60,
     func: async (client, message, args) => {
         if (message.author.id != client.config.OWNER) return message.channel.send("Anda bukan pemilik hati aku!");
         try {

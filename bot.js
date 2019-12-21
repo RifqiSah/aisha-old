@@ -7,6 +7,8 @@ Client = {
     bot: new Discord.Client(),
     discord_embed: new Discord.RichEmbed()
 }
+
+var cmdcd = new Set();
 // == Akhir inisialisasi ==
 
 // == Awal cek status BOT ==
@@ -105,6 +107,21 @@ Client.bot.on('message', async (message) => {
     // == Awal command manager ==
     let commandfile = Client.commands.get(command) || Client.commands.get(Client.commandsAlias.get(command)); // Cari file command yang ditunjuk
     if (commandfile) {
+        // Cek apakah command ada cooldownnya
+        if (commandfile.cooldown > 0) {
+            // Cek dulu apakah user sudah menjalankan command sebelumnya?
+            if (cmdcd.has(message.author.id))
+                return message.reply(`Anda harus menunggu selama \`${commandfile.cooldown} detik\` sebelum menggunakan command \`${commandfile.name}\` kembali!`).then(msg => {msg.delete(10000)}).catch();
+            
+            // Kalau tidak
+            cmdcd.add(message.author.id); // Tambahkan user kedalam list cooldown
+            
+            // Hapus user setelah timeout habis
+            setTimeout(() => {
+                cmdcd.delete(message.author.id);
+            }, commandfile.cooldown * 1000);
+        }
+
         console.log(`-> Command '${commandfile.name}' executed! (Regex: ${(regex ? "YES" : "NO")})`);
         
         // Cek apakah command sedang aktif atau tidak
