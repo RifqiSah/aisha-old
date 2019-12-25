@@ -1,6 +1,6 @@
 module.exports = {
     name: "rate",
-    desc: "Melihat info rate dari Dragon Nest. Rate yg tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- ancient\n- taliman\n- jade\n- acc\n- fishing\n- seafishing\`\`\`",
+    desc: "Melihat info rate dari Dragon Nest. Rate yang tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- ancient\n- taliman\n- jade\n- acc\n- fishing\n- seafishing\n- fusi\`\`\`",
     enable: true,
     regex: false,
     help: true,
@@ -90,6 +90,15 @@ module.exports = {
                 
                 data.push("Shrimp up to Deep Sea Fish have 10 Different Sizes");
                 data.push("Tune , Whale and Shark have 20 Different Sizes");
+                break;
+
+            case /\bfusi|fusion|cost|cosu|cossu|cost|costume|kostum\b/g.test(rate):
+                data.push("https://cdn.discordapp.com/attachments/526456830193434624/659156809382232077/cash_synthesis_rate_dnsea.png");
+                break;
+
+            case /\bmount\b/g.test(rate):
+                data.push("`Current in SEA`: https://cdn.discordapp.com/attachments/598027048220491776/598033562297434155/U1iGyFa.png");
+                data.push("`Future in SEA (Current in KR)`: https://cdn.discordapp.com/attachments/526456830193434624/634019881314025472/92rUvBz.png");
                 break;
 
             default:
