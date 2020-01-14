@@ -1,6 +1,6 @@
 module.exports = {
     name: "info",
-    desc: "Melihat info hal-hal yang ada pada Dragon Nest. Info yang tersedia yaitu:\`\`\`- mq\`\`\`",
+    desc: "Melihat info hal-hal yang ada pada Dragon Nest. Info yang tersedia yaitu:\`\`\`- mq\n- sp/np\`\`\`",
     enable: true,
     regex: false,
     help: true,
@@ -17,6 +17,10 @@ module.exports = {
         switch(true) {
             case /\bmq|mainquest|cp\b/g.test(info):
                 data.push("https://cdn.discordapp.com/attachments/432903741029613569/560061874406686721/unknown.png");
+                break;
+
+            case /\bnest|dungeon|sp|np|stage point|nest point\b/g.test(info):
+                data.push("https://cdn.discordapp.com/attachments/526456830193434624/666496405740847115/unknown.png");
                 break;
 
             default:
