@@ -12,10 +12,10 @@ module.exports = {
         let rate = args.join(" ").toLowerCase();
         let data = [];
 
-        data.push("__**Rate Untuk " + rate.replace(/^\w/, c => c.toUpperCase()) + "**__\n");
+        data.push("__**Rate Untuk " + rate.replace(/\b\w/g, l => l.toUpperCase()) + "**__\n");
 
         switch(true) {
-            case /\bkelip|callypse|calip|calypse|calipse|kelip\b/g.test(rate):
+            case /\callypse|calip|calypse|calipse|kelip\b/g.test(rate):
                 data.push("`Tier 1`: https://i.imgur.com/CMLeTwt.png");
                 data.push("`Tier 2`: https://i.imgur.com/dXNPCON.png");
                 data.push("`Tier 3`: https://i.imgur.com/TVTHPfm.png");
@@ -69,7 +69,7 @@ module.exports = {
                 data.push("Magical Rainbow Goldfish = 0.0044%");
                 break;
             
-            case /\bseafishing|eventmancing\b/g.test(rate):
+            case /\bseafishing|event mancing\b/g.test(rate):
                 data.push("Shrimp = 22.5%");
                 data.push("Webfoot Octopus = 22.5%");
                 data.push("Lobster = 3.75%");

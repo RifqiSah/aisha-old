@@ -12,7 +12,7 @@ module.exports = {
         let info = args.join(" ").toLowerCase();
         let data = [];
 
-        data.push("__**Info Untuk " + info.replace(/^\w/, c => c.toUpperCase()) + "**__\n");
+        data.push("__**Info Untuk " + info.replace(/\b\w/g, l => l.toUpperCase()) + "**__\n");
 
         switch(true) {
             case /\bmq|mainquest|cp\b/g.test(info):
