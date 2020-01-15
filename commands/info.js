@@ -23,6 +23,10 @@ module.exports = {
                 data.push("https://cdn.discordapp.com/attachments/526456830193434624/666496405740847115/unknown.png");
                 break;
 
+            case /\bcloister|sunset\b/g.test(info):
+                data.push("https://i.imgur.com/kzFZTTh.png");
+                break;
+                
             default:
                 data.push(`Info untuk \`${info}\` tidak ditemukan!`);
                 break;
