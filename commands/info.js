@@ -1,6 +1,6 @@
 module.exports = {
     name: "info",
-    desc: "Melihat info hal-hal yang ada pada Dragon Nest. Info yang tersedia yaitu:\`\`\`- mq\n- sp/np\`\`\`",
+    desc: "Melihat info hal-hal yang ada pada Dragon Nest. Info yang tersedia yaitu:\`\`\`- mq\n- sp/np\n- cloister\`\`\`",
     enable: true,
     regex: false,
     help: true,
@@ -26,7 +26,7 @@ module.exports = {
             case /\bcloister|sunset\b/g.test(info):
                 data.push("https://i.imgur.com/kzFZTTh.png");
                 break;
-                
+
             default:
                 data.push(`Info untuk \`${info}\` tidak ditemukan!`);
                 break;
