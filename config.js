@@ -1,5 +1,5 @@
 exports.ENABLE      = true;
-exports.VERSION     = "v7.5.1";
+exports.VERSION     = "v7.6.1";
 exports.TOKEN       = 'NDI4NDMyMDcyMzI0MTUzMzQ0.DaILCw.whlk09KLzXEWfvC_XHnPjARfghA';
 exports.PREFIX      = '.';
 exports.OWNER       = "306616861456465924";
