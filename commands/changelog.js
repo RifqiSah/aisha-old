@@ -13,15 +13,15 @@ module.exports = {
 
         data.push(`__**Version ${client.config.VERSION} Changelog**__`);
         data.push("\n**Penambahan**");
-        data.push("- BOT: Command `changelog` untuk melihat perubahan yang terjadi pada Aisha");
-        data.push("- Module `rate`: Command bdn, mirage, paraselene, dj/dreamy jade, celestone, lapis, conversion weapon/tf weapon, dan robot pet");
-        data.push("- Module `info`: Command hero talisman/epic talisman dan nm/nightmare");
+        data.push("☑ BOT: Command `changelog` untuk melihat perubahan yang terjadi pada Aisha.");
+        data.push("☑ Module `rate`: Command bdn, mirage, paraselene, dj/dreamy jade, celestone, lapis, conversion weapon/tf weapon, dan robot pet.");
+        data.push("☑ Module `info`: Command hero talisman/epic talisman dan nm/nightmare.");
 
         data.push("\n**Perubahan**");
-        data.push("Tidak ada");
+        data.push("Tidak ada.");
 
         data.push("\n**Penghapusan**");
-        data.push("Tidak ada")
+        data.push("Tidak ada.")
 
         message.channel.send(data, { split: true });
     }
