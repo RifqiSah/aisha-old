@@ -5,6 +5,6 @@ module.exports = (bot, config) => {
     bot.on("guildMemberAdd", (member) => reqEvent("guildMemberAdd")(member));
     bot.on("guildMemberRemove", (member) => reqEvent("guildMemberRemove")(member));
 
-    bot.on("warn", reqEvent("warn")(bot, config));
-    bot.on("error", reqEvent("error")(bot, config));
+    bot.on("warn", reqEvent("warn"));
+    bot.on("error", reqEvent("error"));
 }

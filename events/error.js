@@ -1,3 +1,3 @@
-module.exports = (bot, config) => {
+module.exports = () => {
     console.error();
 }
