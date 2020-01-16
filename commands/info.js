@@ -31,7 +31,7 @@ module.exports = {
                 data.push("https://i.imgur.com/JxaRyuC.png");
                 break;
 
-            case /\bnm|nightmare\n/g.test(info):
+            case /\bnm|nightmare\b/g.test(info):
                 data.push("`Stage 1 & Stage 2 Bosses Drop rate`: https://i.imgur.com/eHmjgRw.png");
                 data.push("`Nightmare Silver & Gold Chest Selection`: https://i.imgur.com/9tgxCMw.png");
                 break;
