@@ -1,6 +1,6 @@
 module.exports = {
     name: "info",
-    desc: "Melihat info hal-hal yang ada pada Dragon Nest. Info yang tersedia yaitu:\`\`\`- mq\n- sp/np\n- cloister\n- hero talisman/epic talisman\`\`\`",
+    desc: "Melihat info hal-hal yang ada pada Dragon Nest. Info yang tersedia yaitu:\`\`\`- mq\n- sp/np\n- cloister\n- hero talisman/epic talisman\n- nm/nightmare\`\`\`",
     enable: true,
     regex: false,
     help: true,
