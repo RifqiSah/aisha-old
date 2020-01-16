@@ -1,6 +1,6 @@
 module.exports = {
     name: "rate",
-    desc: "Melihat info rate dari Dragon Nest. Rate yang tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- ancient\n- bdn\n- taliman\n- jade\n- mirage\n- paraselene\n- dj/dreamy jade\n- acc\n- fishing\n- seafishing\n- fusi\n- celestone\n- lapis\n- conversion weapon/tf weapon\n- robot pet\`\`\`",
+    desc: "Melihat info rate dari Dragon Nest. Rate yang tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- ancient\n- bdn\n- taliman\n- jade\n- mirage\n- paraselene\n- dj\n- acc\n- fishing\n- seafishing\n- fusi\n- celestone\n- lapis\n- conversion weapon/tf weapon\n- robot pet\`\`\`",
     enable: true,
     regex: false,
     help: true,
@@ -59,7 +59,7 @@ module.exports = {
                 data.push("https://i.imgur.com/yzZyjsp.png");
                 break;
 
-            case /\bdj|dreamy jade\b/g.test(rate):
+            case /\bdj\b/g.test(rate):
                 data.push("`1 to 10`: https://i.imgur.com/lpqdJw7.png");
                 data.push("`11 to 15`: https://i.imgur.com/5hqmq3Y.png");
                 break;
