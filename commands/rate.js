@@ -51,15 +51,15 @@ module.exports = {
                 data.push("`Flawless`: https://cdn.discordapp.com/attachments/597969449340895247/597978678693068800/2019070717212085581.png");
                 break;
             
-            case /\bmirage\b/g.test(info):
+            case /\bmirage\b/g.test(rate):
                 data.push("https://i.imgur.com/5aPkiAr.png");
                 break;
 
-            case /\bparaselene\b/g.test(info):
+            case /\bparaselene\b/g.test(rate):
                 data.push("https://i.imgur.com/yzZyjsp.png");
                 break;
 
-            case /\bdj|dreamy jade\b/g.test(info):
+            case /\bdj|dreamy jade\b/g.test(rate):
                 data.push("`1 to 10`: https://i.imgur.com/lpqdJw7.png");
                 data.push("`11 to 15`: https://i.imgur.com/5hqmq3Y.png");
                 break;
