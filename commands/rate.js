@@ -1,6 +1,6 @@
 module.exports = {
     name: "rate",
-    desc: "Melihat info rate dari Dragon Nest. Rate yang tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- ancient\n- taliman\n- jade\n- acc\n- fishing\n- seafishing\n- fusi\`\`\`",
+    desc: "Melihat info rate dari Dragon Nest. Rate yang tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- ancient\n- bdn\n- taliman\n- jade\n- mirage\n- paraselene\n- dj/dreamy jade\n- acc\n- fishing\n- seafishing\n- fusi\n- celestone\n- lapis\n- conversion weapon/tf weapon\n- robot pet\`\`\`",
     enable: true,
     regex: false,
     help: true,
@@ -33,6 +33,10 @@ module.exports = {
                 data.push("https://i.imgur.com/lWIvpby.png");
                 break;
 
+            case /\bbdn\b/g.test(rate):
+                data.push("https://i.imgur.com/4osWnMm.png");
+                break;
+
             case /\bacc|ring|earring|ear|neck|nek\b/g.test(rate):
                 data.push("`Rate` : https://cdn.discordapp.com/attachments/418464661566914584/657620418563407883/unknown.png")
                 data.push("`Bahan`: https://cdn.discordapp.com/attachments/418464661566914584/657620284731293728/unknown.png");
@@ -45,6 +49,19 @@ module.exports = {
             case /\bjade|jewel\b/g.test(rate):
                 data.push("`Champion`: https://cdn.discordapp.com/attachments/597969449340895247/597978448622911501/2019070717144963454.png");
                 data.push("`Flawless`: https://cdn.discordapp.com/attachments/597969449340895247/597978678693068800/2019070717212085581.png");
+                break;
+            
+            case /\bmirage\b/g.test(info):
+                data.push("https://i.imgur.com/5aPkiAr.png");
+                break;
+
+            case /\bparaselene\b/g.test(info):
+                data.push("https://i.imgur.com/yzZyjsp.png");
+                break;
+
+            case /\bdj|dreamy jade\b/g.test(info):
+                data.push("`1 to 10`: https://i.imgur.com/lpqdJw7.png");
+                data.push("`11 to 15`: https://i.imgur.com/5hqmq3Y.png");
                 break;
 
             case /\bfishing|mancing\b/g.test(rate):
@@ -99,6 +116,43 @@ module.exports = {
             case /\bmount\b/g.test(rate):
                 data.push("`Current in SEA`: https://cdn.discordapp.com/attachments/598027048220491776/598033562297434155/U1iGyFa.png");
                 data.push("`Future in SEA (Current in KR)`: https://cdn.discordapp.com/attachments/526456830193434624/634019881314025472/92rUvBz.png");
+                break;
+
+            case /\bcelestone\b/g.test(rate):
+                data.push("Dungeon Boss Drop = 1%");
+                data.push("Invader Boss Drop = 1%");
+                data.push("Nest End Chest = 1%");
+                break;
+
+            case /\blapis\b/g.test(rate):
+                data.push("Easy = 0%");
+                data.push("Norm = 0.3%");
+                data.push("Hard = 1.7%");
+                data.push("Master = 3.4%");
+                data.push("Abyss = 10%");
+                data.push("F1 = 12%");
+                data.push("F2 = 14%");
+                data.push("F3 = 17%");
+                data.push("F4 = 19%");
+                data.push("F5 = 23%");
+                data.push("F6 = 27%");
+                data.push("F7 = 31%");
+                data.push("F8 = 36%");
+                data.push("F9 = 43%");
+                data.push("F10 = 50%");
+                data.push("F11 = 58%");
+                break;
+
+            case /\bconversion weapon|tf weapon\b/g.test(rate):
+                data.push("https://cdn.discordapp.com/attachments/519164580476223500/519168748075221001/Conversion_weapon_rate.png");
+                break;
+
+            case /\brobot pet\b/g.test(rate):
+                data.push("How to Get Accessory =>");
+                data.push("Step 1 - Exchange Legend Robot to get [Heart Pounding Pet Accessory Pouch]");
+                data.push("Step 2 - Open Pouch");
+                data.push("Step 3 - Get Love of Friend or Costume RNG from Pouch");
+                data.push("https://i.imgur.com/o4NRzCV.png");
                 break;
 
             default:

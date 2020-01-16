@@ -1,6 +1,6 @@
 module.exports = {
     name: "info",
-    desc: "Melihat info hal-hal yang ada pada Dragon Nest. Info yang tersedia yaitu:\`\`\`- mq\n- sp/np\n- cloister\`\`\`",
+    desc: "Melihat info hal-hal yang ada pada Dragon Nest. Info yang tersedia yaitu:\`\`\`- mq\n- sp/np\n- cloister\n- hero talisman/epic talisman\`\`\`",
     enable: true,
     regex: false,
     help: true,
@@ -25,6 +25,15 @@ module.exports = {
 
             case /\bcloister|sunset\b/g.test(info):
                 data.push("https://i.imgur.com/kzFZTTh.png");
+                break;
+
+            case /\bhero talisman|epic talisman\b/g.test(info):
+                data.push("https://i.imgur.com/JxaRyuC.png");
+                break;
+
+            case /\bnm|nightmare\n/g.test(info):
+                data.push("`Stage 1 & Stage 2 Bosses Drop rate`: https://i.imgur.com/eHmjgRw.png");
+                data.push("`Nightmare Silver & Gold Chest Selection`: https://i.imgur.com/9tgxCMw.png");
                 break;
 
             default:
