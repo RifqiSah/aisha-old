@@ -12,7 +12,7 @@ module.exports = {
         let rate = args.join(" ").toLowerCase();
         let data = [];
 
-        data.push("__**Rate Untuk " + rate.replace(/\b\w/g, l => l.toUpperCase()) + "**__\n");
+        data.push("__**Rate Untuk " + rate.replace(/\b\w/g, l => l.toUpperCase()).replace(/^([\w\-]{2,3})/g, (m, c) => c.toUpperCase()) + "**__\n");
 
         switch(true) {
             case /\callypse|calip|calypse|calipse|kelip\b/g.test(rate):
