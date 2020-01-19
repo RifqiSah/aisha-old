@@ -1,6 +1,6 @@
 module.exports = {
     name: "rate",
-    desc: "Melihat info rate dari Dragon Nest. Rate yang tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- ancient\n- bdn\n- taliman\n- jade\n- mirage\n- paraselene\n- dj\n- acc\n- fishing\n- seafishing\n- fusi\n- celestone\n- lapis\n- conversion weapon/tf weapon\n- robot pet\`\`\`",
+    desc: "Melihat info rate dari Dragon Nest. Rate yang tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- ancient\n- bdn\n- taliman\n- jade\n- mirage\n- paraselene\n- dj\n- acc\n- fishing\n- seafishing\n- fusi\n- celestone\n- lapis\n- conversion weapon/tf weapon\n- tf fragment/fragment tf\n- robot pet\`\`\`",
     enable: true,
     regex: false,
     help: true,
@@ -12,7 +12,8 @@ module.exports = {
         let rate = args.join(" ").toLowerCase();
         let data = [];
 
-        data.push("__**Rate Untuk " + rate.replace(/\b\w/g, l => l.toUpperCase()).replace(/^([\w\-]{2,3})/g, (m, c) => c.toUpperCase()) + "**__\n");
+        rate = rate.replace(/\b\w/g, l => l.toUpperCase()).replace(/\b[a-zA-Z]{2,3}\b/g, i => i.toUpperCase());
+        data.push("__**Rate Untuk " + rate + "**__\n");
 
         switch(true) {
             case /\callypse|calip|calypse|calipse|kelip\b/g.test(rate):
@@ -145,6 +146,18 @@ module.exports = {
 
             case /\bconversion weapon|tf weapon\b/g.test(rate):
                 data.push("https://cdn.discordapp.com/attachments/519164580476223500/519168748075221001/Conversion_weapon_rate.png");
+                break;
+
+            case /\btf fragment|fragment tf\b/g.test(rate):
+                data.push("Conversion Armor Fragment (10) : 9,05%");
+                data.push("Conversion Armor Fragment (30) : 25,68%");
+                data.push("Conversion Armor Fragment (50) : 43,26%");
+                data.push("Conversion Armor Fragment (70) : 11,02%");
+                data.push("Conversion Armor Fragment (100) : 9,74%");
+                data.push("Conversion Armor Fragment (500) : 1,08%");
+                data.push("Conversion Armor Fragment (1000) : 0,14%");
+                data.push("Conversion Armor Fragment (3000) : 0,02%");
+                data.push("Conversion Thread :0,01%");
                 break;
 
             case /\brobot pet\b/g.test(rate):

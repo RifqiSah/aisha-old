@@ -13,12 +13,12 @@ module.exports = {
 
         data.push(`__**Version ${client.config.VERSION} Changelog**__`);
         data.push("\n**Penambahan:**");
-        data.push("★ BOT: Command `changelog` untuk melihat perubahan yang terjadi pada Aisha.");
-        data.push("★ Module `rate`: Command bdn, mirage, paraselene, dj, celestone, lapis, conversion weapon/tf weapon, dan robot pet.");
-        data.push("★ Module `info`: Command hero talisman/epic talisman dan nm/nightmare.");
+        // data.push("★ BOT: Command `changelog` untuk melihat perubahan yang terjadi pada Aisha.");
+        data.push("★ Module `rate`: Command tf fragment/fragment tf.");
+        // data.push("★ Module `info`: Command hero talisman/epic talisman dan nm/nightmare.");
 
         data.push("\n**Perubahan:**");
-        data.push("Tidak ada");
+        data.push("★ Regex untuk `rate` dan `info` dalam mendeteksi 2-3 karakter pada awal kata.");
 
         data.push("\n**Penghapusan:**");
         data.push("Tidak ada")
