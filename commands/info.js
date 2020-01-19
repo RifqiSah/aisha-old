@@ -12,8 +12,8 @@ module.exports = {
         let info = args.join(" ").toLowerCase();
         let data = [];
 
-        info = info.replace(/\b\w/g, l => l.toUpperCase()).replace(/\b[a-zA-Z]{2,3}\b/g, i => i.toUpperCase());
-        data.push("__**Info Untuk " + info + "**__\n");
+        let infos = info.replace(/\b\w/g, l => l.toUpperCase()).replace(/\b[a-zA-Z]{2,3}\b/g, i => i.toUpperCase());
+        data.push("__**Info Untuk " + infos + "**__\n");
 
         switch(true) {
             case /\bmq|mainquest|cp\b/g.test(info):
@@ -38,7 +38,7 @@ module.exports = {
                 break;
 
             default:
-                data.push(`Info untuk \`${info}\` tidak ditemukan!`);
+                data.push(`Info untuk \`${infos}\` tidak ditemukan!`);
                 break;
         }
 

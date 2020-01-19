@@ -12,8 +12,8 @@ module.exports = {
         let rate = args.join(" ").toLowerCase();
         let data = [];
 
-        rate = rate.replace(/\b\w/g, l => l.toUpperCase()).replace(/\b[a-zA-Z]{2,3}\b/g, i => i.toUpperCase());
-        data.push("__**Rate Untuk " + rate + "**__\n");
+        let rates = rate.replace(/\b\w/g, l => l.toUpperCase()).replace(/\b[a-zA-Z]{2,3}\b/g, i => i.toUpperCase());
+        data.push("__**Rate Untuk " + rates + "**__\n");
 
         switch(true) {
             case /\callypse|calip|calypse|calipse|kelip\b/g.test(rate):
@@ -169,7 +169,7 @@ module.exports = {
                 break;
 
             default:
-                data.push(`Rate untuk \`${rate}\` tidak ditemukan!`);
+                data.push(`Rate untuk \`${rates}\` tidak ditemukan!`);
                 break;
         }
 
