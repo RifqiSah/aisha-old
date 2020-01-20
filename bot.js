@@ -191,7 +191,7 @@ Client.bot.on('message', async (message) => {
     // == Akhir command manager ==
 });
 
-client.bot.on('messageReactionAdd', (reaction, user) => {
+Client.bot.on('messageReactionAdd', (reaction, user) => {
     let message = reaction.message, emoji = reaction.emoji;
 
     if (emoji.name == '✅') {
