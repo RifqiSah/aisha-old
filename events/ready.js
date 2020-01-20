@@ -10,6 +10,7 @@ module.exports = (bot, config) => {
     ];
 
     setInterval(() => {
-        bot.user.setActivity(activities_list[Math.floor(Math.random() * activities_list.length)]);
+        bot.user.setStatus('dnd');
+        bot.user.setActivity(activities_list[Math.floor(Math.random() * activities_list.length)], { type: "WATCHING" });
     }, 10000);
 }
