@@ -192,6 +192,7 @@ Client.bot.on('message', async (message) => {
 });
 
 Client.bot.on('messageReactionAdd', (reaction, user) => {
+    console.log("Reaction test!");
     let message = reaction.message, emoji = reaction.emoji;
 
     if (emoji.name == '✅') {
