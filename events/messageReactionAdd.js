@@ -1,5 +1,5 @@
 module.exports = async (reaction, user) => {
-    console.log("-> Reaction baru terdeteksi!");
+    console.log(`-> Reaction baru '${reaction.emoji.name}' terdeteksi pada pesan '${reaction.message.id}'!`);
 
     // Ketika menerima reaction, cek jika pesan sebagian atau tidak
 	if (reaction.message.partial) {

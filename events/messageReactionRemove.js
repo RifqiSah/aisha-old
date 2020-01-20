@@ -1,5 +1,5 @@
 module.exports = async (reaction, user) => {
-    console.log("-> Reaction telah dihapus!");
+    console.log(`-> Reaction '${reaction.emoji.name}' telah dihapus dari pesan '${reaction.message.id}'!`);
 
     // Ketika menerima reaction, cek jika pesan sebagian atau tidak
 	if (reaction.message.partial) {
