@@ -191,26 +191,24 @@ Client.bot.on('message', async (message) => {
     // == Akhir command manager ==
 });
 
-Client.bot.on('messageReactionAdd', async (reaction, user) => {
-	// When we receive a reaction we check if the message is partial or not
-	if (reaction.message.partial) {
-		// If the message was removed the fetching might result in an API error, which we need to handle
-		try {
-			await reaction.message.fetch();
-		} catch (error) {
-			console.log('Something went wrong when fetching the message: ', error);
-		}
-	}
-	// Now the message has been cached and is fully available
-	console.log(`${reaction.message.author}'s message "${reaction.message.content}" gained a reaction!`);
-	// We can also check if the reaction is partial or not
-	if (reaction.partial) {
-		try {
-			await reaction.fetch();
-		} catch (error) {
-			console.log('Something went wrong when fetching the reaction: ', error);
-		}
-	}
-	// Now the reaction is fully available and the properties will be reflected accurately:
-	console.log(`${reaction.count} user(s) have given the same reaction to this message!`);
+client.bot.on('messageReactionAdd', (reaction, user) => {
+    let message = reaction.message, emoji = reaction.emoji;
+
+    if (emoji.name == '✅') {
+            // We don't have the member, but only the user...
+            // Thanks to the previous part, we know how to fetch it
+            message.guild.fetchMember(user.id).then(member => {
+                    // member.addRole('role_id');
+                    console.log(member.tag);
+            });
+    }
+
+    else if (emoji.name == '❎') {
+            message.guild.fetchMember(user.id).then(member => {
+                    console.log(member.tag);
+            });
+    }
+
+    // Remove the user's reaction
+    // reaction.remove(user);
 });
