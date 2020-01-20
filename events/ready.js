@@ -13,4 +13,7 @@ module.exports = (bot, config) => {
         bot.user.setStatus('dnd');
         bot.user.setActivity(activities_list[Math.floor(Math.random() * activities_list.length)], { type: "WATCHING" });
     }, 10000);
+
+    // Untuk ad-role select
+    bot.channels.get('668661382228475915').fetchMessage('668673903014707220');
 }

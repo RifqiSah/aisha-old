@@ -191,25 +191,76 @@ Client.bot.on('message', async (message) => {
     // == Akhir command manager ==
 });
 
-Client.bot.on('messageReactionAdd', (reaction, user) => {
-    console.log("Reaction test!");
-    let message = reaction.message, emoji = reaction.emoji;
+Client.bot.on('messageReactionAdd', async (reaction, user) => {
+    // Ketika menerima reaction, cek jika pesan sebagian atau tidak
+	if (reaction.message.partial) {
+		// Jika pesan sudah dihapus, akan terjadi API error, harus dihandle
+		try {
+			await reaction.message.fetch();
+		} catch (error) {
+			console.log('Terjadi error saat fetch pesan: ', error);
+		}
+	}
 
-    if (emoji.name == '✅') {
-            // We don't have the member, but only the user...
-            // Thanks to the previous part, we know how to fetch it
-            message.guild.fetchMember(user.id).then(member => {
-                    // member.addRole('role_id');
-                    console.log(member.tag);
-            });
+    // Cek juka jika reaction sebagian atau tidak
+	if (reaction.partial) {
+		try {
+            await reaction.fetch();
+		} catch (error) {
+			console.log('Terjadi error saat fetch reaction: ', error);
+		}
+    }
+    
+    // Filter emojinya
+    let message = reaction.message;
+    let emoji = reaction.emoji;
+
+    if (emoji == '🇲') {
+        message.guild.fetchMember(user.id).then(member => {
+            member.addRole('668660316036530216');
+        });
     }
 
-    else if (emoji.name == '❎') {
-            message.guild.fetchMember(user.id).then(member => {
-                    console.log(member.tag);
-            });
+    if (emoji == '🇹') {
+        message.guild.fetchMember(user.id).then(member => {
+            member.addRole('668680264096022550');
+        });
+    }
+});
+
+Client.bot.on('messageReactionRemove', async (reaction, user) => {
+    // Ketika menerima reaction, cek jika pesan sebagian atau tidak
+	if (reaction.message.partial) {
+		// Jika pesan sudah dihapus, akan terjadi API error, harus dihandle
+		try {
+			await reaction.message.fetch();
+		} catch (error) {
+			console.log('Terjadi error saat fetch pesan: ', error);
+		}
+	}
+
+    // Cek juka jika reaction sebagian atau tidak
+	if (reaction.partial) {
+		try {
+            await reaction.fetch();
+		} catch (error) {
+			console.log('Terjadi error saat fetch reaction: ', error);
+		}
+    }
+    
+    // Filter emojinya
+    let message = reaction.message;
+    let emoji = reaction.emoji;
+
+    if (emoji == '🇲') {
+        message.guild.fetchMember(user.id).then(member => {
+            member.removeRole('668660316036530216');
+        });
     }
 
-    // Remove the user's reaction
-    // reaction.remove(user);
+    if (emoji == '🇹') {
+        message.guild.fetchMember(user.id).then(member => {
+            member.removeRole('668680264096022550');
+        });
+    }
 });
