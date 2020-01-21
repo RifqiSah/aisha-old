@@ -5,6 +5,7 @@ module.exports = (bot, config) => {
     bot.on("guildMemberAdd", (member) => reqEvent("guildMemberAdd")(member));
     bot.on("guildMemberRemove", (member) => reqEvent("guildMemberRemove")(member));
 
-    // bot.on("messageReactionAdd", (reaction, user) => reqEvent("messageReactionAdd")(reaction, user));
-    // bot.on("messageReactionRemove", (reaction, user) => reqEvent("messageReactionRemove")(reaction, user));
+    bot.on("raw", (packet) => reqEvent("raw")(packet, bot));
+    bot.on("messageReactionAdd", (reaction, user) => reqEvent("messageReactionAdd")(reaction, user));
+    bot.on("messageReactionRemove", (reaction, user) => reqEvent("messageReactionRemove")(reaction, user));
 }
