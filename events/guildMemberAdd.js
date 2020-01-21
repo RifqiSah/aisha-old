@@ -1,3 +1,5 @@
+let funct = require("../util/funct.js");
+
 module.exports = (member) => {
     let channel = member.guild.channels.find(ch => ch.id === '337424516362010625'); // Out-Off Topic
     if (!channel)
@@ -13,7 +15,7 @@ module.exports = (member) => {
     data.push(`User ID: ${member.user.id}`);
     data.push(`Nickname: ${member.user.tag}`);
     data.push(`Avatar URL: ${member.user.avatarURL}\n`);
-    data.push(`- ${new Date()}`);
+    data.push(`- ${funct.getDate()}`);
 
     member.guild.channels.find(ch => ch.name === 'member-log').send(data, { split: true });
 }
