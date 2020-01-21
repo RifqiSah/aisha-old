@@ -14,7 +14,7 @@ module.exports = {
         message.delete();
         let msg = await message.channel.send(`Menunggu *respon* \`${args}\` ...`);
 
-        await superagent.get(`https://sea.dragonnest.com/news/notice/all/${args}`)
+        await superagent.get(`http://sea.dragonnest.com/news/notice/all/${args}`)
         .then(res => {
             msg.edit(`Respon:\`\`\`${res.text}\`\`\``).then(msg => {msg.delete(60000)});
         })
