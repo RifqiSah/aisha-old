@@ -105,7 +105,6 @@ console.log("[] Done!");
 console.log("[] Bot is ready to start ...");
 
 Client.bot.on('message', async (message) => {
-    if (Client.config.MT) return; // Cek status bot apakah sedang maintenis atau tidak
     if (message.author.bot || message.channel.type === "dm") return; // Jangan hiraukan chat dari sesama bot dan pastikan chat berasal dari guild
 
     // == Awal pengecekan mention BOT ==
