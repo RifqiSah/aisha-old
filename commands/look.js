@@ -16,7 +16,7 @@ module.exports = {
 
         await superagent.get(`http://sea.dragonnest.com/news/notice/all/${args}`)
         .then(res => {
-            msg.edit(`Respon:\`\`\`${res.text.slice(0, 1000)}\`\`\``).then(msg => {msg.delete(60000)});
+            msg.edit(`Respon:\`\`\`${res.text.slice(635, 1000)}\`\`\``).then(msg => {msg.delete(60000)});
         })
         .catch(err => {
             msg.edit(`Uh oh, error tidak terduga:\`\`\`${err.status}: ${err.message}\`\`\``).then(msg => {msg.delete(10000)});
