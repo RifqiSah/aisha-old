@@ -6,18 +6,14 @@ module.exports = (member) => {
     member.user.send("Terima kasih telah bergabung kedalam Discord milik Informate Squad 😃\nSilahkan membaca channel ``#peraturan`` terlebih dahulu sebelum memulai aktifitas didalam server Discord milik Informate Squad.\n\nTerima kasih 😃");
     channel.send(`Selamat datang di Informate Server, ${member}! Taati peraturan yang telah dibuat pada <#372926591849988096> demi kenyamanan kita bersama.\n\nTerima kasih 😃`); // #peraturan
 
-    // For log
-    member.guild.channels.find(ch => ch.name === 'member-log').send({
-        embed: {
-            color: 8311585,
-            timestamp: new Date(),
-            footer: {
-                text: "User Joined"
-            },
-            author: {
-                name: member.user.tag + " (" + member.user.id + ")",
-                icon_url: member.user.avatarURL
-            }
-        }
-    });
+    // Logs
+    let data = [];
+
+    data.push("__**User Joined**__\n");
+    data.push(`User ID: ${member.user.id}`);
+    data.push(`Nickname: ${member.user.tag}`);
+    data.push(`Avatar URL: ${member.user.avatarURL}\n`);
+    data.push(`- ${new Date()}`);
+
+    member.guild.channels.find(ch => ch.name === 'member-log').send(data, { split: true });
 }

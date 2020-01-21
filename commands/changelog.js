@@ -22,6 +22,7 @@ module.exports = {
         data.push("\n**Perubahan:**");
         // data.push("Tidak ada");
         data.push("★ Memindahkan reaction add dan remove kedalam event handler.");
+        data.push("★ Log member masuk & keluar");
 
         data.push("\n**Penghapusan:**");
         data.push("Tidak ada");

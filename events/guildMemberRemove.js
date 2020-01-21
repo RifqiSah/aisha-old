@@ -5,17 +5,14 @@ module.exports = (member) => {
 
     channel.send(`Oh tidakk, ${member} telah keluar dari server kita 😔`);
 
-    member.guild.channels.find(ch => ch.name === 'member-log').send({
-        embed: {
-            color: 8311585,
-            timestamp: new Date(),
-            footer: {
-                text: "User Left"
-            },
-            author: {
-                name: member.user.tag + " (" + member.user.id + ")",
-                icon_url: member.user.avatarURL
-            }
-        }
-    });
+    // Logs
+    let data = [];
+
+    data.push("__**User Left**__\n");
+    data.push(`User ID: ${member.user.id}`);
+    data.push(`Nickname: ${member.user.tag}`);
+    data.push(`Avatar URL: ${member.user.avatarURL}\n`);
+    data.push(`- ${new Date()}`);
+
+    member.guild.channels.find(ch => ch.name === 'member-log').send(data, { split: true });
 }
