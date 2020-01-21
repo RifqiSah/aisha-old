@@ -15,8 +15,8 @@ module.exports = {
 
         data.push("\n**Penambahan:**");
         data.push("Tidak ada");
-        // data.push("★ BOT: Command `changelog` untuk melihat perubahan yang terjadi pada Aisha.");
-        // data.push("★ Module `rate`: Command tf fragment/fragment tf.");
+        data.push("★ BOT: Command `hp` untuk melihat informasi HP dari nest.");
+        data.push("★ Module `hp`: Command gdn, fdn, bdn.");
         // data.push("★ Module `info`: Command hero talisman/epic talisman dan nm/nightmare.");
 
         data.push("\n**Perubahan:**");
