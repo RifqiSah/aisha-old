@@ -13,7 +13,7 @@ module.exports = (member) => {
     data.push("__**User Left**__\n");
     data.push(`User ID: ${member.user.id}`);
     data.push(`Nickname: ${member.user.tag}`);
-    data.push(`Avatar URL: ${member.user.avatarURL}\n`);
+    data.push(`Avatar URL: <${member.user.avatarURL}>\n`);
     data.push(`- ${funct.getDate()}`);
 
     member.guild.channels.find(ch => ch.name === 'member-log').send(data, { split: true });
