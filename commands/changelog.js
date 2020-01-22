@@ -15,14 +15,14 @@ module.exports = {
 
         data.push("\n**Penambahan:**");
         data.push("Tidak ada");
-        data.push("★ BOT: Command `hp` untuk melihat informasi HP dari nest.");
-        data.push("★ Module `hp`: Command gdn, fdn, bdn.");
+        data.push("★ BOT: Event handler sudah full diexport kedalam file terpisah.");
+        // data.push("★ Module `hp`: Command gdn, fdn, bdn.");
         // data.push("★ Module `info`: Command hero talisman/epic talisman dan nm/nightmare.");
 
         data.push("\n**Perubahan:**");
-        // data.push("Tidak ada");
-        data.push("★ Memindahkan reaction add dan remove kedalam event handler.");
-        data.push("★ Log member masuk & keluar");
+        data.push("Tidak ada");
+        // data.push("★ Memindahkan reaction add dan remove kedalam event handler.");
+        // data.push("★ Log member masuk & keluar");
 
         data.push("\n**Penghapusan:**");
         data.push("Tidak ada");
