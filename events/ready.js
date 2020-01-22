@@ -1,12 +1,14 @@
 module.exports = (bot, config) => {
-    // bot.user.setUsername("Aisha");
-    console.log(`[] Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
+    bot.user.setUsername("Aisha");
+    // bot.user.setAvatar("");
+
+    console.log(`[V] Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
 
     const activities_list = [
-        // config.PREFIX + "help for command.",
+        config.PREFIX + "h for command.",
         config.VERSION + " is running.",
-        "Informate's BOT.",
-        `with ${bot.users.size} users in ${bot.guilds.size} guilds.`
+        "Informate Private Bot.",
+        `Serving ${bot.users.size} users in ${bot.guilds.size} guild.`
     ];
 
     setInterval(() => {

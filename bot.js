@@ -41,16 +41,19 @@ rulesLists.forEach(rule => {
 return;
 */
 // == Awal inisialisasi ==
+console.log("[-] Initialize varible");
 Client = {
     config: require('./config'),
     bot: new Discord.Client({ partials: ['USER', 'GUILD_MEMBER', 'MESSAGE', 'CHANNEL', 'REACTION'] }),
     discord_embed: new Discord.RichEmbed()
 }
 
-var cmdcd = new Set();
+Client.cmdcd = new Set();
+console.log("[V] Done!");
 // == Akhir inisialisasi ==
 
 // == Awal cek status BOT ==
+console.log("[-] Checking Bot status");
 if (!Client.config.ENABLE) {
     console.log("[X] Bot is disabled!");
     return;
@@ -58,16 +61,12 @@ if (!Client.config.ENABLE) {
 // Bot LOGIN
 else
     Client.bot.login(Client.config.TOKEN);
+
+console.log("[V] Bot active!");
 // == akhir cek status BOT ==
 
-// == Awal event handler ==
-console.log("[] Initialize handler");
-require('./util/eventHandler')(Client.bot, Client.config);
-console.log("[] Done!");
-// == Akhir event handler ==
-
 // Awal init command ==
-console.log("[] Initialize command");
+console.log("[-] Initialize command");
 let commandsList = fs.readdirSync('./commands/');
 
 Client.commands             = new Discord.Collection();
@@ -97,95 +96,15 @@ for (i = 0; i < commandsList.length; i++) {
     }
 }
 
-var regexList = new RegExp(Client.commandsRegex.map((key, item) => {return item}).join("|"));
+Client.regexList = new RegExp(Client.commandsRegex.map((key, item) => {return item}).join("|"));
 // console.log(regexList);
+console.log("[V] Done!");
 // == Akhir init command ==
 
-console.log("[] Done!");
-console.log("[] Bot is ready to start ...");
+// == Awal event handler ==
+console.log("[-] Initialize handler");
+require('./util/eventHandler')(Client, Client.bot, Client.config);
+console.log("[V] Done!");
+// == Akhir event handler ==
 
-Client.bot.on('message', async (message) => {
-    if (message.author.bot || message.channel.type === "dm") return; // Jangan hiraukan chat dari sesama bot dan pastikan chat berasal dari guild
-
-    // == Awal pengecekan mention BOT ==
-    if (message.isMemberMentioned(Client.bot.user)) {
-        message.channel.send("Ya?");
-        return;
-    }
-    // == Akhir pengecekan mention BOT ==
-
-    // == Awal pengecekan user ==
-    const users = message.mentions.users.map(user => {
-        if (user.presence.status === "offline") return `**${user.tag}** sedang offline.`;
-        else if (user.presence.status === "idle") return `**${user.tag}** sedang away.`;
-        else if (user.presence.status === "dnd") return `**${user.tag}** sedang tidak dapat diganggu.`;
-    });
-    
-    if (users.length > 0) message.channel.send(users).then(msg => {msg.delete(5000)}).catch();
-    // == Akhir pengecekan user ==
-
-    let regex   = null;
-    let args    = null;
-    let command = null;
-
-    // == Awal regex checker ==
-    // Cek apakah diawali prefix
-    if (message.content.indexOf(Client.config.PREFIX) !== 0) {
-        // Apakah ada di regex?
-        if (regex = message.content.match(regexList)) command = regex[0]; // Isi command dengan hasil regexnya
-        else return; // Jika tidak selesaikan
-    }
-    // Jika ya
-    else {
-        args = message.content.slice(Client.config.PREFIX.length).trim().split(/ +/g); // Mensplit string dengan " " agar didapatkan argumen
-        command = args.shift().toLowerCase(); // Mengambil command
-    }
-    // == Akhir regex checker ==
-    
-    // == Awal command manager ==
-    let commandfile = Client.commands.get(command) || Client.commands.get(Client.commandsAlias.get(command)); // Cari file command yang ditunjuk
-    if (commandfile) {
-        // Cek apakah command ada cooldownnya
-        if (commandfile.cooldown > 0) {
-            // Cek dulu apakah user sudah menjalankan command sebelumnya?
-            if (cmdcd.has(message.author.id))
-                return message.reply(`Anda harus menunggu selama \`${commandfile.cooldown} detik\` sebelum menggunakan command \`${commandfile.name}\` kembali!`).then(msg => {msg.delete(10000)}).catch();
-            
-            // Kalau tidak
-            cmdcd.add(message.author.id); // Tambahkan user kedalam list cooldown
-            
-            // Hapus user setelah timeout habis
-            setTimeout(() => {
-                cmdcd.delete(message.author.id);
-            }, commandfile.cooldown * 1000);
-        }
-
-        console.log(`-> Command '${commandfile.name}' executed! (Regex: ${(regex ? "YES" : "NO")})`);
-        
-        // Cek apakah command sedang aktif atau tidak
-        if (commandfile.enable) {
-            // Apakah command mempunya role (role != null)
-            if (commandfile.role.length > 0) {
-                // Apakah role pengguna ada pada command ini?
-                if (message.member.roles.some(role => commandfile.role.includes(role.id))) {
-                    // Jalankan
-                    commandfile.func(Client, message, args);
-                }
-                // Tidak ada? Tampilkan pesan error
-                else {
-                    message.delete().catch(O_o=>{});
-                    message.channel.send(`Anda tidak mempunyai ijin untuk menggunakan command \`${commandfile.name}\`!`).then(msg => {msg.delete(5000)}).catch();
-                }
-            // Jika role tidak ada jalankan saja
-            } else {
-                commandfile.func(Client, message, args);
-            }
-        }
-        // Command tidak aktif
-        else {
-            message.delete().catch(O_o=>{});
-            message.channel.send(`Command \`${commandfile.name}\` sedang tidak aktif!`).then(msg => {msg.delete(5000)}).catch();
-        }
-    }
-    // == Akhir command manager ==
-});
+console.log("[V] Bot is ready to start!");
