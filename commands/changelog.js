@@ -14,9 +14,9 @@ module.exports = {
         data.push(`__**Version ${client.config.VERSION} Changelog**__`);
 
         data.push("\n**Penambahan:**");
-        data.push("Tidak ada");
-        data.push("★ BOT: Event handler sudah full diexport kedalam file terpisah.");
-        // data.push("★ Module `hp`: Command gdn, fdn, bdn.");
+        // data.push("Tidak ada");
+        // data.push("★ BOT: Event handler sudah full diexport kedalam file terpisah.");
+        data.push("★ Module `hp`: Command sunset.");
         // data.push("★ Module `info`: Command hero talisman/epic talisman dan nm/nightmare.");
 
         data.push("\n**Perubahan:**");

@@ -4,7 +4,7 @@ module.exports = {
     enable: true,
     regex: false,
     help: false,
-    role: [],
+    role: ['669544469594374145'],
     aliases: ['verif', 'verifikasi', 'v'],
 	usage: '[nomor hp]',
 	cooldown: 0,
@@ -19,6 +19,8 @@ module.exports = {
 
                 message.channel.send(`Terima kasih sidah melakukan verifikasi, ${message.guild.roles.get(`498835247345958922`)} kami akan memproses akun Anda secepatnya.`).then(msg => {msg.delete(5000)}).catch();
                 message.delete();
+
+                // message.author.removeRole("669544469594374145");
             }
         } else
             return message.channel.send("Harap masukkan nomor yang valid!").then(msg => {msg.delete(5000)}).catch();
