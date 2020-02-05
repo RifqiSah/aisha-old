@@ -9,7 +9,7 @@ module.exports = {
 	usage: '[waktu] [gmt]',
 	cooldown: 0,
     func: (client, message, args) => {
-        let argss = args.split(/ +/g);
+        let argss = args.toString().split(/ +/g);
         let data = [];
 
         message.delete();
