@@ -1,6 +1,6 @@
 module.exports = {
     name: "info",
-    desc: "Melihat info hal-hal yang ada pada Dragon Nest. Info yang tersedia yaitu:\`\`\`- mq\n- sp/np\n- cloister\n- hero talisman/epic talisman\n- nm/nightmare\`\`\`",
+    desc: "Melihat info hal-hal yang ada pada Dragon Nest. Info yang tersedia yaitu:\`\`\`- mq\n- sp/np\n- cloister\n- hero talisman/epic talisman\n- nm/nightmare\n- f14debuff/f14 debuf\`\`\`",
     enable: true,
     regex: false,
     help: true,
@@ -37,6 +37,9 @@ module.exports = {
                 data.push("`Nightmare Silver & Gold Chest Selection`: https://i.imgur.com/9tgxCMw.png");
                 break;
 
+                case /\bf14debuff|f14 debff\b/g.test(info):
+                    data.push("https://cdn.discordapp.com/attachments/669038861388742666/669038889947758592/unknown.png");
+                    break;
             default:
                 data.push(`Info untuk \`${infos}\` tidak ditemukan!`);
                 break;
