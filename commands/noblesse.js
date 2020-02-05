@@ -9,7 +9,7 @@ module.exports = {
 	usage: '[waktu] [gmt]',
 	cooldown: 0,
     func: (client, message, args) => {
-        let args = args.split(/ +/g);
+        let argss = args.split(/ +/g);
         let data = [];
 
         message.delete();
@@ -19,8 +19,8 @@ module.exports = {
 
         data.push("<@489292018628165633>\n");
         data.push("Noblesse Buff akan diluncurkan pada:");
-        data.push(`Waktu: ${args[0]}`);
-        data.push(`Timezone: ${args[1]}`);
+        data.push(`Waktu: ${argss[0]}`);
+        data.push(`Timezone: ${argss[1]}`);
 
         message.channel.send(data, { split: true });
     }
