@@ -2,15 +2,14 @@ module.exports = {
     name: "noblesse",
     desc: "Memberikan informasi untuk `Noblesse Buff` oleh VVIP1!",
     enable: true,
-    regex: false,
-    help: false,
+    regex: true,
+    help: true,
     role: ['489292018628165633'],
     aliases: ['nb'],
 	usage: '[waktu] [gmt (angka)] [link foto]',
 	cooldown: 0,
     func: (client, message, args) => {
         let argss = args.toString().split(/ +/g);
-        console.log(args);
         let data = [];
 
         message.delete();
