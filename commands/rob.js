@@ -11,12 +11,10 @@ module.exports = {
     func: (client, message, args) => {
         let data = [];
 
-        data.push("`29 Jan 2019`");
-        data.push("04:48 `pXxirang` (GM), mungkit BOT.\n");
-        data.push("`30 Jan 2020`");
-        data.push("04:11 `BOT`");
-        data.push("15:37 `AVANGEDFOD` (DA)");
-        data.push("\nWaktu diatas dalam `GMT+8`. Sumber: **Dragon Nest SEA Discord**");
+        data.push("**6 Feb 2020**");
+        data.push("15:56 `KeikoReef` (PSY)\n");
+        data.push("2 kemungkiann BOT dan sudah habis, selamat mencari RoB :)");
+        data.push("\nWaktu diatas dalam **GMT+8**.");
 
         message.channel.send(data, { split: true });
     }
