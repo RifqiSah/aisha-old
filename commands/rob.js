@@ -11,7 +11,7 @@ module.exports = {
     aliases: [],
 	usage: '',
 	cooldown: 0,
-    func: (client, message, args) => {
+    func: async (client, message, args) => {
         let data = [];
         let msg = await message.channel.send(`Megambil data ...`);
 
