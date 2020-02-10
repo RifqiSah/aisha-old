@@ -1,6 +1,6 @@
 module.exports = {
     name: "rate",
-    desc: "Melihat info rate dari Dragon Nest. Rate yang tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- ancient\n- bdn\n- taliman\n- jade\n- mirage\n- paraselene\n- dj\n- acc\n- fishing\n- seafishing\n- fusi\n- mount\n- celestone\n- lapis\n- conversion weapon/tf weapon\n- tf fragment/fragment tf\n- robot pet\`\`\`",
+    desc: "Melihat info rate enhance, dan chance apapun (kecuali drop) pada Dragon Nest. Rate yang tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- ancient\n- bdn\n- taliman\n- jade\n- mirage\n- paraselene\n- dj\n- acc\n- fusi\n- mount\n- celestone\n- conversion weapon/tf weapon\n- tf fragment/fragment tf\n- robot pet\`\`\`",
     enable: true,
     regex: false,
     help: true,
@@ -9,14 +9,14 @@ module.exports = {
 	usage: '[jenis rate]',
 	cooldown: 0,
     func: (client, message, args) => {
-        let rate = args.join(" ").toLowerCase();
+        let rate = (args.length ? args.join(" ").toLowerCase() : "null");
         let data = [];
 
         let rates = rate.replace(/\b\w/g, l => l.toUpperCase()).replace(/\b[a-zA-Z]{2,3}\b/g, i => i.toUpperCase());
         data.push("__**Rate Untuk " + rates + "**__\n");
 
         switch(true) {
-            case /\callypse|calip|calypse|calipse|kelip\b/g.test(rate):
+            case /\bcallypse|calip|calypse|calipse|kelip\b/g.test(rate):
                 data.push("`Tier 1`: https://i.imgur.com/CMLeTwt.png");
                 data.push("`Tier 2`: https://i.imgur.com/dXNPCON.png");
                 data.push("`Tier 3`: https://i.imgur.com/TVTHPfm.png");
@@ -65,51 +65,6 @@ module.exports = {
                 data.push("`11 to 15`: https://i.imgur.com/5hqmq3Y.png");
                 break;
 
-            case /\bfishing|mancing\b/g.test(rate):
-                data.push("Red Bass = 7.7%");
-                data.push("Hermalte Trout = 7.7%");
-                data.push("Brown Striped Salmon = 7.7%");
-                data.push("Rough Rock Grouper = 7.7%");
-                data.push("Freshwater Sweet fish = 7.7%");
-                data.push("Black Swamp Snake head = 7.7%");
-                data.push("Gizzard Shard = 7.7%\n");
-
-                data.push("Golden Carp = 5.91%");
-                data.push("Rainbow Trout = 5.91%");
-                data.push("Rosy Bitterling = 5.91%");
-                data.push("Catfish = 5.91%");
-                data.push("Mudskipper = 5.91%\n");
-
-                data.push("Lamprey = 0.04%");
-                data.push("Arowana = 0.04%\n");
-
-                data.push("Antique Common Pouch = 17% ");
-                data.push("Magical Rainbow Goldfish = 0.0044%");
-                break;
-            
-            case /\bseafishing|event mancing\b/g.test(rate):
-                data.push("Shrimp = 22.5%");
-                data.push("Webfoot Octopus = 22.5%");
-                data.push("Lobster = 3.75%");
-                data.push("Anemone Fish = 11.8%");
-                data.push("Butterfly Fish = 11.8%");
-                data.push("Fugu = 11.3%");
-                data.push("Octopus = 3%");
-                data.push("Turtle = 3%");
-                data.push("Stingray = 2.6%");
-                data.push("Halibut = 2.6%");
-                data.push("Snapper = 2.6%");
-                data.push("Deep sea Fish = 1.1%");
-                data.push("Tuna = 0.8% ");
-                data.push("Whale = 0.2%");
-                data.push("Shark = 0.25%");
-                data.push("Sea Fishing Pouch = 3%");
-                data.push("Rare Top Mimi Octopus = 3%\n");
-                
-                data.push("Shrimp up to Deep Sea Fish have 10 Different Sizes");
-                data.push("Tune , Whale and Shark have 20 Different Sizes");
-                break;
-
             case /\bfusi|fusion|cost|cosu|cossu|cost|costume|kostum\b/g.test(rate):
                 data.push("https://cdn.discordapp.com/attachments/526456830193434624/659156809382232077/cash_synthesis_rate_dnsea.png");
                 break;
@@ -117,31 +72,6 @@ module.exports = {
             case /\bmount\b/g.test(rate):
                 data.push("`Current in SEA`: https://cdn.discordapp.com/attachments/598027048220491776/598033562297434155/U1iGyFa.png");
                 data.push("`Future in SEA (Current in KR)`: https://cdn.discordapp.com/attachments/526456830193434624/634019881314025472/92rUvBz.png");
-                break;
-
-            case /\bcelestone\b/g.test(rate):
-                data.push("Dungeon Boss Drop = 1%");
-                data.push("Invader Boss Drop = 1%");
-                data.push("Nest End Chest = 1%");
-                break;
-
-            case /\blapis\b/g.test(rate):
-                data.push("Easy = 0%");
-                data.push("Norm = 0.3%");
-                data.push("Hard = 1.7%");
-                data.push("Master = 3.4%");
-                data.push("Abyss = 10%");
-                data.push("F1 = 12%");
-                data.push("F2 = 14%");
-                data.push("F3 = 17%");
-                data.push("F4 = 19%");
-                data.push("F5 = 23%");
-                data.push("F6 = 27%");
-                data.push("F7 = 31%");
-                data.push("F8 = 36%");
-                data.push("F9 = 43%");
-                data.push("F10 = 50%");
-                data.push("F11 = 58%");
                 break;
 
             case /\bconversion weapon|tf weapon\b/g.test(rate):

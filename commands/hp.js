@@ -9,7 +9,7 @@ module.exports = {
 	usage: '[jenis nest]',
 	cooldown: 0,
     func: (client, message, args) => {
-        let nest = args.join(" ").toLowerCase();
+        let nest = (args.length ? args.join(" ").toLowerCase() : "null");
         let data = [];
 
         let nests = ""; // nest.replace(/\b\w/g, l => l.toUpperCase()).replace(/\b[a-zA-Z]{2,3}\b/g, i => i.toUpperCase());
@@ -56,7 +56,7 @@ module.exports = {
                 data.push("Total: __**113 Trillion**__");
                 break;
 
-            case /\stg|sunset\b/g.test(nest):
+            case /\bstg|sunset\b/g.test(nest):
                 data.push("Easy: Boss HP is **[399.708.160]** and minimum DPS is **[1.332.361]**");
                 data.push("Normal: Boss HP is **[600.487.488]** and minimum DPS is **[2.001.625]**");
                 data.push("Hard: Boss HP is **[800.341.568]** and minimum DPS is **[2.667.805]**");
