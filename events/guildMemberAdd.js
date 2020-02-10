@@ -20,5 +20,5 @@ module.exports = (member) => {
     data.push(`Avatar URL: <${member.user.avatarURL}>\n`);
     data.push(`${funct.getDate()}`);
 
-    member.guild.channels.find(ch => ch.name === 'member-log').send(data, { split: true });
+    member.guild.channels.find(ch => ch.name === '496220491988729856').send(data, { split: true }); // member-log-1
 }
