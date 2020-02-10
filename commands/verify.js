@@ -16,11 +16,10 @@ module.exports = {
         if (!isNaN(no)) {
             if (no.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)) { // pastikan nomor hp yang dimasukkan
                 channel.send(`\`${message.author.tag}\` telah melakukan registrasi dengan nomor: \`${no}\``);
-
                 message.channel.send(`Terima kasih sidah melakukan verifikasi, ${message.guild.roles.get(`498835247345958922`)} kami akan memproses akun Anda secepatnya.`).then(msg => {msg.delete(5000)}).catch();
+                
                 message.delete();
-
-                // message.author.removeRole("669544469594374145");
+                message.member.removeRole("669544469594374145");
             }
         } else
             return message.channel.send("Harap masukkan nomor yang valid!").then(msg => {msg.delete(5000)}).catch();
