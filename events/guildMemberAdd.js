@@ -9,7 +9,7 @@ module.exports = (member) => {
     channel.send(`Selamat datang di Informate Server, ${member}! Taati peraturan yang telah dibuat pada <#372926591849988096> demi kenyamanan kita bersama.\n\nTerima kasih 😃`); // #peraturan
 
     // Untuk command verify
-    // member.addRole("669544469594374145");
+    member.addRole("669544469594374145");
 
     // Logs
     let data = [];
@@ -18,7 +18,7 @@ module.exports = (member) => {
     data.push(`User ID: ${member.user.id}`);
     data.push(`Nickname: ${member.user.tag}`);
     data.push(`Avatar URL: <${member.user.avatarURL}>\n`);
-    data.push(`- ${funct.getDate()}`);
+    data.push(`${funct.getDate()}`);
 
     member.guild.channels.find(ch => ch.name === 'member-log').send(data, { split: true });
 }
