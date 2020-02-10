@@ -34,7 +34,7 @@ module.exports = {
             case /\bfdn|forest\b/g.test(nest):
                 data.push("Grandmother Merigirion: __**3.55 Trillion**__");
                 data.push("Hirendel's Young Tree Tourte: __**3.55 Trillion**__");
-                data.push("Hirendel's Pet Mushroom Kayampa: 3.55 Trillion**__");
+                data.push("Hirendel's Pet Mushroom Kayampa: __**3.55 Trillion**__");
                 data.push("Vine Aux Monster: __**18.11 Trillion**__");
                 data.push("Hireldel's Dancer Lamina: __**888 Billion**__");
                 data.push("Hireldel's Dancer Laguna: __**889 Billion**__");
