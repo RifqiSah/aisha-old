@@ -9,7 +9,7 @@ module.exports = {
 	usage: '[jenis info]',
 	cooldown: 0,
     func: (client, message, args) => {
-        let info = args.join(" ").toLowerCase();
+        let info = (args.length ? args.join(" ").toLowerCase() : "null");
         let data = [];
 
         let infos = info.replace(/\b\w/g, l => l.toUpperCase()).replace(/\b[a-zA-Z]{2,3}\b/g, i => i.toUpperCase());
@@ -32,14 +32,10 @@ module.exports = {
                 data.push("https://i.imgur.com/JxaRyuC.png");
                 break;
 
-            case /\bnm|nightmare\b/g.test(info):
-                data.push("`Stage 1 & Stage 2 Bosses Drop rate`: https://i.imgur.com/eHmjgRw.png");
-                data.push("`Nightmare Silver & Gold Chest Selection`: https://i.imgur.com/9tgxCMw.png");
+            case /\bf14|f14 debuff\b/g.test(info):
+                data.push("https://cdn.discordapp.com/attachments/669038861388742666/669038889947758592/unknown.png");
                 break;
 
-                case /\bf14debuff|f14 debff\b/g.test(info):
-                    data.push("https://cdn.discordapp.com/attachments/669038861388742666/669038889947758592/unknown.png");
-                    break;
             default:
                 data.push(`Info untuk \`${infos}\` tidak ditemukan!`);
                 break;

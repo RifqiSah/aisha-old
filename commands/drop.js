@@ -1,6 +1,6 @@
 module.exports = {
     name: "drop",
-    desc: "Melihat info drop rate dari sebuah item pada Dragon Nest. Item yang tersedia yaitu:\`\`\`- lapis\n- celestone\n- fishing\n- seafishing\`\`\`",
+    desc: "Melihat info drop rate dari sebuah item pada Dragon Nest. Item yang tersedia yaitu:\`\`\`- lapis\n- celestone\n- fishing\n- seafishing\n- nm/nightmare/epic talisman/hero talisman\`\`\`",
     enable: true,
     regex: false,
     help: true,
@@ -84,6 +84,11 @@ module.exports = {
                 
                 data.push("Shrimp up to Deep Sea Fish have 10 Different Sizes");
                 data.push("Tune , Whale and Shark have 20 Different Sizes");
+                break;
+
+            case /\bnm|nightmare|epic talisman|hero talisman\b/g.test(info):
+                data.push("`Stage 1 & Stage 2 Bosses Drop rate`: https://i.imgur.com/eHmjgRw.png");
+                data.push("`Nightmare Silver & Gold Chest Selection`: https://i.imgur.com/9tgxCMw.png");
                 break;
 
             default:
