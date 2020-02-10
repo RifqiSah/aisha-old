@@ -5,7 +5,7 @@ module.exports = {
     desc: "Mengambil data Announce dan Server Version.",
     enable: true,
     regex: false,
-    help: true,
+    help: false,
     role: ['433870492378595329'],
     aliases: ['get'],
 	usage: '[tipe]',

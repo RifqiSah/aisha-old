@@ -3,7 +3,7 @@ module.exports = {
     desc: "Mengkosongkan pesan pada channel.",
     enable: true,
     regex: false,
-    help: true,
+    help: false,
     role: ['433870492378595329'],
     aliases: ['delete', 'prune', 'del', 'thanos'],
 	usage: '[jumlah pesan]',

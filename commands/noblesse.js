@@ -3,9 +3,9 @@ module.exports = {
     desc: "Memberikan informasi untuk `Noblesse Buff` oleh VVIP1!",
     enable: true,
     regex: false,
-    help: true,
+    help: false,
     role: ['489292018628165633'],
-    aliases: ['nb'],
+    aliases: ['nb', 'nubles', 'nobles'],
 	usage: '[tanggal] [waktu] [gmt (angka)] [link foto]',
 	cooldown: 0,
     func: (client, message, args) => {
@@ -18,7 +18,7 @@ module.exports = {
         if (!channel) return;
 
         data.push("<@&489292018628165633>\n");
-        data.push("Noblesse Buff akan di`kentutkan` oleh VVIP1 pada:");
+        data.push("Noblesse Buff akan dikeluarkan oleh VVIP1 pada:");
         data.push(`Tanggal: ${args[0]}`);
         data.push(`Waktu: ${args[1]}`);
         data.push(`Timezone: GMT+${args[2].replace("GMT+", "")}`);

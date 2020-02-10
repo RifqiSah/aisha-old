@@ -5,7 +5,7 @@ module.exports = {
     desc: "Melihat HTML dari sebuah URL.",
     enable: true,
     regex: false,
-    help: true,
+    help: false,
     role: ['433870492378595329'],
     aliases: ['see'],
 	usage: '[link]',

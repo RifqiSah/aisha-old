@@ -3,7 +3,7 @@ module.exports = {
     desc: "Aisha akan berbicara sesuai dengan yang kita ketikkan.",
     enable: true,
     regex: false,
-    help: true,
+    help: false,
     role: ['433870492378595329'],
     aliases: [],
 	usage: '[channel] [pesan anda]',

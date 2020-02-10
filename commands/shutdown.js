@@ -3,7 +3,7 @@ module.exports = {
     desc: "Matikan bot!.",
     enable: true,
     regex: false,
-    help: true,
+    help: false,
     role: ['587649345327988736', '372915947478056960'],
     aliases: ['turnoff', 'botkill', 'botstop'],
 	usage: '',
