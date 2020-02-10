@@ -15,9 +15,9 @@ module.exports = {
 
         data.push("\n**Penambahan:**");
         // data.push("Tidak ada");
-        data.push("★ BOT: Command noblesse buff.");
+        data.push("★ BOT: Command noblesse buff dan rob ditambahkan.");
         // data.push("★ Module `hp`: Command sunset.");
-        data.push("★ Module `info`: Command f14debuff/f14 debuff ditambahkan.");
+        // data.push("★ Module `info`: Command f14debuff/f14 debuff ditambahkan.");
 
         data.push("\n**Perubahan:**");
         data.push("Tidak ada");
