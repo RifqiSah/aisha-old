@@ -1,6 +1,6 @@
 module.exports = {
     name: "changelog",
-    desc: "Melihat _changelog_ yang terjadi pada Aisha.",
+    desc: "Melihat _changelog_ atau perubahan yang terjadi pada Aisha.",
     enable: true,
     regex: false,
     help: true,
@@ -15,8 +15,8 @@ module.exports = {
 
         data.push("\n**Penambahan:**");
         // data.push("Tidak ada");
-        data.push("★ BOT: Command noblesse buff dan rob ditambahkan.");
-        // data.push("★ Module `hp`: Command sunset.");
+        // data.push("★ BOT: Command noblesse buff dan rob ditambahkan.");
+        data.push("★ Module `drop` ditambahkan.");
         // data.push("★ Module `info`: Command f14debuff/f14 debuff ditambahkan.");
 
         data.push("\n**Perubahan:**");

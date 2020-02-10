@@ -86,7 +86,7 @@ module.exports = {
                 data.push("Tune , Whale and Shark have 20 Different Sizes");
                 break;
 
-            case /\bnm|nightmare|epic talisman|hero talisman\b/g.test(info):
+            case /\bnm|nightmare|epic talisman|hero talisman\b/g.test(item):
                 data.push("`Stage 1 & Stage 2 Bosses Drop rate`: https://i.imgur.com/eHmjgRw.png");
                 data.push("`Nightmare Silver & Gold Chest Selection`: https://i.imgur.com/9tgxCMw.png");
                 break;

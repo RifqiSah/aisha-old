@@ -17,7 +17,7 @@ module.exports = {
         if (!channel) return;
 
         data.push("<@&489292018628165633>\n");
-        data.push(`Noblesse Buff akan dikeluarkan oleh VVIP1 pada tanggal **${args[0]}**, pukul **${args[1]}** [GMT+${args[2].replace("GMT+", "")}]`);
+        data.push(`Noblesse Buff akan disebarkan oleh VVIP1 pada tanggal **${args[0]}**, pukul **${args[1]}** [GMT+${args[2].replace("GMT+", "")}]`);
         data.push(`<${args[3]}>`);
         // data.push("\nKetikkan `.iam noblesse info` pada `#bot-spam` untuk mendapatkan informasi.")
 
