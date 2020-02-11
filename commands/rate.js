@@ -1,6 +1,6 @@
 module.exports = {
     name: "rate",
-    desc: "Melihat info rate enhance, dan chance apapun (kecuali drop) pada Dragon Nest. Rate yang tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- ancient\n- bdn\n- taliman\n- jade\n- mirage\n- paraselene\n- dj\n- acc\n- fusi\n- mount\n- celestone\n- conversion weapon/tf weapon\n- tf fragment/fragment tf\n- robot pet\`\`\`",
+    desc: "Melihat info rate enhance, dan chance apapun (kecuali drop) pada Dragon Nest. Rate yang tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- ancient\n- bdn\n- taliman\n- jade\n- mirage\n- paraselene\n- dj\n- acc\n- fusi\n- mount\n- celestone\n- conversion weapon/tf weapon\n- tf fragment/fragment tf\n- robot pet\n- powder/bubuk\`\`\`",
     enable: true,
     regex: false,
     help: true,
@@ -97,7 +97,10 @@ module.exports = {
                 data.push("Step 3 - Get Love of Friend or Costume RNG from Pouch");
                 data.push("https://i.imgur.com/o4NRzCV.png");
                 break;
-
+            case /\bpowder|bubuk\b/g.test(rate):
+                data.push("https://cdn.discordapp.com/attachments/432903741029613569/673810283289903114/IMG_20191231_162056.png");
+                break;
+                
             default:
                 data.push(`Rate untuk \`${rates}\` tidak ditemukan!`);
                 break;
