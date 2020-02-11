@@ -1,7 +1,13 @@
-let opt = [
-    [1, 'skila', 'scylla', 'skilla'],
-    [2, 'fdn']
-];
+let jsondata = '[{"name" : ["skila", "scylla"], "data" : "rate1 \nrate 2\nrate 3"}, {"name" : ["fdn"], "data" : "raet fdn nih"}]';
+let rate = JSON.parse(jsondata);
 
-let data = opt.map(item => {return item[0];});
-console.log(data);
+function getRate(name) {
+    rate.map((i) => {
+        if (i.name.includes(name))
+            console.log(i.data)
+    });
+
+    // return rate[name];
+}
+
+getRate("fdn");
