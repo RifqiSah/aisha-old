@@ -3,7 +3,24 @@ module.exports = async (message, client) => {
 
     // == Awal pengecekan mention BOT ==
     if (message.isMemberMentioned(client.bot.user)) {
-        message.channel.send("Ya?");
+        let text = message.content;
+
+        // Parse text ke DialogFlow
+        let request = client.apiAI.textRequest(text, {
+            sessionId: 'aisha-api-ai-session'
+        });
+
+        // Dapatkan respon dari DialogFlow
+        request.on('response', (response) => {
+            message.channel.send(response.result.fulfillment.speech);
+        });
+    
+        // Error listener
+        request.on('error', (error) => {
+            message.reply("Oops! Aku pusing :(")
+        });
+
+        request.end(); // Akhiri request untuk menghemat memory
         return;
     }
     // == Akhir pengecekan mention BOT ==

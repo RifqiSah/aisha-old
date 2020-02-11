@@ -1,51 +1,14 @@
 ﻿var Discord = require('discord.js');
+var Dialogflow = require('apiai');
 var fs = require('fs');
 
-/*
-let rules = require('./util/rules.js');
-let rulesLists = new Discord.Collection();
-
-rules.rules.forEach(e => {
-    rulesLists.set(e.no, e);
-});
-
-let user = "uwuchan";
-
-let msg = 'tetew';
-msg = msg.split("").map(ele => { return ele; });
-
-let channel = "12345";
-
-rulesLists.forEach(rule => {
-    let count_each_rules = 0;
-    let count = 0;
-    
-    // --
-    let a = rule.allowed_area.length ? rule.allowed_area.filter(s => s.includes(channel)).length : false;
-    let b = rule.disallowed_area.length ? rule.disallowed_area.filter(s => s.includes(channel)).length : false;
-    // let c = rule.rules.length ? true : false;
-    let d = rule.ban_words.length ? rule.ban_words.some(e => msg.includes(e)) : false;
-    let e = rule.ban_users.length ? rule.ban_users.filter(s => s.includes(user)).length : false;
-    // --
-
-    if (a) count_each_rules++;
-    if (b) count_each_rules++;
-    if (d) count_each_rules++;
-    if (e) count_each_rules++;
-
-    console.log(`#${rule.no} count is ${count_each_rules}: [${a}] [${b}] [${d}] [${e}]`);
-
-    // if (count == count_each_rules)
-    //     console.log(`Gotcha! Rules no #${rule.no}, ${rule.desc}`);
-})
-return;
-*/
 // == Awal inisialisasi ==
 console.log("[-] Initialize varible");
 Client = {
     config: require('./config'),
     bot: new Discord.Client({ partials: ['USER', 'GUILD_MEMBER', 'MESSAGE', 'CHANNEL', 'REACTION'] }),
-    discord_embed: new Discord.RichEmbed()
+    discord_embed: new Discord.RichEmbed(),
+    apiAI: Dialogflow(require('./config').TOKEN_APIAI)
 }
 
 Client.cmdcd = new Set();
