@@ -27,8 +27,7 @@ module.exports = {
             for (let nbh in nbdata) {
                 let item = nbdata[nbh];
                 
-                // data.push("<@&489292018628165633>\n");
-                data.push("**Noblesse Info**\n")
+                data.push("<@&676221506346549251>\n");
                 data.push(`Noblesse Buff akan disebarkan oleh VVIP1 pada tanggal **${moment(item.date).format("DD-MMM-YYYY")}**, pukul **${item.time}** [GMT+8]`);
                 data.push(`<${item.image}>`);
                 // data.push("\nKetikkan `.iam noblesse info` pada `#bot-spam` untuk mendapatkan informasi.")
