@@ -19,7 +19,7 @@ module.exports = {
 
         if (funct.getAllowedRoles(role.id)) {
             message.member.addRole(role.id);
-            message.reply(`Anda berhasil mendapatkan role \`${role.name}\`!`);
+            message.reply(`Anda berhasil mendapatkan role \`${role.name}\`!\nAnda dapat melepas role \`${role.name}\` kapan saja dengan mengetik command \`.iamnot ${role.name}\`.`);
         }
         else {
             message.reply(`Maaf, role \`${role.name}\` tidak dapat digunakan!`);
