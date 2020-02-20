@@ -18,7 +18,7 @@ module.exports = {
         let channel = message.guild.channels.find(ch => ch.id === '678739777700233216'); // noblesse info
         if (!channel) return;
 
-        let msg = await channel.send(`Megambil data ...`);
+        let msg = await message.channel.send(`Megambil data ...`);
 
         await superagent.get(`http://dev.alriftech.com/core/dragonnest_nb_json`)
         .then(res => {
@@ -36,7 +36,7 @@ module.exports = {
                 data.push("\nKetik `.iam noblesse info` pada `#bot-spam` untuk mendapatkan informasi.")
             }
 
-            msg.edit(data);
+            channel.send(data);
         })
         .catch(err => {
             msg.edit(`Uh oh, error tidak terduga:\`\`\`${err.status}: ${err.message}\`\`\``).then(msg => {msg.delete(10000)});
