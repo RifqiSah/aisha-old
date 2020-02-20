@@ -42,5 +42,7 @@ module.exports = {
             msg.edit(`Uh oh, error tidak terduga:\`\`\`${err.status}: ${err.message}\`\`\``).then(msg => {msg.delete(10000)});
             return;
         });
+
+        msg.edit(`Sukses!`).then(msg => {msg.delete(10000)});
     }
 }
