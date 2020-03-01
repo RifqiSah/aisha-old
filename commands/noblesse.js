@@ -14,6 +14,7 @@ module.exports = {
     func: async (client, message, args) => {
         message.delete();
 
+        let vvip1 = "7ebby";
         let data = [];
         let channel = message.guild.channels.find(ch => ch.id === '678739777700233216'); // noblesse info
         if (!channel) return;
@@ -31,7 +32,7 @@ module.exports = {
                 let item = nbdata[nbh];
                 
                 data.push("<@&676221506346549251>\n");
-                data.push(`Noblesse Buff akan disebarkan oleh VVIP1 pada tanggal **${moment(item.date).format("DD-MMM-YYYY")}**, pukul **${item.time}** [GMT+8]`);
+                data.push(`Noblesse Buff akan disebarkan oleh \`${vvip1}\` (VVIP1) pada tanggal **${moment(item.date).format("DD-MMM-YYYY")}**, pukul **${item.time}** [GMT+8]`);
                 data.push(`<${item.image}>`);
                 data.push("\nKetik `.iam noblesse info` pada `#bot-spam` untuk mendapatkan informasi.")
             }
