@@ -39,6 +39,16 @@ module.exports = async (message, client) => {
     let args    = null;
     let command = null;
 
+    // == Monitor main channel ==
+    if (message.channel.id === "372926591849988096") { // peraturan
+        if (!message.content.startsWith('.setuju')) {
+            console.log("-> Pesan baru terdeteksi pada channel #peraturan dan akan segera dihapus!");
+
+            message.delete();
+        }
+    }
+    // == End monitor main channel ==
+
     // == Awal regex checker ==
     // Cek apakah diawali prefix
     if (message.content.indexOf(client.config.PREFIX) !== 0) {
