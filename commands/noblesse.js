@@ -14,14 +14,13 @@ module.exports = {
     func: async (client, message, args) => {
         message.delete();
 
-        let vvip1 = "7ebby";
         let data = [];
         let channel = message.guild.channels.find(ch => ch.id === '678739777700233216'); // noblesse info
         if (!channel) return;
 
         let msg = await message.channel.send(`Megambil data ...`);
 
-        await superagent.get(`http://dev.alriftech.com/core/dragonnest_nb_json`)
+        await superagent.get(`http://www.alriftech.com/bot/aisha/dragonnest/nb`)
         .then(res => {
             let nbdata = JSON.parse(res.text);
 
@@ -32,7 +31,7 @@ module.exports = {
                 let item = nbdata[nbh];
                 
                 data.push("<@&676221506346549251>\n");
-                data.push(`Noblesse Buff akan disebarkan oleh \`${vvip1}\` (VVIP1) pada tanggal **${moment(item.date).format("DD-MMM-YYYY")}**, pukul **${item.time}** [GMT+8]`);
+                data.push(`Noblesse Buff akan disebarkan oleh \`${item.name}\` (VVIP1) bertempat di \`${item.map}\` pada tanggal **${moment(item.date).format("DD-MMM-YYYY")}**, pukul **${item.time}** [GMT+8]`);
                 data.push(`<${item.image}>`);
                 data.push("\nKetik `.iam noblesse info` pada `#bot-spam` untuk mendapatkan informasi.")
             }

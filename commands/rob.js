@@ -15,7 +15,7 @@ module.exports = {
         let data = [];
         let msg = await message.channel.send(`Megambil data ...`);
 
-        await superagent.get(`http://dev.alriftech.com/core/dragonnest_rob_json`)
+        await superagent.get(`http://www.alriftech.com/bot/aisha/dragonnest/rob`)
         .then(res => {
             let robdata = JSON.parse(res.text);
             let count = 0;
