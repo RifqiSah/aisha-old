@@ -20,7 +20,7 @@ module.exports = {
 
         let msg = await message.channel.send(`Megambil data ...`);
 
-        await superagent.get(`https://www.alriftech.com/api/v2/bot/aisha/nb`)
+        await superagent.get(`https://alriftech.com/api/v2/bot/aisha/nb`)
         .then(res => {
             let nbdata = JSON.parse(res.text);
 
