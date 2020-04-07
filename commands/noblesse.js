@@ -37,6 +37,7 @@ module.exports = {
             }
 
             channel.send(data);
+            msg.delete(5000);
         })
         .catch(err => {
             msg.edit(`Uh oh, error tidak terduga:\`\`\`${err.status}: ${err.message}\`\`\``).then(msg => {msg.delete(10000)});
