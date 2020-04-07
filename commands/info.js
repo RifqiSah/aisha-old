@@ -1,6 +1,6 @@
 module.exports = {
     name: "info",
-    desc: "Melihat info hal-hal yang ada pada Dragon Nest. Info yang tersedia yaitu:\`\`\`- mq\n- sp/np\n- cloister\n- hero talisman/epic talisman\n- nm/nightmare\n- f14debuff/f14 debuf\`\`\`",
+    desc: "Melihat info hal-hal yang ada pada Dragon Nest. Info yang tersedia yaitu:\`\`\`- mq\n- sp/np\n- cloister\n- hero talisman/epic talisman\n- goddess heraldry/heraldry\n- nm/nightmare\n- f14debuff/f14 debuf\`\`\`",
     enable: true,
     regex: false,
     help: true,
@@ -32,6 +32,27 @@ module.exports = {
                 data.push("https://i.imgur.com/JxaRyuC.png");
                 break;
 
+            case /\bgoddess heraldry|heraldry\b/g.test(info):
+                data.push("`Warrior`: https://cdn.discordapp.com/attachments/690593970891259935/690595171871490098/unknown.png");
+                data.push("`Archer`: https://cdn.discordapp.com/attachments/690593970891259935/690595462545145886/unknown.png");
+                data.push("`Sorceress`: https://cdn.discordapp.com/attachments/690593970891259935/690595569156227112/unknown.png");
+                data.push("`Cleric`: https://cdn.discordapp.com/attachments/690593970891259935/690595636898299934/unknown.png");
+                data.push("`Academic`: https://cdn.discordapp.com/attachments/690593970891259935/690595781723291688/unknown.png");
+                data.push("`Kali`: https://cdn.discordapp.com/attachments/690593970891259935/690595899721646140/unknown.png");
+                data.push("`Assassin`: https://cdn.discordapp.com/attachments/690593970891259935/690596141368082462/unknown.png");
+                data.push("`Lancea`: https://cdn.discordapp.com/attachments/690593970891259935/690596304023322744/unknown.png");
+                data.push("`Machina`: https://cdn.discordapp.com/attachments/690593970891259935/690596367525085204/unknown.png");
+
+                data.push("\nDamage Increase and chance rate for classes with three (3) types of heraldry");
+                data.push("<https://discordapp.com/channels/519095341325221900/690593970891259935/690596760506204212>");
+
+                data.push("\nDamage Increase and chance rate for classes with four (4) types of heraldry");
+                data.push("<https://cdn.discordapp.com/attachments/690593970891259935/690596907319427112/unknown.png>");
+
+                data.push("\nDamage Increase and chance rate for classes with five (5) types of heraldry");
+                data.push("<https://cdn.discordapp.com/attachments/690593970891259935/690597010859884544/unknown.png>");
+                break;
+                    
             case /\bf14|f14 debuff\b/g.test(info):
                 data.push("https://cdn.discordapp.com/attachments/669038861388742666/669038889947758592/unknown.png");
                 break;

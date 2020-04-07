@@ -14,15 +14,15 @@ module.exports = {
         data.push(`__**Version ${client.config.VERSION} Changelog**__`);
 
         data.push("\n**Penambahan:**");
-        data.push("Tidak ada");
+        // data.push("Tidak ada");
         // data.push("★ BOT: Command noblesse buff dan rob ditambahkan.");
         // data.push("★ Module `drop` ditambahkan.");
-        // data.push("★ Module `rate`: Command powder/bubuk ditambahkan.");
+        data.push("★ Module `info`: Command goddess heraldry/heraldry ditambahkan.");
 
         data.push("\n**Perubahan:**");
-        // data.push("Tidak ada");
+        data.push("Tidak ada");
         // data.push("★ Memindahkan reaction add dan remove kedalam event handler.");
-        data.push("★ BOT: Perubahan metode verifikasi untuk member baru.");
+        // data.push("★ BOT: Perubahan metode verifikasi untuk member baru.");
 
         data.push("\n**Penghapusan:**");
         data.push("Tidak ada");
