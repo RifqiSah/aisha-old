@@ -9,6 +9,7 @@
     "dependencies": {
         "apiai": "^4.0.3",
         "discord.js": "^11.5.1",
+        "dotenv": "^8.2.0",
         "fs": "0.0.1-security",
         "json-parser": "^1.1.5",
         "moment": "^2.24.0",
