@@ -3,13 +3,21 @@ Informate Community Private Discord BOT. This BOT made with [Discord.js](https:/
 
 ## Installation
 Clone this repository
-`git clone https://github.com/RifqiSah/Aisha.git`
+```
+git clone https://github.com/RifqiSah/Aisha.git
+```
 
 Install required package with **npm**
-`npm install`
+```
+npm install
+```
 
 Create **.env** file from **.env.example** using:
-`copy .env.example .env`
+```
+copy .env.example .env
+```
 
 ## Running
-`node bot.js`
+```
+node bot.js
+```
