@@ -1,6 +1,6 @@
 {
-    "name": "Aisha",
-    "description": "Aisha: Simpe Discord BOT",
+    "name": "aisha",
+    "description": "Aisha: Informate Private Discord BOT.",
     "version": "1.0.0",
     "main": "bot.js",
     "scripts": {
@@ -14,7 +14,7 @@
         "json-parser": "^1.1.5",
         "moment": "^2.24.0",
         "net": "^1.0.2",
-        "request": "^2.88.0",
+        "request": "^2.88.2",
         "superagent": "^5.2.1"
     }
 }
