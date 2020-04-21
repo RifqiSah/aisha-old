@@ -1,13 +1,13 @@
 const superagent = require("superagent");
 
 module.exports = {
-    name: "grabserver",
+    name: "servergrab",
     desc: "Mengubah status server Dragon Nest.",
     enable: true,
     regex: false,
     help: false,
     role: ['433870492378595329'],
-    aliases: ['server'],
+    aliases: ['sg'],
 	usage: '[server ID]',
 	cooldown: 0,
     func: async (client, message, args) => {
