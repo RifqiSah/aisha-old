@@ -1,6 +1,6 @@
 module.exports = {
     name: "rate",
-    desc: "Melihat info rate enhance, dan chance apapun (kecuali drop) pada Dragon Nest. Rate yang tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- ancient\n- bdn\n- taliman\n- jade\n- mirage\n- paraselene\n- dj\n- acc\n- fusi\n- mount\n- celestone\n- conversion weapon/tf weapon\n- tf fragment/fragment tf\n- robot pet\n- powder/bubuk\`\`\`",
+    desc: "Melihat info rate enhance, dan chance apapun (kecuali drop) pada Dragon Nest. Rate yang tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- goddess ancient\n- bdn\n- taliman\n- jade\n- mirage\n- paraselene\n- dj/mj\n- acc\n- fusi\n- mount\n- celestone\n- conversion weapon/tf weapon\n- tf fragment/fragment tf\n- robot pet\n- powder/bubuk\`\`\`",
     enable: true,
     regex: false,
     help: true,
@@ -26,11 +26,11 @@ module.exports = {
                 data.push("https://i.imgur.com/gJgXC7s.png");
                 break;
 
-            case /\bfdn|forest|wepon|weapon\b/g.test(rate):
+            case /\bfdn|forest|fdn wepon|fdn weapon\b/g.test(rate):
                 data.push("https://i.imgur.com/0IV0n3M.png");
                 break;
 
-            case /\bancient|armor|skill\b/g.test(rate):
+            case /\bgoddess armor|ancient armor\b/g.test(rate):
                 data.push("https://i.imgur.com/lWIvpby.png");
                 break;
 
@@ -60,7 +60,7 @@ module.exports = {
                 data.push("https://i.imgur.com/yzZyjsp.png");
                 break;
 
-            case /\bdj\b/g.test(rate):
+            case /\bdj|mj|bmj\b/g.test(rate):
                 data.push("`1 to 10`: https://i.imgur.com/lpqdJw7.png");
                 data.push("`11 to 15`: https://i.imgur.com/5hqmq3Y.png");
                 break;
@@ -74,7 +74,7 @@ module.exports = {
                 data.push("`Future in SEA (Current in KR)`: https://cdn.discordapp.com/attachments/526456830193434624/634019881314025472/92rUvBz.png");
                 break;
 
-            case /\bconversion weapon|tf weapon\b/g.test(rate):
+            case /\bconversion weapon|tf weapon|tf wepon\b/g.test(rate):
                 data.push("https://cdn.discordapp.com/attachments/519164580476223500/519168748075221001/Conversion_weapon_rate.png");
                 break;
 
