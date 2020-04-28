@@ -74,7 +74,7 @@ module.exports = {
                 data.push("10F: Boss HP is **[534.442.213.376]** and minimum DPS is **[1.781.474.045]**");
                 data.push("11F: Boss HP is **[1.006.649.212.928]** and minimum DPS is **[3.355.497.376]**");
                 data.push("12F: Boss HP is **[1.895.519.617.026]** and minimum DPS is **[6.318.398.723]**");
-                data.push("13F: Boss HP is **[3.569.263.050.752]** and minimum DPS is **[118.97.543.503]**");
+                data.push("13F: Boss HP is **[3.569.263.050.752]** and minimum DPS is **[11.897.543.503]**");
                 data.push("14F: Boss HP is **[6.720.922.320.896]** and minimum DPS is **[22.403.074.403]**");
                 data.push("15F: Boss HP is **[12.655.496.527.872]** and minimum DPS is **[42.184.988.426]**");
                 break;
