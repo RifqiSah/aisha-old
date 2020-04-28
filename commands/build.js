@@ -1,5 +1,5 @@
 module.exports = {
-    name: "restart",
+    name: "build",
     desc: "Menjalankan ulang Aisha dari server.",
     enable: true,
     regex: false,
@@ -9,7 +9,7 @@ module.exports = {
 	usage: '',
 	cooldown: 0,
     func: (client, message, args) => {
-        message.channel.send('Aisha, bangun ~');
+        message.channel.send('Building new Aisha instance.');
         process.exit();
     }
 }
