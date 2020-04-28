@@ -15,7 +15,7 @@ module.exports = {
         message.delete();
 
         let ret = [];
-        let dns = funct.getServerIP(args);
+        let dns = funct.getServerIP(args[0].toUpperCase());
         let msg = await message.channel.send(`Menghubungkan ke \`${dns.ip} (${dns.name})\` ...`);
 
         // Start server check

@@ -14,8 +14,7 @@ module.exports = {
             { 'name': 'KO', 'ip': '211.233.18.72', 'port': 14300 },
             { 'name': 'SEA', 'ip': '202.14.200.67', 'port': 14301 },
         ];
-
-        let sname = name[0].toUpperCase();
-        return serverIp.find(x => x.name === sname);
+        
+        return serverIp.find(x => x.name === name);
     }
 }
