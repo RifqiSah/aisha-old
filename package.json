@@ -13,6 +13,7 @@
         "fs": "0.0.1-security",
         "json-parser": "^1.1.5",
         "moment": "^2.24.0",
+        "mongoose": "^5.9.11",
         "net": "^1.0.2",
         "request": "^2.88.2",
         "superagent": "^5.2.1"
