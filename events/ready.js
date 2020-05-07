@@ -7,12 +7,12 @@ module.exports = (bot, config) => {
     const activities_list = [
         config.PREFIX + "h for command.",
         config.VERSION + " is running.",
-        "Informate Private Bot.",
+        "Informate's Bot.",
         `Serving ${bot.users.size} users in ${bot.guilds.size} guild.`
     ];
 
     setInterval(() => {
-        bot.user.setStatus('dnd');
+        // bot.user.setStatus('dnd');
         bot.user.setActivity(activities_list[Math.floor(Math.random() * activities_list.length)]/*, { type: "WATCHING" }*/);
     }, 10000);
 
