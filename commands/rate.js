@@ -110,7 +110,8 @@ module.exports = {
                 data.push("**F15**: 5pcs (96%) fragments");
                 data.push("**F16**: 5pcs (92%) fragments");
                 data.push("**F17**: 5pcs (84%) fragments");
-                data.push("\n__**For F14 - F17, see Minos Gear drop rate using `.drop minos`.**__")
+                data.push("\n__**For F14 - F17, see Minos Gear drop rate using `.drop minos`.**__");
+                break;
 
             default:
                 data.push(`Rate untuk \`${rates}\` tidak ditemukan!`);
