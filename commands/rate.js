@@ -1,6 +1,6 @@
 module.exports = {
     name: "rate",
-    desc: "Melihat info rate enhance, dan chance apapun (kecuali drop) pada Dragon Nest. Rate yang tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- goddess ancient\n- bdn\n- taliman\n- jade\n- mirage\n- paraselene\n- dj/mj\n- acc\n- fusi\n- mount\n- celestone\n- conversion weapon/tf weapon\n- tf fragment/fragment tf\n- robot pet\n- powder/bubuk\`\`\`",
+    desc: "Melihat info rate enhance, dan chance apapun (kecuali drop) pada Dragon Nest. Rate yang tersedia yaitu:\`\`\`- calypse\n- skila\n- fdn\n- goddess ancient\n- bdn\n- taliman\n- jade\n- mirage\n- paraselene\n- dj/mj\n- acc\n- fusi\n- mount\n- celestone\n- conversion weapon/tf weapon\n- tf fragment/fragment tf\n- robot pet\n- powder/bubuk\n- mino/minos\`\`\`",
     enable: true,
     regex: false,
     help: true,
@@ -97,10 +97,21 @@ module.exports = {
                 data.push("Step 3 - Get Love of Friend or Costume RNG from Pouch");
                 data.push("https://i.imgur.com/o4NRzCV.png");
                 break;
+
             case /\bpowder|bubuk\b/g.test(rate):
                 data.push("https://cdn.discordapp.com/attachments/432903741029613569/673810283289903114/IMG_20191231_162056.png");
                 break;
                 
+            case /\bmino|minos\b/g.test(rate):
+                data.push("**F11**: 1pc (60%), 2pcs (30%), 3pcs(10%) fragments");
+                data.push("**F12**: 2pc (60%), 3pcs (30%), 4pcs(10%) fragments");
+                data.push("**F13**: 3pc (60%), 4pcs (30%), 5pcs(10%) fragments\n");
+                data.push("**F14**: 5pcs (98%) fragments");
+                data.push("**F15**: 5pcs (96%) fragments");
+                data.push("**F16**: 5pcs (92%) fragments");
+                data.push("**F17**: 5pcs (84%) fragments");
+                data.push("\n__**For F14 - F17, see Minos Gear drop rate using `.drop minos`.**__")
+
             default:
                 data.push(`Rate untuk \`${rates}\` tidak ditemukan!`);
                 break;

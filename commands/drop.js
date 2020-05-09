@@ -91,6 +91,13 @@ module.exports = {
                 data.push("`Nightmare Silver & Gold Chest Selection`: https://i.imgur.com/9tgxCMw.png");
                 break;
 
+            case /\bmino|minos\b/g.test(item):
+                data.push("**F14**: 2% => 0.5% for each part");
+                data.push("**F15**: 4% => 0.8% for each part");
+                data.push("**F16**: 8% => 1.6% for each part");
+                data.push("**F17**: 16% => 3.2% for each part");
+                break;
+
             default:
                 data.push(`Drop rate untuk item \`${items}\` tidak ditemukan!`);
                 break;
