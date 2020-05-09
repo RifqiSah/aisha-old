@@ -11,7 +11,7 @@ if (!config.MONGODB) {
 }
 
 // Connect
-mongoose.connect(config.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(config.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
 .then(() => {
     console.log("[V] Connected with database!");    
 }).catch(err => {
