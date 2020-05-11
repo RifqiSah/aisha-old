@@ -1,6 +1,6 @@
 module.exports = {
     name: "hp",
-    desc: "Informasi mengenai jumlah HP dari nest. HP yang tersedia yaitu:\`\`\`- GDN\n- FDN\n- BDN\`\`\`",
+    desc: "Informasi mengenai jumlah HP dari nest. HP yang tersedia yaitu:\`\`\`- GDN\n- FDN\n- BDN\n-STG/Sunset\`\`\`",
     enable: true,
     regex: false,
     help: true,
