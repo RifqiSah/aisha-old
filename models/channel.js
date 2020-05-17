@@ -5,6 +5,10 @@ const channelSchema = new Schema({
     id: {
         type: String,
         required: true,
+    },
+    status: {
+        type: Boolean,
+        required: true,
     }
 });
 
