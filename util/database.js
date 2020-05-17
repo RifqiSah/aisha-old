@@ -13,8 +13,8 @@ if (!config.MONGODB) {
 // Connect
 mongoose.connect(config.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
 .then(() => {
-    console.log("[V] Connected with database!");    
+    console.log(`[V] Connected with database!`);    
 }).catch(err => {
-    console.log('[X] Database not found or not exists!');
+    console.log(`[X] Database error with: ${err}!`);
     process.exit();
 });
