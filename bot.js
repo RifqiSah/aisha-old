@@ -1,14 +1,19 @@
 ﻿var Discord = require('discord.js');
 var Dialogflow = require('apiai');
 var fs = require('fs');
+var DB = require('./util/database.js');
 
 // == Awal inisialisasi ==
 console.log("[-] Initialize varible");
 Client = {
+    // General
     config: require('./config'),
     bot: new Discord.Client({ partials: ['USER', 'GUILD_MEMBER', 'MESSAGE', 'CHANNEL', 'REACTION'] }),
     discord_embed: new Discord.RichEmbed(),
-    apiAI: Dialogflow(require('./config').TOKEN_APIAI)
+    apiAI: Dialogflow(require('./config').TOKEN_APIAI),
+
+    // Services
+    chsvc: require('./services/channel.services'),
 }
 
 Client.cmdcd = new Set();
