@@ -2,7 +2,7 @@ module.exports = {
     name: "patch",
     desc: "Untuk memudahakan dalam menulis patchnote.",
     enable: true,
-    regex: true,
+    regex: false,
     help: false,
     role: [],
     aliases: ['pn'],
