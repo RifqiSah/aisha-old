@@ -49,6 +49,13 @@ module.exports = async (message, client) => {
     }
     // == End monitor main channel ==
 
+    // == Awal channel check ==
+    // client.chsvc.getChannel(message.channel.id, (e, ch) => {
+    //     let count = ch.length
+    //     if (ch.length) return;
+    // });
+    // == End channel check ==
+
     // == Awal regex checker ==
     // Cek apakah diawali prefix
     if (message.content.indexOf(client.config.PREFIX) !== 0) {
