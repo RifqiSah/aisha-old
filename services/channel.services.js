@@ -5,12 +5,13 @@ module.exports = {
     getAllChannel() {
         Channel.find({}, (e, ch) => {
             if (e) return console.log(e);
+
             return ch;
         });
     },
 
-    getChannel(ID, cb) {
-        Channel.find({ id: ID }, cb);
+    getChannel(ID, val) {
+        return Channel.findOne({ id: ID });
     },
 
     // Add data
