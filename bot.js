@@ -1,7 +1,7 @@
 ﻿var Discord = require('discord.js');
 var Dialogflow = require('apiai');
 var fs = require('fs');
-var DB = require('./util/database.js');
+var db = require('./util/database.js');
 
 // == Awal inisialisasi ==
 console.log("[-] Initialize varible");
@@ -16,6 +16,7 @@ Client = {
     chsvc: require('./services/channel.services'),
 }
 
+db.connect();
 Client.cmdcd = new Set();
 console.log("[V] Done!");
 // == Akhir inisialisasi ==
