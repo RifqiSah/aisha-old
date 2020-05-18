@@ -49,13 +49,6 @@ module.exports = async (message, client) => {
     }
     // == End monitor main channel ==
 
-    // == Awal channel check ==
-    // client.chsvc.getChannel(message.channel.id, (e, ch) => {
-    //     let count = ch.length
-    //     if (ch.length) return;
-    // });
-    // == End channel check ==
-
     // == Awal regex checker ==
     // Cek apakah diawali prefix
     if (message.content.indexOf(client.config.PREFIX) !== 0) {
@@ -69,6 +62,11 @@ module.exports = async (message, client) => {
         command = args.shift().toLowerCase(); // Mengambil command
     }
     // == Akhir regex checker ==
+
+    if (command !== 'bot') {
+        let isexist = await client.chsvc.getChannel(message.channel.id);
+        if (isexist) return;
+    }
 
     // == Awal command manager ==
     let commandfile = client.commands.get(command) || client.commands.get(client.commandsAlias.get(command)); // Cari file command yang ditunjuk
