@@ -103,6 +103,7 @@ module.exports = {
                 break;
                 
             case /\bmino|minos\b/g.test(rate):
+                data.push("__**Fragments**__")
                 data.push("**F11**: 1pc (60%), 2pcs (30%), 3pcs(10%) fragments");
                 data.push("**F12**: 2pc (60%), 3pcs (30%), 4pcs(10%) fragments");
                 data.push("**F13**: 3pc (60%), 4pcs (30%), 5pcs(10%) fragments\n");
@@ -111,6 +112,8 @@ module.exports = {
                 data.push("**F16**: 5pcs (92%) fragments");
                 data.push("**F17**: 5pcs (84%) fragments");
                 data.push("\n__**For F14 - F17, see Minos Gear drop rate using `.drop minos`.**__");
+                data.push("\n__**Enhance rate**__");
+                data.push("https://cdn.discordapp.com/attachments/695076346853982238/711888235759927395/unknown.png");
                 break;
 
             default:
