@@ -96,6 +96,7 @@ module.exports = {
                 data.push("**F15**: 4% => 0.8% for each part");
                 data.push("**F16**: 8% => 1.6% for each part");
                 data.push("**F17**: 16% => 3.2% for each part");
+                data.push("\n__**For Minos Fragments and enhance rate using `.rate minos`.**__");
                 break;
 
             default:
