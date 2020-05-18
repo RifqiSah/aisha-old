@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+
+const { Schema } = mongoose;
 
 const channelSchema = new Schema({
     id: {
@@ -9,8 +10,8 @@ const channelSchema = new Schema({
     status: {
         type: Boolean,
         required: true,
-    }
+    },
 });
 
-const Channel = mongoose.model("channel", channelSchema);
+const Channel = mongoose.model('channel', channelSchema);
 module.exports = Channel;
