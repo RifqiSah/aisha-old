@@ -11,10 +11,14 @@ if (!config.MONGODB) {
 }
 
 // Connect
-mongoose.connect(config.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
-.then(() => {
-    console.log(`[V] Connected with database!`);    
-}).catch(err => {
-    console.log(`[X] Database error with: ${err}!`);
-    process.exit();
-});
+module.exports = {
+    connect() {
+        mongoose.connect(config.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
+        .then(() => {
+            console.log(`[V] Database connected!`);    
+        }).catch(err => {
+            console.log(`[X] Database error with: ${err}!`);
+            process.exit();
+        });
+    }
+};
