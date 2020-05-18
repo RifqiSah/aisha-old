@@ -10,7 +10,7 @@ module.exports = {
         });
     },
 
-    getChannel(ID, val) {
+    getChannel(ID) {
         return Channel.findOne({ id: ID });
     },
 
