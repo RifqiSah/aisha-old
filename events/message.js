@@ -74,7 +74,7 @@ module.exports = async (message, client) => {
 
     // == Awal command manager ==
     // eslint-disable-next-line max-len
-    const commandfile = client.commands.get(command) || client.commands.get(client.commandsAlias.get(command)); // Cari file command yang ditunjuk
+    const commandfile = client.cmds.get(command) || client.cmds.get(client.cmdsAlias.get(command)); // Cari file command yang ditunjuk
     if (commandfile) {
         // Cek apakah command ada cooldownnya
         if (commandfile.cooldown > 0) {
