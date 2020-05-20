@@ -1,4 +1,4 @@
-﻿/* eslint-disable import/no-dynamic-require */
+/* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 const { Client, Collection, RichEmbed } = require('discord.js');
 const apiai = require('apiai');
