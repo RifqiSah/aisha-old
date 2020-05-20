@@ -1,6 +1,6 @@
 module.exports = {
     name: 'bot',
-    desc: 'Control panel untuk BOT.',
+    desc: 'Control panel untuk BOT.\nPengaturan yang tersedia yaitu: ```dch, ech```',
     enable: true,
     regex: false,
     help: false,
@@ -15,20 +15,20 @@ module.exports = {
         const data = [];
         const chid = message.channel.id;
 
-        if (!args.length) return message.channel.send('Wrong parameter!').then((msg) => { msg.delete(5000); });
+        if (!args.length) return message.channel.send('Harap masukkan parameter!').then((msg) => { msg.delete(5000); });
         switch (args[0]) {
         case 'dch':
             client.chsvc.addChannel(chid);
-            data.push(`Channel \`${chid}\` is disabled for Aisha!`);
+            data.push(`Channel \`${chid}\` telah dimatikan!`);
             break;
 
         case 'ech':
             client.chsvc.deleteChannel(chid);
-            data.push(`Channel \`${chid}\` is enabled for Aisha!`);
+            data.push(`Channel \`${chid}\` telah diaktifkan`);
             break;
 
         default:
-            data.push(`Bot command for \`${args[0]}\` not found!`);
+            data.push(`Pengaturan untuk \`${args[0]}\` tidak ditemukan!`);
         }
 
         message.channel.send(data, { split: true }).then((msg) => { msg.delete(5000); });
