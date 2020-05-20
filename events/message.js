@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable consistent-return */
-module.exports = async (message, client) => {
+module.exports = async (client, message) => {
     if (message.author.bot || message.channel.type === 'dm') return; // Jangan hiraukan chat dari sesama bot dan pastikan chat berasal dari guild
 
     // == Awal pengecekan mention BOT ==

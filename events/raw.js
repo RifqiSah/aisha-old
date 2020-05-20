@@ -1,5 +1,7 @@
 /* eslint-disable max-len */
-module.exports = (packet, bot) => {
+module.exports = (client, packet) => {
+    const { bot } = client;
+
     // We don't want this to run on unrelated packets
     if (!['MESSAGE_REACTION_ADD', 'MESSAGE_REACTION_REMOVE'].includes(packet.t)) return;
 

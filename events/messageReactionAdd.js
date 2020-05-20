@@ -1,4 +1,4 @@
-module.exports = async (reaction, user) => {
+module.exports = async (client, reaction, user) => {
     console.log(`-> Pesan dari ${reaction.message.author.tag} dengan id '${reaction.message.id}' mendapat reaction!`);
 
     // Ketika menerima reaction, cek jika pesan sebagian atau tidak
@@ -24,13 +24,13 @@ module.exports = async (reaction, user) => {
     const { message } = reaction;
     const { emoji } = reaction;
 
-    if (emoji === '🇲') {
+    if (emoji.name === '🇲') {
         message.guild.fetchMember(user.id).then((member) => {
             member.addRole('668660316036530216');
         });
     }
 
-    if (emoji === '🇹') {
+    if (emoji.name === '🇹') {
         message.guild.fetchMember(user.id).then((member) => {
             member.addRole('668680264096022550');
         });

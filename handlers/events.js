@@ -1,15 +1,22 @@
+/* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
-// eslint-disable-next-line import/no-dynamic-require
-const reqEvent = (event) => require(`../events/${event}`);
+const { readdirSync } = require('fs');
 
-module.exports = (client, bot, config) => {
-    bot.on('ready', () => reqEvent('ready')(bot, config));
+module.exports = (client) => {
+    console.log('  [-] Initialize events');
+    const load = () => {
+        const events = readdirSync('./events/').filter((f) => f.endsWith('.js'));
+        // eslint-disable-next-line no-restricted-syntax
+        for (const file of events) {
+            const evt = require(`../events/${file}`);
+            const ename = file.split('.')[0];
 
-    bot.on('raw', (packet) => reqEvent('raw')(packet, bot));
-    bot.on('guildMemberAdd', (member) => reqEvent('guildMemberAdd')(member));
-    bot.on('guildMemberRemove', (member) => reqEvent('guildMemberRemove')(member));
-    bot.on('messageReactionAdd', (reaction, user) => reqEvent('messageReactionAdd')(reaction, user));
-    bot.on('messageReactionRemove', (reaction, user) => reqEvent('messageReactionRemove')(reaction, user));
+            console.log(`    + '${ename}' added.`);
 
-    bot.on('message', (message) => reqEvent('message')(message, client));
+            client.bot.on(ename, evt.bind(null, client));
+        }
+    };
+
+    load();
+    console.log('  [V] Done!');
 };

@@ -1,6 +1,6 @@
 const funct = require('../util/funct.js');
 
-module.exports = (member) => {
+module.exports = (client, member) => {
     const channel = member.guild.channels.find((ch) => ch.id === '337424516362010625'); // Out-Off Topic
     if (!channel) return;
 

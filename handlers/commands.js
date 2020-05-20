@@ -11,7 +11,7 @@ module.exports = (client) => {
             const cmdfile = require(`../commands/${dirs}/${file}`);
             const key = file.slice(0, -3);
 
-            console.log(`  + '${key}' added.`);
+            console.log(`    + '${key}' added.`);
 
             client.cmds.set(key, cmdfile);
             cmdfile.aliases.forEach((alias) => {

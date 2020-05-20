@@ -39,7 +39,7 @@ console.info('[V] Bot active!');
 console.log('[-] Initialize handler');
 ['commands', 'events'].forEach((x) => {
     console.log(` [O] ${x} handler ..`);
-    require(`./handlers/${x}`)(client, client.bot, client.config);
+    require(`./handlers/${x}`)(client);
 });
 
 console.log('[V] Done!');
