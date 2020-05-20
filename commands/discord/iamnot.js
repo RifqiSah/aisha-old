@@ -1,4 +1,4 @@
-const funct = require('../util/funct.js');
+const funct = require('../../util/funct.js');
 
 module.exports = {
     name: 'iamnot',
