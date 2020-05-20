@@ -16,6 +16,8 @@
     },
     "rules": {
         "indent": ["error", 4],
-        "linebreak-style": ["error", "windows"]
+        "linebreak-style": ["error", "windows"],
+        "no-console": ["error", { "allow": ["log", "info", "warn", "error"] }],
+        "no-param-reassign": ["error", { "props": false }]
     }
 }
