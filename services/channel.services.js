@@ -45,4 +45,4 @@ module.exports = {
             console.log(`${ID} ${msg}`);
         });
     },
-}
+};

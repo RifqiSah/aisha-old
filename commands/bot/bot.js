@@ -1,6 +1,6 @@
 module.exports = {
     name: 'bot',
-    desc: 'Control panel untuk BOT.\nPengaturan yang tersedia yaitu: ```dch, ech```',
+    desc: 'Control panel untuk BOT.\nPengaturan yang tersedia yaitu: ```- dch (Disable channel)\n- ech (Enable channel)```',
     enable: true,
     regex: false,
     help: false,
@@ -19,12 +19,12 @@ module.exports = {
         switch (args[0]) {
         case 'dch':
             client.chsvc.addChannel(chid);
-            data.push(`Channel \`${chid}\` telah dimatikan!`);
+            data.push(`Channel <#${chid}> telah dimatikan!`);
             break;
 
         case 'ech':
             client.chsvc.deleteChannel(chid);
-            data.push(`Channel \`${chid}\` telah diaktifkan`);
+            data.push(`Channel <#${chid}> telah diaktifkan`);
             break;
 
         default:

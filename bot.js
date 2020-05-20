@@ -1,22 +1,24 @@
 ﻿/* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 const { Client, Collection, RichEmbed } = require('discord.js');
-const Dialogflow = require('apiai');
+const apiai = require('apiai');
 const db = require('./util/database.js');
+const conf = require('./config');
 
 // public init
 console.log('[-] Initialize varible');
 const client = {
     // General
-    config: require('./config'),
+    config: conf,
     bot: new Client({ partials: ['USER', 'GUILD_MEMBER', 'MESSAGE', 'CHANNEL', 'REACTION'] }),
     discord_embed: new RichEmbed(),
-    apiAI: Dialogflow(require('./config').TOKEN_APIAI),
+    apiAI: apiai(conf.TOKEN_APIAI),
 
     // Services
     chsvc: require('./services/channel.services'),
 };
 
+// Connect ke database
 db.connect();
 client.cmdcd = new Set();
 
@@ -38,9 +40,9 @@ console.info('[V] Bot active!');
 // init event handler
 console.log('[-] Initialize handler');
 ['commands', 'events'].forEach((x) => {
-    console.log(` [O] ${x} handler ..`);
+    console.log(` [O] ${x} handler`);
     require(`./handlers/${x}`)(client);
 });
 
 console.log('[V] Done!');
-console.log('[V] Bot is ready to start!');
+console.log('[V] Aisha is ready to start!');
