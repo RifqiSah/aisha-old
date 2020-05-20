@@ -1,14 +1,14 @@
 const superagent = require('superagent');
 
 module.exports = {
-    name: 'grab',
-    desc: 'Mengambil data Announce dan Server Version.',
+    name: 'cron',
+    desc: 'Menjalankan cron job milik Alriftech.',
     enable: true,
     regex: false,
     help: false,
     role: ['433870492378595329'],
-    aliases: ['get'],
-    usage: '[tipe]',
+    aliases: ['cr'],
+    usage: '[nama]',
     cooldown: 0,
     func: async (client, message, args) => {
         message.delete();
