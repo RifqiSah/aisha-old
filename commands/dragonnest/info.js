@@ -53,8 +53,12 @@ module.exports = {
             data.push('<https://cdn.discordapp.com/attachments/690593970891259935/690597010859884544/unknown.png>');
             break;
 
-        case /\bf14|f14 debuff\b/g.test(info):
+        case /\bnest debuff\b/g.test(info):
             data.push('https://cdn.discordapp.com/attachments/669038861388742666/669038889947758592/unknown.png');
+            break;
+
+        case /\braid stats recommendation|raid recom\b/g.test(info):
+            data.push('https://cdn.discordapp.com/attachments/580444014218838041/713034595553116241/unknown_1.png');
             break;
 
         default:
