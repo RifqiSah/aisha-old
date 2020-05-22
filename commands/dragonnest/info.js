@@ -1,6 +1,6 @@
 module.exports = {
     name: 'info',
-    desc: 'Melihat info hal-hal yang ada pada Dragon Nest. Info yang tersedia yaitu: ```- mq\n- sp/np\n- cloister\n- hero talisman/epic talisman\n- goddess heraldry/heraldry\n- nm/nightmare\n- f14debuff/f14 debuff```',
+    desc: 'Melihat info hal-hal yang ada pada Dragon Nest. Info yang tersedia yaitu: ```- mq/mainquest/cp\n- cloister\n- hero talisman/epic talisman\n- goddess heraldry\n- nest debuff\n- raid recommendation/raid recom```',
     enable: true,
     regex: false,
     help: true,
@@ -20,10 +20,6 @@ module.exports = {
             data.push('https://cdn.discordapp.com/attachments/432903741029613569/560061874406686721/unknown.png');
             break;
 
-        case /\bnest|dungeon|sp|np|stage point|nest point\b/g.test(info):
-            data.push('https://cdn.discordapp.com/attachments/526456830193434624/666496405740847115/unknown.png');
-            break;
-
         case /\bcloister|sunset\b/g.test(info):
             data.push('https://i.imgur.com/kzFZTTh.png');
             break;
@@ -32,7 +28,7 @@ module.exports = {
             data.push('https://i.imgur.com/JxaRyuC.png');
             break;
 
-        case /\bgoddess heraldry|heraldry\b/g.test(info):
+        case /\bgoddess heraldry\b/g.test(info):
             data.push('`Warrior`: https://cdn.discordapp.com/attachments/690593970891259935/690595171871490098/unknown.png');
             data.push('`Archer`: https://cdn.discordapp.com/attachments/690593970891259935/690595462545145886/unknown.png');
             data.push('`Sorceress`: https://cdn.discordapp.com/attachments/690593970891259935/690595569156227112/unknown.png');
@@ -54,10 +50,10 @@ module.exports = {
             break;
 
         case /\bnest debuff\b/g.test(info):
-            data.push('https://cdn.discordapp.com/attachments/669038861388742666/669038889947758592/unknown.png');
+            data.push('https://media.discordapp.net/attachments/580444014218838041/713316309936504862/unknown_2.png');
             break;
 
-        case /\braid stats recommendation|raid recom\b/g.test(info):
+        case /\braid recommendation|raid recom\b/g.test(info):
             data.push('https://cdn.discordapp.com/attachments/580444014218838041/713034595553116241/unknown_1.png');
             break;
 
