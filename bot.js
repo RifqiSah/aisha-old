@@ -2,7 +2,7 @@
 /* eslint-disable global-require */
 const { Client, Collection, RichEmbed } = require('discord.js');
 const apiai = require('apiai');
-const db = require('./util/database.js');
+const db = require('./util/database');
 const conf = require('./config');
 
 // public init
