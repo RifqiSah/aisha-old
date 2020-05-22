@@ -1,6 +1,6 @@
 module.exports = {
     name: 'rate',
-    desc: 'Melihat info rate enhance, dan chance apapun (kecuali drop) pada Dragon Nest. Rate yang tersedia yaitu: ```- calypse\n- skila\n- fdn\n- goddess ancient\n- bdn\n- taliman\n- jade\n- mirage\n- paraselene\n- dj/mj\n- acc\n- fusi\n- mount\n- celestone\n- conversion weapon/tf weapon\n- tf fragment/fragment tf\n- robot pet\n- powder/bubuk\n- mino/minos```',
+    desc: 'Melihat info rate enhance, dan chance apapun (kecuali drop) pada Dragon Nest. Rate yang tersedia yaitu: ```- calypse\n- skila\n- fdn\n- goddess armor\n- bdn armor\n- acc\n- guardian talisman\n- jade\n- mirage\n- paraselene\n- dj/ddj/mj/bmj\n- fusi\n- mount\n- conversion weapon/tf weapon\n- tf fragment/fragment tf\n- robot pet\n- powder/bubuk\n- mino/minos```',
     enable: true,
     regex: false,
     help: true,
@@ -34,7 +34,7 @@ module.exports = {
             data.push('https://i.imgur.com/lWIvpby.png');
             break;
 
-        case /\bbdn\b/g.test(rate):
+        case /\bbdn armor\b/g.test(rate):
             data.push('https://i.imgur.com/4osWnMm.png');
             break;
 
@@ -43,7 +43,7 @@ module.exports = {
             data.push('`Bahan`: https://cdn.discordapp.com/attachments/418464661566914584/657620284731293728/unknown.png');
             break;
 
-        case /\btalis|talisman\b/g.test(rate):
+        case /\bguardian talis|guardian talisman\b/g.test(rate):
             data.push('https://media.discordapp.net/attachments/519116465908219904/519116489362505729/guardian_talisman.png');
             break;
 
@@ -60,7 +60,7 @@ module.exports = {
             data.push('https://i.imgur.com/yzZyjsp.png');
             break;
 
-        case /\bdj|mj|bmj\b/g.test(rate):
+        case /\bdj|ddj|mj|bmj\b/g.test(rate):
             data.push('`1 to 10`: https://i.imgur.com/lpqdJw7.png');
             data.push('`11 to 15`: https://i.imgur.com/5hqmq3Y.png');
             break;
