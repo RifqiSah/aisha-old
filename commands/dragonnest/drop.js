@@ -1,6 +1,6 @@
 module.exports = {
     name: 'drop',
-    desc: 'Melihat info drop rate dari sebuah item pada Dragon Nest. Item yang tersedia yaitu: ```- lapis\n- celestone\n- fishing\n- seafishing\n- nm/nightmare/epic talisman/hero talisman```',
+    desc: 'Melihat info drop rate dari sebuah item pada Dragon Nest. Item yang tersedia yaitu: ```- lapis\n- celestone\n- fishing/mancing\n- seafishing/event mancing\n- nm/nightmare/epic talisman/hero talisman\n- mino/minos```',
     enable: true,
     regex: false,
     help: true,
@@ -87,8 +87,7 @@ module.exports = {
             break;
 
         case /\bnm|nightmare|epic talisman|hero talisman\b/g.test(item):
-            data.push('`Stage 1 & Stage 2 Bosses Drop rate`: https://i.imgur.com/eHmjgRw.png');
-            data.push('`Nightmare Silver & Gold Chest Selection`: https://i.imgur.com/9tgxCMw.png');
+            data.push('`Nightmare Silver & Gold Chest Selection`: https://media.discordapp.net/attachments/580444014218838041/713316510214520832/unknown_1.png');
             break;
 
         case /\bmino|minos\b/g.test(item):
