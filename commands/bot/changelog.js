@@ -1,3 +1,5 @@
+const Github = require('gh.js');
+
 module.exports = {
     name: 'changelog',
     desc: 'Melihat _changelog_ atau perubahan yang terjadi pada Aisha.',
@@ -12,21 +14,15 @@ module.exports = {
     func: (client, message, args) => {
         const data = [];
 
-        data.push(`__**Version ${client.config.VERSION} Changelog**__`);
+        data.push(`__**Version ${client.config.VERSION} Changelog**__\n`);
 
-        data.push('\n**Penambahan:**');
-        // data.push("Tidak ada");
-        // data.push("★ BOT: Command noblesse buff dan rob ditambahkan.");
-        // data.push("★ Module `drop` ditambahkan.");
-        data.push('★ Module `info`: Command goddess heraldry/heraldry ditambahkan.');
+        const gh = new Github('');
+        // eslint-disable-next-line consistent-return
+        gh.get('repos/RifqiSah/Aisha/commits?per_page=10', (err, res) => {
+            if (err) { return data.push(err); }
 
-        data.push('\n**Perubahan:**');
-        data.push('Tidak ada');
-        // data.push("★ Memindahkan reaction add dan remove kedalam event handler.");
-        // data.push("★ BOT: Perubahan metode verifikasi untuk member baru.");
-
-        data.push('\n**Penghapusan:**');
-        data.push('Tidak ada');
+            data.push(res.map(res.map((c) => `${c.committer.login} on ${c.commit.committer.date} : ${c.commit.message}`).join('\n')));
+        });
 
         message.channel.send(data, { split: true });
     },
