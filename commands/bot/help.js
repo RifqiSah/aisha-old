@@ -13,7 +13,7 @@ module.exports = {
         const data = [];
         if (!args.length) {
             data.push('Hai! Ini adalah daftar command yang tersedia:\n');
-            client.commands.forEach((item) => {
+            client.cmds.forEach((item) => {
                 if (item.help) data.push(`\`${item.name}\` : ${item.desc.split('.')[0]}.`);
             });
 
@@ -21,7 +21,7 @@ module.exports = {
         } else {
             const name = args[0].toLowerCase();
             // eslint-disable-next-line max-len
-            const command = client.commands.get(name) || client.commands.get(client.commandsAlias.get(name));
+            const command = client.cmds.get(name) || client.cmds.get(client.cmdsalias.get(name));
 
             if (!command) {
                 return message.reply('Command tidak valid!');
