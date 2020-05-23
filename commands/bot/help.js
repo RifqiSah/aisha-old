@@ -29,12 +29,12 @@ module.exports = {
 
             data.push(`Informasi mengenai command \`${command.name}\`:\n`);
 
-            if (command.aliases) data.push(`\`Alias\` : ${command.aliases.length ? `${command.aliases.join(', ')}` : 'Tidak Ada'}`);
+            if (command.aliases) data.push(`\`Alias\` : ${command.aliases.length ? `${command.aliases.join(', ')}` : '-'}`);
             if (command.desc) data.push(`\`Deskripsi\` : ${command.desc}`);
             if (command.usage) data.push(`\`Penggunaan\` : ${client.config.PREFIX}${name} ${command.usage}.`);
-            if (command.role) data.push(`\`Role\` : ${command.role.length ? command.role.map((i) => message.guild.roles.get(`${i}`)).join(', ') : 'Tidak Ada'}.`);
+            if (command.role) data.push(`\`Role\` : ${command.role.length ? command.role.map((i) => message.guild.roles.get(`${i}`)).join(', ') : '-'}.`);
 
-            data.push(`\`Regex\` (tanpa **.**) : ${command.regex ? 'Ya' : 'Tidak'}.`);
+            data.push(`\`Regex\` : ${command.regex ? 'Ya' : 'Tidak'}.`);
             data.push(`\`Cooldown\` : ${command.cooldown} detik.`);
             data.push(`\nAnda dapat menggunakan \`${client.config.PREFIX}help\` untuk mendapatkan informasi dari semua command yang tersedia.`);
         }
