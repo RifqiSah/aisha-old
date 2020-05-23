@@ -17,22 +17,24 @@ module.exports = {
 
         switch (true) {
         case /\blapis\b/g.test(item):
-            data.push('Easy = 0%');
-            data.push('Norm = 0.3%');
-            data.push('Hard = 1.7%');
-            data.push('Master = 3.4%');
-            data.push('Abyss = 10%');
-            data.push('F1 = 12%');
-            data.push('F2 = 14%');
-            data.push('F3 = 17%');
-            data.push('F4 = 19%');
-            data.push('F5 = 23%');
-            data.push('F6 = 27%');
-            data.push('F7 = 31%');
-            data.push('F8 = 36%');
-            data.push('F9 = 43%');
-            data.push('F10 = 50%');
-            data.push('F11 = 58%');
+            data.push('__**Lapis drop in Nightmare**__\n');
+            data.push('F1 = 3-4 items');
+            data.push('F2 = 3-4 items');
+            data.push('F3 = 3-4 items');
+            data.push('F4 = 3-4 items');
+            data.push('F5 = 3-4 items');
+            data.push('F6 = 3-4 items');
+            data.push('F7 = 4-5 items');
+            data.push('F8 = 4-5 items');
+            data.push('F9 = 5-6 items');
+            data.push('F10 = 5-6 items');
+            data.push('F11 = 6-7 items');
+            data.push('F12 = 7-8 items');
+            data.push('F13 = 8-9 items');
+            data.push('F14 = 9-10 items');
+            data.push('F15 = 10-11 items');
+            data.push('F16 = 11-12 items');
+            data.push('F17 = 12-13 items');
             break;
 
         case /\bcelestone\b/g.test(item):
