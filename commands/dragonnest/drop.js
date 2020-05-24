@@ -1,6 +1,6 @@
 module.exports = {
     name: 'drop',
-    desc: 'Melihat info drop rate dari sebuah item pada Dragon Nest. Item yang tersedia yaitu: ```- lapis\n- celestone\n- fishing/mancing\n- seafishing/event mancing\n- nm/nightmare/epic talisman/hero talisman\n- mino/minos```',
+    desc: 'Melihat info drop rate dari sebuah item pada Dragon Nest. Item yang tersedia yaitu: ```- lapis\n- fishing/mancing\n- seafishing/event mancing\n- nm/nightmare/epic talisman/hero talisman\n- mino/minos```',
     enable: true,
     regex: false,
     help: true,
@@ -35,12 +35,6 @@ module.exports = {
             data.push('F15 = 10-11 items');
             data.push('F16 = 11-12 items');
             data.push('F17 = 12-13 items');
-            break;
-
-        case /\bcelestone\b/g.test(item):
-            data.push('Dungeon Boss Drop = 1%');
-            data.push('Invader Boss Drop = 1%');
-            data.push('Nest End Chest = 1%');
             break;
 
         case /\bfishing|mancing\b/g.test(item):
