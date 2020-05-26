@@ -12,11 +12,11 @@ module.exports = {
     cooldown: 0,
     func: async (client, message, args) => {
         message.delete();
-        const msgs = await message.channel.send(`Menunggu *grabbing* \`${args}\` ...`);
+        const msgs = await message.channel.send(`Menunggu *cron* \`${args}\` ...`);
 
-        await superagent.get(`http://dev.alriftech.com/cron/${args}.php`)
+        await superagent.get(`https://alriftech.com/cron/${args}`)
             .then((res) => {
-                msgs.edit(`Sukses *grabbing* \`${args}\`! Respon:\`\`\`${res.text}\`\`\``).then((msg) => { msg.delete(5000); });
+                msgs.edit(`Sukses *cron* \`${args}\`! Respon:\`\`\`${res.text}\`\`\``).then((msg) => { msg.delete(5000); });
             })
             .catch((err) => {
                 msgs.edit(`Uh oh, error tidak terduga:\`\`\`${err.status}: ${err.message}\`\`\``).then((msg) => { msg.delete(10000); });
