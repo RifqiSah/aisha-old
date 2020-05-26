@@ -1,0 +1,137 @@
+[
+    {
+        "name": ["callypse", "calip", "calypse", "calipse", "kelip"],
+        "data": [
+            "`Tier 1`: https://i.imgur.com/CMLeTwt.png",
+            "`Tier 2`: https://i.imgur.com/dXNPCON.png",
+            "`Tier 3`: https://i.imgur.com/TVTHPfm.png"
+        ]
+    },
+    {
+        "name": ["skila", "scylla", "skilla"],
+        "data": [
+            "https://i.imgur.com/gJgXC7s.png"
+        ]
+    },
+    {
+        "name": ["fdn", "forest", "fdn wepon", "fdn weapon"],
+        "data": [
+            "https://i.imgur.com/0IV0n3M.png"
+        ]
+    },
+    {
+        "name": ["goddess armor"],
+        "data": [
+            "https://i.imgur.com/lWIvpby.png"
+        ]
+    },
+    {
+        "name": ["bdn armor"],
+        "data": [
+            "https://i.imgur.com/4osWnMm.png"
+        ]
+    },
+    {
+        "name": ["acc", "ring", "earring", "ear", "neck", "nek"],
+        "data": [
+            "`Rate` : https://cdn.discordapp.com/attachments/418464661566914584/657620418563407883/unknown.png",
+            "`Bahan`: https://cdn.discordapp.com/attachments/418464661566914584/657620284731293728/unknown.png"
+        ]
+    },
+    {
+        "name": ["guardian talis", "guardian talisman"],
+        "data": [
+            "https://media.discordapp.net/attachments/519116465908219904/519116489362505729/guardian_talisman.png"
+        ]
+    },
+    {
+        "name": ["jade" ,"jewel"],
+        "data": [
+            "`Champion`: https://cdn.discordapp.com/attachments/597969449340895247/597978448622911501/2019070717144963454.png",
+            "`Flawless`: https://cdn.discordapp.com/attachments/597969449340895247/597978678693068800/2019070717212085581.png"
+        ]
+    },
+    {
+        "name": ["mirage", "mirage jade"],
+        "data": [
+            "https://i.imgur.com/5aPkiAr.png"
+        ]
+    },
+    {
+        "name": ["paraselene", "paraselene jade"],
+        "data": [
+            "https://i.imgur.com/yzZyjsp.png"
+        ]
+    },
+    {
+        "name": ["dj", "ddj", "mj", "bmj"],
+        "data": [
+            "`1 to 10`: https://i.imgur.com/lpqdJw7.png",
+            "`11 to 15`: https://i.imgur.com/5hqmq3Y.png"
+        ]
+    },
+    {
+        "name": ["fusi", "fusion", "cost", "cosu", "cossu", "cost", "costume", "kostum"],
+        "data": [
+            "https://cdn.discordapp.com/attachments/526456830193434624/659156809382232077/cash_synthesis_rate_dnsea.png"
+        ]
+    },
+    {
+        "name": ["mount"],
+        "data": [
+            "https://cdn.discordapp.com/attachments/526456830193434624/634019881314025472/92rUvBz.png"
+        ]
+    },
+    {
+        "name": ["conversion weapon", "tf weapon", "tf wepon"],
+        "data": [
+            "https://cdn.discordapp.com/attachments/519164580476223500/519168748075221001/Conversion_weapon_rate.png"
+        ]
+    },
+    {
+        "name": ["tf fragment", "fragment tf"],
+        "data": [
+            "Conversion Armor Fragment (10) : 9,05%",
+            "Conversion Armor Fragment (30) : 25,68%",
+            "Conversion Armor Fragment (50) : 43,26%",
+            "Conversion Armor Fragment (70) : 11,02%",
+            "Conversion Armor Fragment (100) : 9,74%",
+            "Conversion Armor Fragment (500) : 1,08%",
+            "Conversion Armor Fragment (1000) : 0,14%",
+            "Conversion Armor Fragment (3000) : 0,02%",
+            "Conversion Thread :0,01%"
+        ]
+    },
+    {
+        "name": ["robot pet"],
+        "data": [
+            "How to Get Accessory =>",
+            "Step 1 - Exchange Legend Robot to get [Heart Pounding Pet Accessory Pouch]",
+            "Step 2 - Open Pouch",
+            "Step 3 - Get Love of Friend or Costume RNG from Pouch\n",
+            "https://i.imgur.com/o4NRzCV.png"
+        ]
+    },
+    {
+        "name": ["jade powder", "powder", "bubuk"],
+        "data": [
+            "https://cdn.discordapp.com/attachments/432903741029613569/673810283289903114/IMG_20191231_162056.png"
+        ]
+    },
+    {
+        "name": ["mino", "minos"],
+        "data": [
+            "__**Fragments**__",
+            "**F11**: 1pc (60%), 2pcs (30%), 3pcs(10%) fragments",
+            "**F12**: 2pc (60%), 3pcs (30%), 4pcs(10%) fragments",
+            "**F13**: 3pc (60%), 4pcs (30%), 5pcs(10%) fragments\n",
+            "**F14**: 5pcs (98%) fragments",
+            "**F15**: 5pcs (96%) fragments",
+            "**F16**: 5pcs (92%) fragments",
+            "**F17**: 5pcs (84%) fragments",
+            "\n__**For F14 - F17, see Minos Gear drop rate using `.drop minos`.**__",
+            "\n__**Enhance rate**__",
+            "https://media.discordapp.net/attachments/695076346853982238/713908239560998942/unknown.png"
+        ]
+    }
+]
