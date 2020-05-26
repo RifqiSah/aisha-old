@@ -1,5 +1,11 @@
 module.exports = (client) => {
-    client.bot.user.setUsername('Aisha');
+    if (client.config.ENV === 'production') {
+        client.bot.user.setUsername('Aisha');
+    } else {
+        client.bot.user.setUsername('Aisha [Test]');
+        client.config.PREFIX = '%';
+    }
+
     // bot.user.setAvatar("");
 
     console.log(`[V] Bot has started, with ${client.bot.users.size} users, in ${client.bot.channels.size} channels of ${client.bot.guilds.size} guilds.`);
