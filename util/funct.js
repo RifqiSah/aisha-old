@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 const { readFileSync } = require('fs');
 
 function loadData(file) {
@@ -29,24 +28,24 @@ module.exports = {
         return serverIp.find((x) => x.name === name);
     },
 
-    formatData: (name) => {
+    formatData: (key) => {
         let fmt;
 
-        switch (name) {
+        switch (key) {
         case 'dndrop':
-            fmt = dndrop.map((item) => '> '.concat(item.name.join(', '))).join('\n');
+            fmt = dndrop.map((item) => '> '.concat(item.key.join(', '))).join('\n');
             break;
 
         case 'dnhp':
-            fmt = dnhp.map((item) => '> '.concat(item.name.join(', '))).join('\n');
+            fmt = dnhp.map((item) => '> '.concat(item.key.join(', '))).join('\n');
             break;
 
         case 'dninfo':
-            fmt = dninfo.map((item) => '> '.concat(item.name.join(', '))).join('\n');
+            fmt = dninfo.map((item) => '> '.concat(item.key.join(', '))).join('\n');
             break;
 
         case 'dnrate':
-            fmt = dnrate.map((item) => '> '.concat(item.name.join(', '))).join('\n');
+            fmt = dnrate.map((item) => '> '.concat(item.key.join(', '))).join('\n');
             break;
 
         default:
@@ -57,75 +56,51 @@ module.exports = {
     },
 
     // Data
-    getDNDropData: (name) => {
-        const itemData = [];
+    getDNDropData: (key) => {
         const d = dndrop.find((item) => {
-            const itemReg = new RegExp(item.name.join('|'), 'g');
-            if (!name.match(itemReg)) return null;
+            const itemReg = new RegExp(item.key.join('|'), 'g');
+            if (!key.match(itemReg)) return null;
 
             return item;
         });
 
         if (!d) return null;
-
-        d.data.map((id) => {
-            itemData.push(id);
-        });
-
-        return itemData;
+        return d;
     },
 
-    getDNHpData: (name) => {
-        const itemData = [];
+    getDNHpData: (key) => {
         const d = dnhp.find((item) => {
-            const itemReg = new RegExp(item.name.join('|'), 'g');
-            if (!name.match(itemReg)) return null;
+            const itemReg = new RegExp(item.key.join('|'), 'g');
+            if (!key.match(itemReg)) return null;
 
             return item;
         });
 
         if (!d) return null;
-
-        d.data.map((id) => {
-            itemData.push(id);
-        });
-
-        return itemData;
+        return d;
     },
 
-    getDNInfoData: (name) => {
-        const itemData = [];
+    getDNInfoData: (key) => {
         const d = dninfo.find((item) => {
-            const itemReg = new RegExp(item.name.join('|'), 'g');
-            if (!name.match(itemReg)) return null;
+            const itemReg = new RegExp(item.key.join('|'), 'g');
+            if (!key.match(itemReg)) return null;
 
             return item;
         });
 
         if (!d) return null;
-
-        d.data.map((id) => {
-            itemData.push(id);
-        });
-
-        return itemData;
+        return d;
     },
 
-    getDNRateData: (name) => {
-        const itemData = [];
+    getDNRateData: (key) => {
         const d = dnrate.find((item) => {
-            const itemReg = new RegExp(item.name.join('|'), 'g');
-            if (!name.match(itemReg)) return null;
+            const itemReg = new RegExp(item.key.join('|'), 'g');
+            if (!key.match(itemReg)) return null;
 
             return item;
         });
 
         if (!d) return null;
-
-        d.data.map((id) => {
-            itemData.push(id);
-        });
-
-        return itemData;
+        return d;
     },
 };
