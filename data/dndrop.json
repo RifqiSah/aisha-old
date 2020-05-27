@@ -93,6 +93,13 @@
         ]
     },
     {
+        "key": ["bmj", "mj", "blood moon"],
+        "name": "Blood Moon Jade",
+        "data": [
+            "https://i.imgur.com/DQlUDfG.png"
+        ]
+    },
+    {
         "key": ["fdn"],
         "name": "Forest Dragon Normal",
         "data": [
