@@ -86,5 +86,33 @@
             "**F17**: 16% => 3.2% for each part",
             "\n__**For Minos Fragments and enhance rate using `.rate minos`.**__"
         ]
+    },
+    {
+        "name": ["fdn"],
+        "data": [
+            "__**Forest Dragon Normal Drop Rate**__",
+            "https://i.imgur.com/oOwNCAl.png"
+        ]
+    },
+    {
+        "name": ["bdn"],
+        "data": [
+            "__**Black Dragon Time Attack Drop Rate**__",
+            "https://i.imgur.com/57MMeqD.png"
+        ]
+    },
+    {
+        "name": ["gust", "gudn"],
+        "data": [
+            "__**Gust Dragon Drop Rate**__",
+            "https://i.imgur.com/ecBaCoc.png"
+        ]
+    },
+    {
+        "name": ["fdn hc"],
+        "data": [
+            "__**Forest Dragon Hardcore Drop Rate**__",
+            "https://i.imgur.com/gGiR2iu.png"
+        ]
     }
 ]
