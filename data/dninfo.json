@@ -1,7 +1,7 @@
 [
     {
         "key": ["mq", "main quest", "cp"],
-        "name": "Main Quest Information",
+        "name": "Main Quest / Crystal Point",
         "data": [
             "https://cdn.discordapp.com/attachments/432903741029613569/560061874406686721/unknown.png"
         ]
@@ -53,7 +53,7 @@
     },
     {
         "key": ["raid recom", "raid recommendation"],
-        "name": "Rekomendasi untuk Raid",
+        "name": "Rekomendasi Raid",
         "data": [
             "https://cdn.discordapp.com/attachments/580444014218838041/713034595553116241/unknown_1.png"
         ]

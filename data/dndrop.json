@@ -101,21 +101,21 @@
     },
     {
         "key": ["bdn"],
-        "name": "Black Dragon Time Attack",
+        "name": "Black Dragon Nest Time Attack",
         "data": [
             "https://i.imgur.com/57MMeqD.png"
         ]
     },
     {
         "key": ["gust", "gudn"],
-        "name": "Gust Dragon",
+        "name": "Gust Dragon Nest",
         "data": [
             "https://i.imgur.com/ecBaCoc.png"
         ]
     },
     {
         "key": ["fdn hc"],
-        "name": "Forest Dragon Hardcore",
+        "name": "Forest Dragon Nest Hardcore",
         "data": [
             "https://i.imgur.com/gGiR2iu.png"
         ]

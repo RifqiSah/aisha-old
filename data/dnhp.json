@@ -1,7 +1,7 @@
 [
     {
         "key": ["gdn", "green"],
-        "name": "Green Dragon Nest",
+        "name": "Green Dragon Nest Time Attack",
         "data": [
             "Golem Morgon: __**372,104,320,000**__",
             "White-eyed Krakes: __**996,708,000,000**__",
@@ -30,7 +30,7 @@
     },
     {
         "key": ["bdn", "black"],
-        "name": "Black Dragon Nest",
+        "name": "Black Dragon Nest Time Attack",
         "data": [
             "Centurion Ogre Baopar: __**2.9 Trillion**__",
             "Engata General Umbala: __**7.67 Trillion**__",
