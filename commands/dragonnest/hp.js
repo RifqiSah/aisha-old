@@ -14,21 +14,16 @@ module.exports = {
     cooldown: 0,
     func: (client, message, args) => {
         const nest = (args.length ? args.join(' ').toLowerCase() : 'null');
-        let msg = [];
-
-        let nests = ''; // nest.replace(/\b\w/g, l => l.toUpperCase()).replace(/\b[a-zA-Z]{2,3}\b/g, i => i.toUpperCase());
-        if (nest === 'gdn' || nest === 'green') nests = 'Green Dragon Nest';
-        else if (nest === 'fdn' || nest === 'forest') nests = 'Forest Dragon Nest';
-        else if (nest === 'bdn' || nest === 'black') nests = 'Black Dragon Nest';
-        else if (nest === 'gudn' || nest === 'gust') nests = 'Gust Dragon Nest';
-        else if (nest === 'stg' || nest === 'sunset') nests = 'Sunset Traning Ground';
-        else nests = nest;
-
-        msg.push(`__**HP Untuk ${nests}**__\n`);
+        const msg = [];
 
         const data = func.getDNHpData(nest);
-        if (!data) msg.push(`HP untuk \`${nests}\` tidak ditemukan!`);
-        else msg = msg.concat(data);
+        if (!data) msg.push(`HP untuk \`${nest}\` tidak ditemukan!`);
+        else {
+            msg.push(`__**HP untuk ${data.name}**__\n`);
+            data.data.map((id) => {
+                msg.push(id);
+            });
+        }
 
         msg.push(`\nGunakan \`${client.config.PREFIX}help hp\` untuk melihat info yang tersedia.`);
         message.channel.send(msg, { split: true });

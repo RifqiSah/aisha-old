@@ -14,14 +14,16 @@ module.exports = {
     cooldown: 0,
     func: (client, message, args) => {
         const rate = (args.length ? args.join(' ').toLowerCase() : 'null');
-        let msg = [];
-
-        const rates = rate.replace(/\b\w/g, (l) => l.toUpperCase()).replace(/\b[a-zA-Z]{2,3}\b/g, (i) => i.toUpperCase());
-        msg.push(`__**Rate Untuk ${rates}**__\n`);
+        const msg = [];
 
         const data = func.getDNRateData(rate);
-        if (!data) msg.push(`Rate untuk \`${rates}\` tidak ditemukan!`);
-        else msg = msg.concat(data);
+        if (!data) msg.push(`Rate untuk \`${rate}\` tidak ditemukan!`);
+        else {
+            msg.push(`__**Rate untuk ${data.name}**__\n`);
+            data.data.map((id) => {
+                msg.push(id);
+            });
+        }
 
         msg.push(`\nGunakan \`${client.config.PREFIX}help rate\` untuk melihat rate yang tersedia.`);
         message.channel.send(msg, { split: true });

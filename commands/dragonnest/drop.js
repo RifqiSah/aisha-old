@@ -14,14 +14,16 @@ module.exports = {
     cooldown: 0,
     func: (client, message, args) => {
         const item = (args.length ? args.join(' ').toLowerCase() : 'null');
-        let msg = [];
-
-        const items = item.replace(/\b\w/g, (l) => l.toUpperCase()).replace(/\b[a-zA-Z]{2,3}\b/g, (i) => i.toUpperCase());
-        msg.push(`__**Drop Rate Untuk Item ${items}**__\n`);
+        const msg = [];
 
         const data = func.getDNDropData(item);
-        if (!data) msg.push(`Drop rate untuk item \`${items}\` tidak ditemukan!`);
-        else msg = msg.concat(data);
+        if (!data) msg.push(`Drop rate untuk item \`${item}\` tidak ditemukan!`);
+        else {
+            msg.push(`__**Drop rate untuk ${data.name}**__\n`);
+            data.data.map((id) => {
+                msg.push(id);
+            });
+        }
 
         msg.push(`\nGunakan \`${client.config.PREFIX}help drop\` untuk melihat daftar item yang tersedia.`);
         message.channel.send(msg, { split: true });
