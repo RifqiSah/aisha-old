@@ -107,7 +107,7 @@
         ]
     },
     {
-        "key": ["bdn"],
+        "key": ["bdn", "bdnta"],
         "name": "Black Dragon Nest Time Attack",
         "data": [
             "https://i.imgur.com/57MMeqD.png"
@@ -125,6 +125,21 @@
         "name": "Forest Dragon Nest Hardcore",
         "data": [
             "https://i.imgur.com/gGiR2iu.png"
+        ]
+    },
+    {
+        "key": ["ddn", "ddnta"],
+        "name": "Desert Dragon Nest Time Attack",
+        "data": [
+            "- No FFA loots / No Accessory Drops",
+            "- Use Sandstone to Buy Accessory or Get lucky Accessory box from Gold Chest",
+            "https://i.imgur.com/9PKtjRC.png",
+            "\n",
+            "DDN Accessories & Stats ",
+            "https://i.imgur.com/084top6.png",
+            "\n",
+            "DDN Shop at Riverwort Wharf",
+            "https://i.imgur.com/EAFq7g2.jpg"
         ]
     }
 ]
