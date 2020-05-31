@@ -34,7 +34,7 @@ module.exports = async (client, message) => {
         if (user.presence.status === 'dnd') return `**${user.tag}** sedang tidak dapat diganggu.`;
     });
 
-    if (users.length > 0) message.channel.send(users).then((msg) => { msg.delete(5000); }).catch();
+    if (users.length > 0) message.channel.send(users).then((msg) => { msg.delete({ timeout: 5000 }); }).catch();
     // == Akhir pengecekan user ==
 
     let regex = null;
@@ -79,7 +79,7 @@ module.exports = async (client, message) => {
         if (commandfile.cooldown > 0) {
             // Cek dulu apakah user sudah menjalankan command sebelumnya?
             // eslint-disable-next-line consistent-return
-            if (client.cmdcd.has(message.author.id)) return message.reply(`Anda harus menunggu selama \`${commandfile.cooldown} detik\` sebelum menggunakan command \`${commandfile.name}\` kembali!`).then((msg) => { msg.delete(10000); }).catch();
+            if (client.cmdcd.has(message.author.id)) return message.reply(`Anda harus menunggu selama \`${commandfile.cooldown} detik\` sebelum menggunakan command \`${commandfile.name}\` kembali!`).then((msg) => { msg.delete({ timeout: 10000 }); }).catch();
 
             // Kalau tidak
             client.cmdcd.add(message.author.id); // Tambahkan user kedalam list cooldown
@@ -103,7 +103,7 @@ module.exports = async (client, message) => {
                 } else {
                     // Tidak ada? Tampilkan pesan error
                     message.delete().catch(() => {});
-                    message.channel.send(`Anda tidak mempunyai ijin untuk menggunakan command \`${commandfile.name}\`!`).then((msg) => { msg.delete(5000); }).catch();
+                    message.channel.send(`Anda tidak mempunyai ijin untuk menggunakan command \`${commandfile.name}\`!`).then((msg) => { msg.delete({ timeout: 5000 }); }).catch();
                 }
             // Jika role tidak ada jalankan saja
             } else {
@@ -112,7 +112,7 @@ module.exports = async (client, message) => {
         } else {
             // Command tidak aktif
             message.delete().catch(() => {});
-            message.channel.send(`Command \`${commandfile.name}\` sedang tidak aktif!`).then((msg) => { msg.delete(5000); }).catch();
+            message.channel.send(`Command \`${commandfile.name}\` sedang tidak aktif!`).then((msg) => { msg.delete({ timeout: 5000 }); }).catch();
         }
     }
     // == Akhir command manager ==

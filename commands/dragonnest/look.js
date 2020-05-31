@@ -16,10 +16,10 @@ module.exports = {
 
         await superagent.get(`http://sea.dragonnest.com/news/notice/all/${args}`)
             .then((res) => {
-                msgs.edit(`Respon:\`\`\`${res.text.slice(635, 1000)}\`\`\``).then((msg) => { msg.delete(60000); });
+                msgs.edit(`Respon:\`\`\`${res.text.slice(635, 1000)}\`\`\``).then((msg) => { msg.delete({ timeout: 60000 }); });
             })
             .catch((err) => {
-                msgs.edit(`Uh oh, error tidak terduga:\`\`\`${err.status}: ${err.message}\`\`\``).then((msg) => { msg.delete(10000); });
+                msgs.edit(`Uh oh, error tidak terduga:\`\`\`${err.status}: ${err.message}\`\`\``).then((msg) => { msg.delete({ timeout: 10000 }); });
             });
     },
 };

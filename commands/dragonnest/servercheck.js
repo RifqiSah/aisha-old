@@ -45,7 +45,7 @@ module.exports = {
 
         socket.on('close', () => {
             ret.push('Closed!');
-            msgs.edit(ret).then((msg) => { msg.delete(10000); });
+            msgs.edit(ret).then((msg) => { msg.delete({ timeout: 10000 }); });
         });
     },
 };

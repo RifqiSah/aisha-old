@@ -16,10 +16,10 @@ module.exports = {
 
         await superagent.get(`https://alriftech.com/cron/${args}`)
             .then((res) => {
-                msgs.edit(`Sukses *cron* \`${args}\`! Respon:\`\`\`${res.text}\`\`\``).then((msg) => { msg.delete(5000); });
+                msgs.edit(`Sukses *cron* \`${args}\`! Respon:\`\`\`${res.text}\`\`\``).then((msg) => { msg.delete({ timeout: 5000 }); });
             })
             .catch((err) => {
-                msgs.edit(`Uh oh, error tidak terduga:\`\`\`${err.status}: ${err.message}\`\`\``).then((msg) => { msg.delete(10000); });
+                msgs.edit(`Uh oh, error tidak terduga:\`\`\`${err.status}: ${err.message}\`\`\``).then((msg) => { msg.delete({ timeout: 10000 }); });
             });
     },
 };

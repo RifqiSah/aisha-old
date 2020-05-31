@@ -16,10 +16,10 @@ module.exports = {
 
         await superagent.get(`https://alriftech.com/api/v2/bot/aisha/server_update/${args}`)
             .then((res) => {
-                msgs.edit(`Sukses \`${args}\`! Respon:\`\`\`${res.text}\`\`\``).then((msg) => { msg.delete(5000); });
+                msgs.edit(`Sukses \`${args}\`! Respon:\`\`\`${res.text}\`\`\``).then((msg) => { msg.delete({ timeout: 50000 }); });
             })
             .catch((err) => {
-                msgs.edit(`Uh oh, error tidak terduga:\`\`\`${err.status}: ${err.message}\`\`\``).then((msg) => { msg.delete(10000); });
+                msgs.edit(`Uh oh, error tidak terduga:\`\`\`${err.status}: ${err.message}\`\`\``).then((msg) => { msg.delete({ timeout: 10000 }); });
             });
     },
 };

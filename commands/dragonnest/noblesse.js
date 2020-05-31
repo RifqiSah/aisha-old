@@ -28,7 +28,7 @@ module.exports = {
             .then((res) => {
                 const nbdata = JSON.parse(res.text);
 
-                if (Array.isArray(nbdata) && nbdata.length === 0) return msgs.edit('Belum ada informasi untuk Noblesse Buff!').then((msg) => { msg.delete(10000); });
+                if (Array.isArray(nbdata) && nbdata.length === 0) return msgs.edit('Belum ada informasi untuk Noblesse Buff!').then((msg) => { msg.delete({ timeout: 10000 }); });
 
                 for (const nbh in nbdata) {
                     const item = nbdata[nbh];
@@ -40,10 +40,10 @@ module.exports = {
                 }
 
                 channel.send(data);
-                msgs.delete(5000);
+                msgs.delete({ timeout: 5000 });
             })
             .catch((err) => {
-                msgs.edit(`Uh oh, error tidak terduga:\`\`\`${err.status}: ${err.message}\`\`\``).then((msg) => { msg.delete(10000); });
+                msgs.edit(`Uh oh, error tidak terduga:\`\`\`${err.status}: ${err.message}\`\`\``).then((msg) => { msg.delete({ timeout: 10000 }); });
             });
     },
 };

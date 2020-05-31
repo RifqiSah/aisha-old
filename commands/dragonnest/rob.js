@@ -39,7 +39,7 @@ module.exports = {
                 msgs.edit(data);
             })
             .catch((err) => {
-                msgs.edit(`Uh oh, error tidak terduga:\`\`\`${err.status}: ${err.message}\`\`\``).then((msg) => { msg.delete(10000); });
+                msgs.edit(`Uh oh, error tidak terduga:\`\`\`${err.status}: ${err.message}\`\`\``).then((msg) => { msg.delete({ timeout: 10000 }); });
             });
     },
 };

@@ -15,7 +15,7 @@ module.exports = {
         const data = [];
         const chid = message.channel.id;
 
-        if (!args.length) return message.channel.send('Harap masukkan parameter!').then((msg) => { msg.delete(5000); });
+        if (!args.length) return message.channel.send('Harap masukkan parameter!').then((msg) => { msg.delete({ timeout: 5000 }); });
         switch (args[0]) {
         case 'dch':
             client.chsvc.addChannel(chid);
@@ -31,6 +31,6 @@ module.exports = {
             data.push(`Pengaturan untuk \`${args[0]}\` tidak ditemukan!`);
         }
 
-        message.channel.send(data, { split: true }).then((msg) => { msg.delete(5000); });
+        message.channel.send(data, { split: true }).then((msg) => { msg.delete({ timeout: 5000 }); });
     },
 };
