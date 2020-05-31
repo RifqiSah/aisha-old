@@ -16,11 +16,11 @@
         "fs": "0.0.1-security",
         "gh.js": "^3.1.0",
         "json-parser": "^1.1.5",
-        "moment": "^2.24.0",
-        "mongoose": "^5.9.11",
+        "moment": "^2.26.0",
+        "mongoose": "^5.9.16",
         "net": "^1.0.2",
         "request": "^2.88.2",
-        "superagent": "^5.2.1"
+        "superagent": "^5.2.2"
     },
     "devDependencies": {
         "eslint": "^6.8.0",
