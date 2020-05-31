@@ -15,7 +15,7 @@ module.exports = {
             const choices = ['Ini adalah latency aku', 'Apakah baik-baik saja? Aku tidak dapat melihat!', 'Aku berharap ini tidak buruk!'];
             const response = choices[Math.floor(Math.random() * choices.length)];
 
-            m.edit(`${response}\nBot Latency: \`${ping}\`, API Latency: \`${Math.round(client.bot.ping)}\``);
+            m.edit(`${response}\nBot Latency: \`${ping}\`, API Latency: \`${Math.round(client.bot.ws.ping)}\``);
         });
     },
 };

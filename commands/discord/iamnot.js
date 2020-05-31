@@ -20,7 +20,7 @@ module.exports = {
 
         if (funct.getAllowedRoles(role.id)) {
             if (message.member.roles.has(role.id)) {
-                message.member.removeRole(role.id);
+                message.member.roles.remove(role.id);
                 message.reply(`Anda berhasil melepaskan role \`${role.name}\`!`);
             } else {
                 message.reply(`Anda tidak memiliki role \`${role.name}\`!`);

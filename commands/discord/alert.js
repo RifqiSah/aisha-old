@@ -20,7 +20,7 @@ module.exports = {
                     color: 3447003,
                     description: args.join(' '),
                     footer: {
-                        icon_url: message.author.avatarURL,
+                        icon_url: message.author.avatarURL(),
                         text: message.author.tag,
                     },
                 },

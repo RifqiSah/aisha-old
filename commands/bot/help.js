@@ -32,7 +32,7 @@ module.exports = {
             if (command.aliases) data.push(`\`Alias\` : ${command.aliases.length ? `${command.aliases.join(', ')}` : '-'}`);
             if (command.desc) data.push(`\`Deskripsi\` : ${command.desc}`);
             if (command.usage) data.push(`\`Penggunaan\` : ${client.config.PREFIX}${name} ${command.usage}.`);
-            if (command.role) data.push(`\`Role\` : ${command.role.length ? command.role.map((i) => message.guild.roles.get(`${i}`)).join(', ') : '-'}.`);
+            if (command.role) data.push(`\`Role\` : ${command.role.length ? command.role.map((i) => message.guild.roles.cache.get(`${i}`)).join(', ') : '-'}.`);
 
             data.push(`\`Regex\` : ${command.regex ? 'Ya' : 'Tidak'}.`);
             data.push(`\`Cooldown\` : ${command.cooldown} detik.`);

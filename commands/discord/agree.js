@@ -17,7 +17,7 @@ module.exports = {
         message.reply('Terima kasih Anda sudah menyetujui peraturan yang telah dibuat.\n\nJika Anda kedapatan melanggar, kami akan segera mengeluarkan Anda dari Discord demi kenyamanan member lain.\n\nTerima kasih.').then((msg) => { msg.delete(10000); }).catch();
 
         message.delete();
-        message.member.removeRole('669544469594374145'); // new-member
-        message.member.addRole('668439117264191498'); // buat rolenya guest aja sementara
+        message.member.roles.remove('669544469594374145'); // new-member
+        message.member.roles.add('668439117264191498'); // buat rolenya guest aja sementara
     },
 };
