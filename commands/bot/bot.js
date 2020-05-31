@@ -31,6 +31,7 @@ module.exports = {
             data.push(`Pengaturan untuk \`${args[0]}\` tidak ditemukan!`);
         }
 
+        // eslint-disable-next-line max-len
         message.channel.send(data, { split: true }).then((msg) => { msg.delete({ timeout: 5000 }); });
     },
 };

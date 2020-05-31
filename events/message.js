@@ -34,6 +34,7 @@ module.exports = async (client, message) => {
         if (user.presence.status === 'dnd') return `**${user.tag}** sedang tidak dapat diganggu.`;
     });
 
+    // eslint-disable-next-line max-len
     if (users.length > 0) message.channel.send(users).then((msg) => { msg.delete({ timeout: 5000 }); }).catch();
     // == Akhir pengecekan user ==
 
