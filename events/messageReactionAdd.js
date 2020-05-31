@@ -25,14 +25,14 @@ module.exports = async (client, reaction, user) => {
     const { emoji } = reaction;
 
     if (emoji.name === '🇲') {
-        message.guild.fetchMember(user.id).then((member) => {
-            member.addRole('668660316036530216');
+        message.guild.members.fetch(user.id).then((member) => {
+            member.roles.add('668660316036530216');
         });
     }
 
     if (emoji.name === '🇹') {
-        message.guild.fetchMember(user.id).then((member) => {
-            member.addRole('668680264096022550');
+        message.guild.members.fetch(user.id).then((member) => {
+            member.roles.add('668680264096022550');
         });
     }
 };

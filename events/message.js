@@ -3,7 +3,7 @@ module.exports = async (client, message) => {
     if (message.author.bot || message.channel.type === 'dm') return; // Jangan hiraukan chat dari sesama bot dan pastikan chat berasal dari guild
 
     // == Awal pengecekan mention BOT ==
-    if (message.isMemberMentioned(client.bot.user)) {
+    if (message.mentions.has(client.bot.user)) {
         const text = message.content;
 
         // Parse text ke DialogFlow
@@ -97,7 +97,7 @@ module.exports = async (client, message) => {
             // Apakah command mempunya role (role != null)
             if (commandfile.role.length > 0) {
                 // Apakah role pengguna ada pada command ini?
-                if (message.member.roles.some((role) => commandfile.role.includes(role.id))) {
+                if (message.member.roles.cache.some((role) => commandfile.role.includes(role.id))) {
                     // Jalankan
                     commandfile.func(client, message, args);
                 } else {

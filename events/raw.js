@@ -6,7 +6,7 @@ module.exports = (client, packet) => {
     if (!['MESSAGE_REACTION_ADD', 'MESSAGE_REACTION_REMOVE'].includes(packet.t)) return;
 
     // Grab the channel to check the message from
-    const channel = bot.channels.get(packet.d.channel_id);
+    const channel = bot.channels.cache.get(packet.d.channel_id);
 
     // There's no need to emit if the message is cached, because the event will fire anyway for that
     if (channel.messages.has(packet.d.message_id)) return;
@@ -24,10 +24,10 @@ module.exports = (client, packet) => {
 
         // Check which type of event it is before emitting
         if (packet.t === 'MESSAGE_REACTION_ADD') {
-            bot.emit('messageReactionAdd', reaction, bot.users.get(packet.d.user_id));
+            bot.emit('messageReactionAdd', reaction, bot.users.cache.get(packet.d.user_id));
         }
         if (packet.t === 'MESSAGE_REACTION_REMOVE') {
-            bot.emit('messageReactionRemove', reaction, bot.users.get(packet.d.user_id));
+            bot.emit('messageReactionRemove', reaction, bot.users.cache.get(packet.d.user_id));
         }
     });
 };

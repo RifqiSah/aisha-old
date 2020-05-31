@@ -8,13 +8,13 @@ module.exports = (client) => {
 
     // bot.user.setAvatar("");
 
-    console.log(`[V] Bot has started, with ${client.bot.users.size} users, in ${client.bot.channels.size} channels of ${client.bot.guilds.size} guilds.`);
+    console.log(`[V] Bot has started, with ${client.bot.users.cache.size} users, in ${client.bot.channels.cache.size} channels of ${client.bot.guilds.cache.size} guilds.`);
 
     const activitiesList = [
         `${client.config.PREFIX}h for command.`,
         `${client.config.VERSION} is running.`,
         "Informate's Bot.",
-        `Serving ${client.bot.users.size} users in ${client.bot.guilds.size} guild.`,
+        `Serving ${client.bot.users.cache.size} users in ${client.bot.guilds.cache.size} guild.`,
     ];
 
     setInterval(() => {
@@ -24,5 +24,5 @@ module.exports = (client) => {
     }, 10000);
 
     // Untuk ad-role select
-    client.bot.channels.get('668661382228475915').fetchMessage('668673903014707220');
+    client.bot.channels.cache.get('668661382228475915').messages.fetch('668673903014707220');
 };
