@@ -1,6 +1,6 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
-const { Client, Collection, RichEmbed } = require('discord.js');
+const { Client, Collection, MessageEmbed } = require('discord.js');
 const apiai = require('apiai');
 const db = require('./util/database');
 const conf = require('./config');
@@ -11,7 +11,7 @@ const client = {
     // General
     config: conf,
     bot: new Client({ partials: ['USER', 'GUILD_MEMBER', 'MESSAGE', 'CHANNEL', 'REACTION'] }),
-    discord_embed: new RichEmbed(),
+    discord_embed: new MessageEmbed(),
     apiAI: apiai(conf.TOKEN_APIAI),
 
     // Services
