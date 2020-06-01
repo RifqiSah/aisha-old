@@ -4,7 +4,7 @@ module.exports = {
     enable: true,
     regex: false,
     help: false,
-    role: [],
+    role: ['433870492378595329'],
     aliases: ['pn'],
     usage: '[bulan] [nomor]',
     cooldown: 0,

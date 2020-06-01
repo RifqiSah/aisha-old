@@ -5,7 +5,7 @@ module.exports = {
     enable: true,
     regex: false,
     help: false,
-    role: ['587649345327988736', '372915947478056960'],
+    role: ['372915947478056960'],
     aliases: ['turnoff', 'botkill', 'botstop'],
     usage: '',
     cooldown: 60,
