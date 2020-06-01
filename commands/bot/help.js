@@ -1,3 +1,5 @@
+const funct = require('../../util/funct.js');
+
 module.exports = {
     name: 'help',
     desc: 'Daftar command yang dapat digunakan pada Aisha.',
@@ -11,21 +13,21 @@ module.exports = {
     // eslint-disable-next-line consistent-return
     func: (client, message, args) => {
         const data = [];
+        const dev = funct.isDeveloper(message.member);
+
         if (!args.length) {
             data.push('Hai! Ini adalah daftar command yang tersedia:\n');
             client.cmds.forEach((item) => {
-                if (item.help) data.push(`\`${item.name}\` : ${item.desc.split('.')[0]}.`);
+                if (item.help || dev) data.push(`\`${item.name}\` : ${item.desc.split('.')[0]}.`);
             });
 
             data.push(`\nAnda dapat menggunakan \`${client.config.PREFIX}help [nama command]\` untuk mendapatkan informasi dari command tersebut.`);
         } else {
             const name = args[0].toLowerCase();
+
             // eslint-disable-next-line max-len
             const command = client.cmds.get(name) || client.cmds.get(client.cmdsalias.get(name));
-
-            if (!command) {
-                return message.reply('Command tidak valid!');
-            }
+            if (!command) return message.reply('Command tidak valid!');
 
             data.push(`Informasi mengenai command \`${command.name}\`:\n`);
 
