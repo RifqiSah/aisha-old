@@ -28,6 +28,8 @@ module.exports = {
         return serverIp.find((x) => x.name === name);
     },
 
+    isDeveloper: (member) => member.roles.cache.some((role) => role.id === '433870492378595329'),
+
     formatData: (key) => {
         let fmt;
 
