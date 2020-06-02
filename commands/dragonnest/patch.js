@@ -12,7 +12,7 @@ module.exports = {
         message.delete();
 
         const data = [];
-        const channel = message.guild.channels.find((ch) => ch.id === '381495270241730561'); // dn-sea
+        const channel = message.guild.channels.cache.find((ch) => ch.id === '381495270241730561'); // dn-sea
         if (!channel) return;
 
         data.push('<@&489292018628165633>\n');
