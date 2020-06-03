@@ -83,6 +83,13 @@
         ]
     },
     {
+        "key": ["allied", "guild jade"],
+        "name": "Allied Life Jade ( Guild Jade )",
+        "data": [
+            "https://i.imgur.com/ZDhRAE4.png"
+        ]
+    },
+    {
         "key": ["fusi", "fusion", "cost", "cosu", "cossu", "cost", "costume", "kostum"],
         "name": "Costume Synthesis",
         "data": [
