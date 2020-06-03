@@ -1,6 +1,5 @@
 assets/
 node_modules/
-scripts/
 
 .env
 /test.js

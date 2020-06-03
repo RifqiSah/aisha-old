@@ -2,12 +2,13 @@
     "name": "aisha",
     "description": "Aisha: Informate Private Discord BOT.",
     "repository": "https://github.com/RifqiSah/Aisha",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "license": "MIT",
     "main": "bot.js",
     "scripts": {
         "start": "node bot.js",
-        "lint": "eslint ."
+        "lint": "eslint .",
+        "log": "heroku logs -a aisha-bot -t"
     },
     "dependencies": {
         "apiai": "^4.0.3",
