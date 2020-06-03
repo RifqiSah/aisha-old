@@ -97,5 +97,21 @@
             "\nMachina Hero Skills",
             "https://i.imgur.com/c23Fmnv.png"
         ]
+    },
+    {
+        "key": ["battlefield", "fb"],
+        "name": "Fierce Battle Heraldry - Additional Stats ",
+        "data": [
+            "Tier 1 Stats",
+            "https://i.imgur.com/rhdrAyz.png",
+
+            "\nTier 2 Stats",
+            "https://i.imgur.com/QYkcclQ.png",
+
+            "\nTier 3 Stats",
+            "https://i.imgur.com/43ReFRa.png",
+
+            "\nFor enhance rate, see `.rate battlefield` command!"
+        ]
     }
 ]

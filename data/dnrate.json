@@ -167,5 +167,16 @@
             "Legend: https://i.imgur.com/3XsPJCc.png",
             "Ancient: https://i.imgur.com/U1cxfPG.png"
         ]
+    },
+    {
+        "key": ["battlefield", "fb"],
+        "name": "Fierce Battle Heraldry",
+        "data": [
+            "- High Grade Evolver is from Epic Pouch Or Exchange 100 Fedoru's Toothbrush",
+            "- High Grade Evolver Can be Traded & Sold in TH",
+
+            "\nhttps://i.imgur.com/6FPGxoy.png",
+            "\nFor additional stats info, see `.info battlefield` command!"
+        ]
     }
 ]
