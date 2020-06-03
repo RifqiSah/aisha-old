@@ -13,9 +13,9 @@ module.exports = {
     // eslint-disable-next-line consistent-return
     func: (client, message, args) => {
         const data = [];
-        const dev = funct.isDeveloper(message.member);
+        const dev = funct.isDeveloper(message.member) && (args.length ? args[0].toLowerCase().match('dev') : false);
 
-        if (!args.length) {
+        if (!args.length || dev) {
             data.push('Hai! Ini adalah daftar command yang tersedia:\n');
             client.cmds.forEach((item) => {
                 if (item.help || dev) data.push(`\`${item.name}\` : ${item.desc.split('.')[0]}.`);
