@@ -18,7 +18,7 @@ module.exports = {
         message.delete();
 
         const data = [];
-        const channel = message.guild.channels.find((ch) => ch.id === '678739777700233216'); // noblesse info
+        const channel = message.guild.channels.cache.find((ch) => ch.id === '678739777700233216'); // noblesse info
         if (!channel) return;
 
         const msgs = await message.channel.send('Megambil data ...');
