@@ -8,7 +8,7 @@ module.exports = {
     name: 'rob',
     desc: 'Memberikan informasi untuk `Rock of Blessing` yang sedang ada pada server!',
     enable: true,
-    regex: true,
+    regex: false,
     help: true,
     role: ['489292018628165633'],
     aliases: [],
