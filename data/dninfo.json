@@ -15,9 +15,12 @@
     },
     {
         "key": ["hero talisman", "epic talisman"],
-        "name": "Hero Talisman",
+        "name": "Epic Hero Talisman Stats + Reroll Chance",
         "data": [
-            "https://i.imgur.com/JxaRyuC.png"
+            "Sealed Hero Talisman from Nightmare Labyrinth will give Random lv1 to lv10 Stat",
+            "2nd Stat is Not Possible for Epic Hero Talisman",
+            "\nhttps://i.imgur.com/JxaRyuC.png",
+            "\nFor Nightmare Box rate, see `.rate nm box` command."
         ]
     },
     {

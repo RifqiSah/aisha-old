@@ -51,6 +51,17 @@
         ]
     },
     {
+        "key": ["nm box", "nightmare box"],
+        "name": "Nightmare Box",
+        "data": [
+            "Craft using Rare Fragment / Rare Essence / Epic Fragment",
+            "\nUltimate Talisman can only be obtained from this box",
+            "Kilos Breath is used for Reroll Level ( Kilos Breath is Tradeable )",
+            "\nhttps://i.imgur.com/LETQNMB.png",
+            "\nfor Epic Hero Talisman Stats + Reroll Chance, see `.info hero talisman` command."
+        ]
+    },
+    {
         "key": ["jade" ,"jewel"],
         "name": "Jade / Jewel",
         "data": [
