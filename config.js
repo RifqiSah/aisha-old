@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 exports.ENABLE = true;
-exports.VERSION = 'v2.0.2';
+exports.VERSION = 'v2.0.4';
 exports.PREFIX = '.';
 exports.OWNER = '306616861456465924';
 
